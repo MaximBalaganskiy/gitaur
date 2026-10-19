@@ -1,6 +1,8 @@
 import { resolve } from 'aurelia';
 import { AlertService } from '@aurelia-ui-toolkits/headless';
 import { distinctUntilChanged, type Subscription } from 'rxjs';
+import { invoke } from '@tauri-apps/api/core';
+import { version } from '../../../package.json';
 import { WorkspaceService } from '../../services/workspace-service';
 import { AppearanceService } from '../../services/appearance-service';
 import logo from '../../assets/gitaur.svg?url';
@@ -8,6 +10,7 @@ import './app.css';
 
 export class App {
   readonly logo = logo;
+  readonly version = version;
   readonly workspace = resolve(WorkspaceService);
   readonly appearance = resolve(AppearanceService);
   private alerts = resolve(AlertService);
@@ -66,6 +69,14 @@ export class App {
 
   toggleDensity() {
     this.appearance.density = this.appearance.density === 'normal' ? 'compact' : 'normal';
+  }
+
+  async openProjectRepository() {
+    try {
+      await invoke('open_project_repository');
+    } catch (error) {
+      this.workspace.fail(`Could not open GitHub: ${error instanceof Error ? error.message : String(error)}`);
+    }
   }
 
   private onStorage = (event: StorageEvent) => {

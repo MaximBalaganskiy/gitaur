@@ -3,6 +3,7 @@ const { git } = require('./support/git.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const { version } = require('../package.json');
 
 (async () => {
   const root = await fs.mkdtemp(path.resolve('../.test-repos/commit-window-'));
@@ -190,14 +191,16 @@ const path = require('node:path');
     await app.page.getByRole('button', { name: /Commit changes/ }).click();
     assert.deepEqual(await commitLayout(commit), firstLayout);
     await commit.setViewportSize({ width: 900, height: 640 });
+    assert.equal(await commit.locator('.app-version').innerText(), `v${version}`);
+    assert.ok(await commit.getByRole('button', { name: 'Open Gitaur on GitHub', exact: true }).isVisible());
     for (const name of ['Resize unstaged and staged files', 'Resize diff and commit message']) {
       await commit.getByRole('separator', { name, exact: true }).press('End');
     }
     // Only available window space constrains the dividers; the opposite panes may collapse.
     await commit.waitForFunction(() =>
-      [...document.querySelectorAll('.stage-section, .diff-panel, .message-composer, ui-splitter')].every(element => {
+      [...document.querySelectorAll('.topbar > *, .stage-section, .diff-panel, .message-composer, ui-splitter')].every(element => {
         const rect = element.getBoundingClientRect();
-        return rect.top >= 0 && rect.right <= innerWidth + 1 && rect.bottom <= innerHeight + 1;
+        return rect.left >= 0 && rect.top >= 0 && rect.right <= innerWidth + 1 && rect.bottom <= innerHeight + 1;
       })
     );
     const fullUnstaged = await commit.locator('.unstaged-section').boundingBox();

@@ -28,7 +28,7 @@ npm --prefix app ci
 npm start
 ```
 
-Development requires Node 24+, Rust, and the [Tauri platform prerequisites](https://v2.tauri.app/start/prerequisites/). On Windows, install the Visual Studio C++ build tools and Windows SDK. Install Git on PATH (or set `GITAUR_GIT` to its executable). The desktop app uses your installed Git, identity, SSH configuration, and credential helpers. Remote authentication must already be configured. This preview does not provide a login wizard.
+Development requires Node.js 26, Rust, and the [Tauri platform prerequisites](https://v2.tauri.app/start/prerequisites/). The supported Node major is recorded in `.node-version`, which also selects the runtime for CI. On Windows, install the Visual Studio C++ build tools and Windows SDK. Install Git on PATH (or set `GITAUR_GIT` to its executable). The desktop app uses your installed Git, identity, SSH configuration, and credential helpers. Remote authentication must already be configured. This preview does not provide a login wizard.
 
 The Windows executable embeds the bundled, minified UI and uses the shared WebView2 runtime. The NSIS installer downloads WebView2 if it is missing. Neither Node nor Git is bundled. Linux uses WebKitGTK; build Linux packages on Linux with `npm --prefix app run pack:linux`. Linux packaging and native Git integration tests are validated in GitHub Actions; interactive Linux desktop behavior has not yet been validated.
 
@@ -76,6 +76,7 @@ Measured Windows x64 release (14 October 2026): **3.64 MiB** executable, **1.44 
 - Resizable panes, light/dark themes, Normal/Compact density, recent repositories, and keyboard shortcuts. Normal density is the default; appearance choices are saved and synchronized between windows.
 - Main and commit windows remember their size, position, and maximized state separately across launches; unavailable monitors fall back to OS placement. All splitter positions, including collapsed panes, are saved separately for each repository in both windows.
 - Integrated title bar on main and commit windows, with headless minimize, maximize/restore, and close buttons. Drag the header's empty space or title to move the window; double-click to maximize/restore. Repository and appearance controls remain interactive. Resizing uses Tauri's native undecorated-window support; Linux compositor behavior still needs desktop validation.
+- The title bar shows the installed app version and links to the Gitaur GitHub repository in your default browser.
 
 | Shortcut | Action |
 | --- | --- |

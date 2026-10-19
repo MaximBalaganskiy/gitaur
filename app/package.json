@@ -5,6 +5,9 @@
   "private": true,
   "description": "A local Git client with a graph workspace and dedicated commit window.",
   "type": "module",
+  "engines": {
+    "node": "^26.0.0"
+  },
   "allowScripts": {
     "esbuild@0.28.2": true
   },
@@ -49,7 +52,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@tauri-apps/api": "^2.12.3",
     "@tauri-apps/cli": "^2.12.2",
-    "@types/node": "^24.0.0",
+    "@types/node": "^26.6.5",
     "@typescript/typescript6": "^6.0.2",
     "aurelia": "2.0.0-rc.2",
     "diff": "^9.0.0",

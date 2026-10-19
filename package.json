@@ -2,6 +2,9 @@
   "name": "gitaur-workspace",
   "private": true,
   "license": "MIT",
+  "engines": {
+    "node": "^26.0.0"
+  },
   "scripts": {
     "start": "npm --prefix app start",
     "build": "npm --prefix app run build",

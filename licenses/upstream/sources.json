@@ -65,6 +65,11 @@
     "source": "https://raw.githubusercontent.com/aurelia-ui-toolkits/aurelia-headless/f91d2312359e6563fe60332e6025d744995ccd16/LICENSE"
   },
   {
+    "id": "icon:octicons-mark-github@6dbe38e4e9b4987b2c9332d719c57fbbdd083e2d",
+    "file": "icon_octicons.txt",
+    "source": "https://raw.githubusercontent.com/primer/octicons/6dbe38e4e9b4987b2c9332d719c57fbbdd083e2d/LICENSE"
+  },
+  {
     "id": "theme:dark-plus@2.9.0",
     "file": "theme_dark-plus_2.9.0.txt",
     "source": "https://raw.githubusercontent.com/samdark/intellij-visual-studio-code-dark-plus/v2.9.0/LICENSE"
