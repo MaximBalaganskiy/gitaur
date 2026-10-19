@@ -15,6 +15,16 @@ use tauri::{AppHandle, Emitter, Manager, WebviewWindow};
 use tauri_plugin_dialog::DialogExt;
 
 #[tauri::command]
+pub async fn open_project_repository() -> Result<(), String> {
+  tauri::async_runtime::spawn_blocking(|| {
+    tauri_plugin_opener::open_url("https://github.com/MaximBalaganskiy/gitaur", None::<&str>)
+      .map_err(|error| error.to_string())
+  })
+  .await
+  .map_err(|error| error.to_string())?
+}
+
+#[tauri::command]
 pub async fn reflog(
   app: AppHandle,
   window: WebviewWindow,

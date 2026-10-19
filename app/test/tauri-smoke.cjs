@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const { git } = require('./support/git.cjs');
+const { version } = require('../package.json');
 (async () => {
   const output = path.resolve('test-results');
   await fs.mkdir(output, { recursive: true });
@@ -41,6 +42,46 @@ const { git } = require('./support/git.cjs');
     });
     await page.locator('.commit-row').first().waitFor({ timeout: 30000 });
     assert.equal(await page.locator('.app-name').innerText(), 'Gitaur');
+    assert.equal(await page.locator('.app-version').innerText(), `v${version}`);
+    const projectLink = page.getByRole('button', { name: 'Open Gitaur on GitHub', exact: true });
+    assert.equal(await projectLink.locator('svg path').count(), 1);
+    const appUrl = page.url();
+    await page.evaluate(() => {
+      const original = window.fetch;
+      const endpoint = window.__TAURI_INTERNALS__.convertFileSrc('open_project_repository', 'ipc');
+      window.projectLinkProbe = { original, calls: 0, fail: true };
+      window.fetch = (resource, options) => {
+        if (resource === endpoint) {
+          window.projectLinkProbe.calls++;
+          return Promise.resolve(
+            new Response(JSON.stringify(window.projectLinkProbe.fail ? 'Browser unavailable' : null), {
+              headers: { 'Content-Type': 'application/json', 'Tauri-Response': window.projectLinkProbe.fail ? 'error' : 'ok' }
+            })
+          );
+        }
+        return original.call(window, resource, options);
+      };
+    });
+    try {
+      await projectLink.focus();
+      await projectLink.press('Enter');
+      await page.getByText('Could not open GitHub: Browser unavailable', { exact: true }).waitFor();
+      assert.equal(await page.evaluate(() => window.projectLinkProbe.calls), 1);
+      assert.equal(page.url(), appUrl);
+      await page.getByRole('region', { name: 'Notifications' }).getByRole('button', { name: 'Dismiss' }).click();
+      await page.evaluate(() => {
+        window.projectLinkProbe.fail = false;
+      });
+      await projectLink.focus();
+      await projectLink.press('Space');
+      assert.equal(await page.evaluate(() => window.projectLinkProbe.calls), 2);
+      assert.equal(page.url(), appUrl);
+    } finally {
+      await page.evaluate(() => {
+        window.fetch = window.projectLinkProbe.original;
+        delete window.projectLinkProbe;
+      });
+    }
     assert.match(await page.title(), /Gitaur/);
     assert.ok(await page.locator('.topbar img').evaluate(image => image.complete && image.naturalWidth > 0));
     console.log(`Launch to rendered history: ${Math.round(performance.now() - started)} ms`);
@@ -224,7 +265,7 @@ const { git } = require('./support/git.cjs');
     await app.page.locator('.commit-row').first().waitFor();
     assert.equal(await app.page.locator('html').getAttribute('data-density'), 'compact');
     console.log(
-      'PASS: branch tree grouping, search, expansion state, keyboard selection/checkout, desktop Git workflow, stable row heights, inset labels, borderless tabs, persistent density, and automatic branch-tip navigation.'
+      'PASS: app version, GitHub link keyboard/error handling, branch tree grouping, search, expansion state, keyboard selection/checkout, desktop Git workflow, stable row heights, inset labels, borderless tabs, persistent density, and automatic branch-tip navigation.'
     );
     console.log('Screenshots:', output);
   } catch (error) {

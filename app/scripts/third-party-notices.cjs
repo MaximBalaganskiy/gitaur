@@ -118,6 +118,13 @@ for (const pkg of crates.values()) {
   });
 }
 const theme = overrides.find(entry => entry.id === 'theme:dark-plus@2.9.0');
+const githubIcon = overrides.find(entry => entry.id.startsWith('icon:octicons-mark-github@'));
+records.push({
+  id: githubIcon.id,
+  license: 'MIT',
+  source: 'https://github.com/primer/octicons/blob/6dbe38e4e9b4987b2c9332d719c57fbbdd083e2d/icons/mark-github-16.svg',
+  text: fs.readFileSync(path.join(root, 'licenses/upstream', githubIcon.file), 'utf8')
+});
 records.push({
   id: theme.id,
   license: 'BSD-3-Clause',
