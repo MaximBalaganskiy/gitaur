@@ -40,7 +40,7 @@
     <p>Could not load this repository.</p>
     <button ui-button click.trigger="workspace.refresh()">Retry</button>
   </main>
-  <template repeat.for="repository of workspace.snapshot ? [workspace.repo] : []; key.bind: repository">
+  <template repeat.for="repository of workspace.snapshot ? [workspace.snapshot.path] : []; key.bind: repository">
     <history if.bind="workspace.mode === 'browse'"></history>
     <commit if.bind="workspace.mode === 'commit'"></commit>
   </template>

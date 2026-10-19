@@ -79,8 +79,8 @@ export class WorkspaceService {
         return;
       }
 
-      this.repo = repo;
       this.snapshot = null;
+      this.repo = repo;
       this.signature = '';
       this.limit = 300;
       await this.refresh();
