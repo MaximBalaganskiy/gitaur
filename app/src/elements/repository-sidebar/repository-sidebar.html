@@ -29,9 +29,9 @@
           <span class="branch-name min-w-0 flex-1 truncate ${$host.item.branch ? '' : 'font-medium'}">${$host.item.name}</span>
           <small if.bind="!$host.item.branch" class="shrink-0 text-xs text-ink-500">${$host.item.count}</small>
           <small if.bind="$host.item.branch?.tracking" class="shrink-0 text-[9px] text-ink-500">${$host.item.branch.tracking}</small>
-          <button ui-icon-button size="small" class="shrink-0" if.bind="$host.item.id === 'section:remote'" click.trigger="remoteAction('add', $event)" keydown.trigger="$event.stopPropagation()" disabled.bind="workspace.busy" title="Add remote" aria-label="Add remote">+</button>
-          <button ui-icon-button size="small" class="shrink-0 opacity-0 focus:opacity-100 group-hover:opacity-100" if.bind="$host.item.remote" click.trigger="showRemoteMenu($host.item, $event)" keydown.trigger="$event.stopPropagation()" disabled.bind="workspace.busy" title="Remote actions" aria-label="Actions for remote ${$host.item.name}" aria-haspopup="menu">⋯</button>
-          <button ui-icon-button size="small" class="checkout shrink-0 text-ink-500 opacity-0 focus:opacity-100 group-hover:opacity-100" if.bind="canCheckout($host.item.branch)" disabled.bind="workspace.busy" click.trigger="checkout($host.item.branch, $event)" keydown.trigger="$event.stopPropagation()" title="Switch to ${$host.item.branch.name}" aria-label="Switch to ${$host.item.branch.name}">↪</button>
+          <button ui-icon-button size="small" class="shrink-0" if.bind="$host.item.id === 'section:remote'" click.trigger="remoteAction('add', $event)" disabled.bind="workspace.busy" title="Add remote" aria-label="Add remote">+</button>
+          <button ui-icon-button size="small" class="shrink-0 opacity-0 focus:opacity-100 group-hover:opacity-100" if.bind="$host.item.remote" click.trigger="showRemoteMenu($host.item, $event)" disabled.bind="workspace.busy" title="Remote actions" aria-label="Actions for remote ${$host.item.name}" aria-haspopup="menu">⋯</button>
+          <button ui-icon-button size="small" class="checkout shrink-0 text-ink-500 opacity-0 focus:opacity-100 group-hover:opacity-100" if.bind="canCheckout($host.item.branch)" disabled.bind="workspace.busy" click.trigger="checkout($host.item.branch, $event)" title="Switch to ${$host.item.branch.name}" aria-label="Switch to ${$host.item.branch.name}">↪</button>
         </div>
       </template>
     </ui-tree>

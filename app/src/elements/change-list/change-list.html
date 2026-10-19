@@ -4,7 +4,7 @@
       <div class="group flex min-h-[var(--ui-icon-button-small-size)] min-w-0 items-center gap-2" title.bind="$host.item.path" ui-context-menu.bind="$host.item.file ? menu : null" contextmenu.trigger="contextFile = $host.item.file">
         <span if.bind="$host.item.file" class="font-mono text-xs text-warning-text">${status($host.item.file)}</span>
         <span class="min-w-0 flex-1 truncate">${$host.item.name}</span>
-        <button ui-icon-button size="small" if.bind="$host.item.file" class="shrink-0 text-accent" click.trigger="action('stage', $host.item.file, $event)" keydown.trigger="$event.stopPropagation()" disabled.bind="workspace.busy || $host.item.file.conflict" aria-label="${staged ? 'Unstage' : 'Stage'} ${$host.item.path}">
+        <button ui-icon-button size="small" if.bind="$host.item.file" class="shrink-0 text-accent" click.trigger="action('stage', $host.item.file, $event)" disabled.bind="workspace.busy || $host.item.file.conflict" aria-label="${staged ? 'Unstage' : 'Stage'} ${$host.item.path}">
           <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d.bind="staged ? 'M5 12h14' : 'M5 12h14M12 5v14'"></path></svg>
         </button>
       </div>
