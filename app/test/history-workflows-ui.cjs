@@ -32,6 +32,7 @@ const os = require('node:os');
   await makeCommit('file.txt', 'main\n', 'Main change');
   await makeCommit('one.txt', 'one\n', 'Add one');
   const original = await makeCommit('two.txt', 'two\n', 'Add two');
+  await git(repo, ['branch', 'remote-delete']);
   await git(repo, ['remote', 'add', 'origin', repo]);
   await git(repo, ['fetch', 'origin']);
   const app = await launchTauri(repo, path.join(root, 'profile'));
@@ -68,6 +69,24 @@ const os = require('node:os');
   }
 
   try {
+    await branchMenu('origin/remote-delete', 'Delete remote branch…');
+    await dialog.getByText('Delete this branch from the remote server?', { exact: false }).waitFor();
+    assert.equal(await dialog.getByRole('checkbox').count(), 0);
+    await dialog.getByRole('button', { name: 'Cancel', exact: true }).press('Enter');
+    await dialog.waitFor({ state: 'hidden' });
+    assert.equal((await git(repo, ['rev-parse', 'refs/heads/remote-delete'])).stdout.trim(), original);
+    await branchMenu('origin/remote-delete', 'Delete remote branch…');
+    await git(repo, ['update-ref', 'refs/heads/remote-delete', base]);
+    await dialog.getByRole('button', { name: 'Delete remote branch', exact: true }).press('Enter');
+    await dialog.getByRole('alert').waitFor();
+    assert.equal((await git(repo, ['rev-parse', 'refs/heads/remote-delete'])).stdout.trim(), base);
+    await git(repo, ['update-ref', 'refs/heads/remote-delete', original]);
+    await dialog.getByRole('button', { name: 'Delete remote branch', exact: true }).press('Enter');
+    await dialog.waitFor({ state: 'hidden' });
+    await assert.rejects(git(repo, ['show-ref', '--verify', 'refs/heads/remote-delete']));
+    await assert.rejects(git(repo, ['show-ref', '--verify', 'refs/remotes/origin/remote-delete']));
+    await page.locator('repository-sidebar .branch-item[title="origin/remote-delete"]').waitFor({ state: 'hidden' });
+
     await branchMenu('disposable', 'Rename branch…');
     await dialog.getByRole('textbox', { name: 'New branch name', exact: true }).fill('bad name');
     await dialog.getByRole('button', { name: 'Rename branch', exact: true }).click();

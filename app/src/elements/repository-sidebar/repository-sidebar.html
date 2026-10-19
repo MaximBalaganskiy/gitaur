@@ -60,6 +60,7 @@
     <ui-list-item value="rename" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Rename branch…</ui-list-item>
     <ui-list-item value="upstream" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Set upstream…</ui-list-item>
     <ui-list-item value="delete" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || !!workspace.snapshot.operation || contextBranch.name === workspace.snapshot.branch">Delete branch…</ui-list-item>
+    <ui-list-item value="delete" if.bind="contextBranch.kind === 'remote' && !contextBranch.name.endsWith('/HEAD')" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Delete remote branch…</ui-list-item>
   </ui-list>
 </ui-menu>
 

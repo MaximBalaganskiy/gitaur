@@ -359,8 +359,19 @@ impl GitService {
       | "lfs-pull" | "lfs-fetch" | "lfs-push" => {
         self.repository_tool_action(repo, action, payload)?;
       }
-      "branch-rename" | "branch-delete" | "branch-upstream" | "reset" | "cherry-pick" | "revert" | "rebase"
-      | "rebase-plan" | "rebase-amend" | "operation-continue" | "operation-skip" | "operation-abort" => {
+      "branch-rename"
+      | "branch-delete"
+      | "branch-delete-remote"
+      | "branch-upstream"
+      | "reset"
+      | "cherry-pick"
+      | "revert"
+      | "rebase"
+      | "rebase-plan"
+      | "rebase-amend"
+      | "operation-continue"
+      | "operation-skip"
+      | "operation-abort" => {
         self.history_action(repo, action, payload)?;
       }
       "publish" | "stash-save" | "stash-apply" | "stash-pop" | "stash-drop" | "amend" | "undo-commit"
