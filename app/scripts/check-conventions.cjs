@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const ts = require('typescript');
+// TypeScript 7 supplies the CLI; AST inspection uses the JavaScript compiler API.
+const ts = require('@typescript/typescript6');
 
 const failures = [];
 
