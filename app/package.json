@@ -5,6 +5,9 @@
   "private": true,
   "description": "A local Git client with a graph workspace and dedicated commit window.",
   "type": "module",
+  "engines": {
+    "node": "^26.0.0"
+  },
   "allowScripts": {
     "esbuild@0.28.2": true
   },

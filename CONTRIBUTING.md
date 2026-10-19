@@ -6,7 +6,7 @@ Discuss substantial changes in an issue before implementing them. For bugs, incl
 
 ## Setup
 
-Install Node.js 24+, Rust stable, Git, and the [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/) for your platform. Then run `npm --prefix app ci` and `npm start` from the repository root. Git LFS is optional; install it to test LFS workflows.
+Install Node.js 26 (see `.node-version`), Rust stable, Git, and the [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/) for your platform. Then run `npm --prefix app ci` and `npm start` from the repository root. Git LFS is optional; install it to test LFS workflows.
 
 Follow [AGENTS.md](AGENTS.md), the existing component structure, and the formatter. Use the shipped Aurelia Headless controls and theme. Keep each class/interface in its own file and source readable; only production output is minified.
 
