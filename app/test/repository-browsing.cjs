@@ -212,6 +212,11 @@ const path = require('node:path');
     await page.getByRole('button', { name: 'Other repository', exact: true }).waitFor();
     assert.deepEqual(await layout(), [220, 410, 280, 280], 'Another repository starts with its own layout');
     assert.deepEqual(await layout(secondLayout), secondLayout);
+    assert.deepEqual(
+      (await page.evaluate(() => window.__TAURI_INTERNALS__.invoke('command_log'))).filter(entry => entry.error.includes('bad object')),
+      [],
+      'Switching repositories must not request commits from the previous repository'
+    );
     assert.equal(await authFolder.getAttribute('aria-expanded'), 'true', 'Repositories with the same basename have independent state');
     assert.equal(await branchRow('section:tag').getAttribute('aria-expanded'), 'false');
     await branchRow('section:local').click();
@@ -224,6 +229,11 @@ const path = require('node:path');
     await page.getByText(repo, { exact: true }).click();
     await page.getByRole('button', { name: 'Updated snapshot', exact: true }).waitFor();
     assert.deepEqual(await layout(), firstLayout, 'Returning restores all splitter sizes, including collapsed panes');
+    assert.deepEqual(
+      (await page.evaluate(() => window.__TAURI_INTERNALS__.invoke('command_log'))).filter(entry => entry.error.includes('bad object')),
+      [],
+      'Returning to a repository must not request commits from the repository just closed'
+    );
     assert.equal(await authFolder.getAttribute('aria-expanded'), 'false');
     assert.equal(await branchRow('section:tag').getAttribute('aria-expanded'), 'true');
     assert.equal(await branchRow('section:remote').getAttribute('aria-expanded'), 'false');
