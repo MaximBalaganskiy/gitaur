@@ -14,6 +14,12 @@ The source uses MIT. The Rider Visual Studio Code Dark Plus 2.9.0 palette uses B
 
 The npm audit reported zero advisories. Cargo audit 0.22.2 reported zero vulnerability entries and two informational warnings: **RUSTSEC-2024-0370**, the unmaintained transitive build dependency `proc-macro-error` 1.0.4; and **RUSTSEC-2024-0429**, unsound `glib::VariantStrIter` methods in `glib` 0.18.5. **GitHub classified the GLib advisory as medium severity in the original repository; recreating the repository does not fix the dependency.** The latter enters through Tauri's Linux GTK stack; Branchlight does not directly use this iterator. This does not prove the entire transitive stack is unaffected. The fixed GLib API is 0.20+, which is not a drop-in replacement for GTK 0.18. Track an upstream-compatible fix; warnings are retained in CI rather than hidden with ignores.
 
+### 19 October 2026 release review
+
+For 0.4.0-beta.5, Gitleaks 8.30.1 scanned all 67 reachable commits without findings, and npm audit reported zero vulnerabilities. Cargo audit 0.22.2 passed with the two warnings recorded above and three new unmaintained-crate advisories: **RUSTSEC-2026-0370** (`zvariant` 5.15.1), **RUSTSEC-2026-0371** (`zbus_names` 4.3.5), and **RUSTSEC-2026-0372** (`zvariant_derive` 5.15.1).
+
+These three crates enter through `tauri-plugin-opener` 2.7.2 and its Linux `zbus` 5.19.0 dependency. Their advisory records describe consolidation into `zbus` 6, with no patched standalone versions. Migration requires an upstream-compatible opener update; this release retains the locked dependencies and visible audit warnings. No advisory ignores were added.
+
 ## Remaining external checks
 
 Actual GNOME/KDE, GPU/scaling, cross-application clipboard, and native chooser validation remain pending; see [platform testing](platform-testing.md). Windows signing requires publisher credentials.
