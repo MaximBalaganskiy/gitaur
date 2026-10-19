@@ -31,7 +31,7 @@
           <small if.bind="$host.item.branch?.tracking" class="shrink-0 text-[9px] text-ink-500">${$host.item.branch.tracking}</small>
           <button ui-icon-button size="small" class="shrink-0" if.bind="$host.item.id === 'section:remote'" click.trigger="remoteAction('add', $event)" keydown.trigger="$event.stopPropagation()" disabled.bind="workspace.busy" title="Add remote" aria-label="Add remote">+</button>
           <button ui-icon-button size="small" class="shrink-0 opacity-0 focus:opacity-100 group-hover:opacity-100" if.bind="$host.item.remote" click.trigger="showRemoteMenu($host.item, $event)" keydown.trigger="$event.stopPropagation()" disabled.bind="workspace.busy" title="Remote actions" aria-label="Actions for remote ${$host.item.name}" aria-haspopup="menu">⋯</button>
-          <button ui-icon-button size="small" class="checkout shrink-0 text-ink-500 opacity-0 focus:opacity-100 group-hover:opacity-100" if.bind="$host.item.branch?.kind === 'local' && $host.item.branch.name !== workspace.snapshot.branch" disabled.bind="workspace.busy" click.trigger="checkout($host.item, $event)" keydown.trigger="$event.stopPropagation()" title="Switch to ${$host.item.branch.name}" aria-label="Switch to ${$host.item.branch.name}">↪</button>
+          <button ui-icon-button size="small" class="checkout shrink-0 text-ink-500 opacity-0 focus:opacity-100 group-hover:opacity-100" if.bind="canCheckout($host.item.branch)" disabled.bind="workspace.busy" click.trigger="checkout($host.item.branch, $event)" keydown.trigger="$event.stopPropagation()" title="Switch to ${$host.item.branch.name}" aria-label="Switch to ${$host.item.branch.name}">↪</button>
         </div>
       </template>
     </ui-tree>
@@ -52,7 +52,7 @@
   <ui-list>
     <ui-list-item value="tip">Go to branch tip</ui-list-item>
     <ui-list-item value="copy">Copy reference name</ui-list-item>
-    <ui-list-item value="checkout" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || contextBranch.name === workspace.snapshot.branch">Check out branch</ui-list-item>
+    <ui-list-item value="checkout" if.bind="canCheckout(contextBranch)" disabled.bind="workspace.busy">Check out branch</ui-list-item>
     <ui-list-item value="branch" disabled.bind="workspace.busy">Create branch from here…</ui-list-item>
     <ui-list-item value="merge" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Merge into current branch…</ui-list-item>
     <ui-list-item value="rebase" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Rebase current branch onto here…</ui-list-item>
