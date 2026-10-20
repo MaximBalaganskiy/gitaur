@@ -11,6 +11,7 @@ const { launchTauri } = require('./support/launch-tauri.cjs');
   try {
     let page = app.page;
     page.setDefaultTimeout(15000);
+    await page.locator('.app-name').waitFor();
     const instrument = () => {
       const original = window.fetch;
       const interval = window.setInterval;
@@ -58,6 +59,7 @@ const { launchTauri } = require('./support/launch-tauri.cjs');
     app = await launchTauri('', profile);
     page = app.page;
     page.setDefaultTimeout(15000);
+    await page.locator('.app-name').waitFor();
     await page.addInitScript(instrument);
     await page.reload();
     await page.waitForFunction(() => window.releaseChecked);
