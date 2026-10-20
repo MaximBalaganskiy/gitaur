@@ -84,6 +84,99 @@ fn create_and_clone_preserve_existing_files_and_reject_nested_or_nonempty_destin
 }
 
 #[test]
+fn remote_branch_deletion_preserves_local_branches_and_rejects_stale_tips() {
+  let (temp, git) = repo();
+  let repo = temp.path();
+  let first = commit(&git, repo, "file", "base");
+  let remote = tempfile::tempdir().unwrap();
+  git.run(remote.path(), &["init", "--bare"], false).unwrap();
+  git
+    .run(
+      repo,
+      &["remote", "add", "origin", remote.path().to_str().unwrap()],
+      false,
+    )
+    .unwrap();
+  git.run(repo, &["branch", "feature/topic"], false).unwrap();
+  git.run(repo, &["push", "origin", "feature/topic"], false).unwrap();
+  let second = commit(&git, repo, "file", "changed");
+  git.run(repo, &["push", "origin", "main"], false).unwrap();
+  let request = json!({"name":"origin/feature/topic", "reference":first});
+  assert!(action(
+    &git,
+    repo,
+    "branch-delete-remote",
+    json!({"name":"origin/feature/topic", "reference":second})
+  )
+  .is_err());
+  git
+    .run(
+      remote.path(),
+      &["update-ref", "refs/heads/feature/topic", &second],
+      false,
+    )
+    .unwrap();
+  assert!(action(&git, repo, "branch-delete-remote", request.clone()).is_err());
+  assert_eq!(
+    text(&git, remote.path(), &["rev-parse", "refs/heads/feature/topic"]),
+    second
+  );
+  assert_eq!(
+    text(&git, repo, &["rev-parse", "refs/remotes/origin/feature/topic"]),
+    first
+  );
+  git
+    .run(
+      repo,
+      &[
+        "symbolic-ref",
+        "refs/remotes/origin/HEAD",
+        "refs/remotes/origin/feature/topic",
+      ],
+      false,
+    )
+    .unwrap();
+  assert!(action(
+    &git,
+    repo,
+    "branch-delete-remote",
+    json!({"name":"origin/HEAD", "reference":first})
+  )
+  .is_err());
+  assert!(action(
+    &git,
+    repo,
+    "branch-delete-remote",
+    json!({"name":"missing/topic", "reference":first})
+  )
+  .is_err());
+  git
+    .run(
+      remote.path(),
+      &["update-ref", "refs/heads/feature/topic", &first],
+      false,
+    )
+    .unwrap();
+  action(&git, repo, "branch-delete-remote", request).unwrap();
+  assert!(git
+    .run(
+      remote.path(),
+      &["show-ref", "--verify", "refs/heads/feature/topic"],
+      false
+    )
+    .is_err());
+  assert!(git
+    .run(
+      repo,
+      &["show-ref", "--verify", "refs/remotes/origin/feature/topic"],
+      false
+    )
+    .is_err());
+  assert_eq!(text(&git, repo, &["rev-parse", "refs/heads/feature/topic"]), first);
+  assert_eq!(text(&git, repo, &["rev-parse", "HEAD"]), second);
+}
+
+#[test]
 fn branch_rename_delete_and_upstream_are_checked() {
   let (temp, git) = repo();
   let repo = temp.path();

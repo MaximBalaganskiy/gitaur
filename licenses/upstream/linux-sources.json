@@ -5,7 +5,7 @@
   "appimage-kit.txt": "https://raw.githubusercontent.com/AppImage/AppImageKit/13/LICENSE",
   "runtime-zlib.txt": "https://raw.githubusercontent.com/madler/zlib/v1.3.1/LICENSE",
   "runtime-musl.txt": "https://git.musl-libc.org/cgit/musl/plain/COPYRIGHT?h=v1.2.5",
-  "appimage-runtime.txt": "https://raw.githubusercontent.com/AppImage/type2-runtime/8f39b89e2ac31e1640b3d3f7e9a5108e6ce805fa/LICENSE",
+  "appimage-runtime.txt": "https://raw.githubusercontent.com/AppImage/type2-runtime/fedfad51acc2860b2916a1eef32ba4a500ff31ef/LICENSE",
   "runtime-squashfuse.txt": "https://raw.githubusercontent.com/vasi/squashfuse/0.5.2/LICENSE",
   "tauri-packager.txt": "https://raw.githubusercontent.com/tauri-apps/tauri/tauri-cli-v2.12.2/LICENSE-MIT"
 }

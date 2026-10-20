@@ -20,6 +20,12 @@ For 0.4.0-beta.5, Gitleaks 8.30.1 scanned all 67 reachable commits without findi
 
 These three crates enter through `tauri-plugin-opener` 2.7.2 and its Linux `zbus` 5.19.0 dependency. Their advisory records describe consolidation into `zbus` 6, with no patched standalone versions. Migration requires an upstream-compatible opener update; this release retains the locked dependencies and visible audit warnings. No advisory ignores were added.
 
+### 20 October 2026 release review
+
+For 0.4.0-beta.6, Gitleaks 8.30.1 scanned all 65 reachable commits without findings, and npm audit reported zero vulnerabilities. Cargo audit passed with the same five informational warnings reviewed for beta.5. Locked dependency versions are unchanged; the Node 26 and upstream-compatible Linux dependency conclusions above still apply. No advisory ignores were added.
+
+The Linux packaging check detected AppImage runtime `fedfad51acc2860b2916a1eef32ba4a500ff31ef`, replacing `8f39b89e2ac31e1640b3d3f7e9a5108e6ce805fa`. The upstream comparison contains one build-script change: mapping temporary build paths to a fixed path for reproducible dependency binaries. Dependency source versions, checksums, and license files are unchanged. The runtime source links and revision check now record the reviewed revision; existing full license notices are retained.
+
 ## Remaining external checks
 
 Actual GNOME/KDE, GPU/scaling, cross-application clipboard, and native chooser validation remain pending; see [platform testing](platform-testing.md). Windows signing requires publisher credentials.

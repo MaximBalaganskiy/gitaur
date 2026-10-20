@@ -359,8 +359,19 @@ impl GitService {
       | "lfs-pull" | "lfs-fetch" | "lfs-push" => {
         self.repository_tool_action(repo, action, payload)?;
       }
-      "branch-rename" | "branch-delete" | "branch-upstream" | "reset" | "cherry-pick" | "revert" | "rebase"
-      | "rebase-plan" | "rebase-amend" | "operation-continue" | "operation-skip" | "operation-abort" => {
+      "branch-rename"
+      | "branch-delete"
+      | "branch-delete-remote"
+      | "branch-upstream"
+      | "reset"
+      | "cherry-pick"
+      | "revert"
+      | "rebase"
+      | "rebase-plan"
+      | "rebase-amend"
+      | "operation-continue"
+      | "operation-skip"
+      | "operation-abort" => {
         self.history_action(repo, action, payload)?;
       }
       "publish" | "stash-save" | "stash-apply" | "stash-pop" | "stash-drop" | "amend" | "undo-commit"
@@ -490,6 +501,36 @@ impl GitService {
         self.run(repo, &["check-ref-format", "--branch", name], false)?;
         if !parsers::status(&self.text(repo, &["status", "--porcelain=v1", "-z"])?).is_empty() {
           return Err("Commit or stash your changes before switching branches.".into());
+        }
+        if action == "checkout" {
+          if let Some(reference) = payload.reference.as_deref() {
+            if !reference.starts_with("refs/remotes/") || reference.ends_with("/HEAD") {
+              return Err("Select a remote branch to check out.".into());
+            }
+            self.run(repo, &["show-ref", "--verify", reference], false)?;
+            let branches = self.text(
+              repo,
+              &[
+                "for-each-ref",
+                "--format=%(refname:lstrip=2)%00%(upstream)%00%(upstream:remotename)",
+                "refs/heads/",
+              ],
+            )?;
+            let tracking = branches.lines().find_map(|line| {
+              let mut fields = line.split('\0');
+              let local = fields.next()?;
+              let upstream = fields.next()?;
+              let remote = fields.next()?;
+              (upstream == reference).then_some((local, remote))
+            });
+            if let Some((local, remote)) = tracking {
+              self.run(repo, &["fetch", "--", remote], false)?;
+              self.run(repo, &["switch", "--no-guess", "--", local], false)?;
+            } else {
+              self.run(repo, &["switch", "--track", "--", reference], false)?;
+            }
+            return Ok(true);
+          }
         }
         let reference = payload
           .reference

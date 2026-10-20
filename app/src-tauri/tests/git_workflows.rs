@@ -321,6 +321,89 @@ fn unborn_unstage_and_partial_commit_preserve_working_content() {
 }
 
 #[test]
+fn remote_checkout_creates_tracking_branch_and_preserves_existing_branches() {
+  let (temp, service) = repository();
+  let repo = temp.path();
+  commit(&service, repo, "base.txt", "base\n", "Base");
+  let (remote_temp, _) = repository();
+  let remote_repo = remote_temp.path();
+  commit(&service, remote_repo, "base.txt", "base\n", "Remote base");
+  service
+    .run(remote_repo, &["branch", "feature/checkout"], false)
+    .unwrap();
+  service
+    .run(repo, &["remote", "add", "origin", remote_repo.to_str().unwrap()], false)
+    .unwrap();
+  let reference = "refs/remotes/origin/feature/checkout";
+  service.run(repo, &["fetch", "origin"], false).unwrap();
+  let payload: Mutation = serde_json::from_value(serde_json::json!({
+    "name": "origin/feature/checkout", "reference": reference
+  }))
+  .unwrap();
+  fs::write(repo.join("base.txt"), "dirty\n").unwrap();
+  assert!(service
+    .mutate(repo, "checkout", &payload)
+    .unwrap_err()
+    .contains("Commit or stash"));
+  service.run(repo, &["restore", "base.txt"], false).unwrap();
+  service.mutate(repo, "checkout", &payload).unwrap();
+  let snapshot = service.snapshot(repo, 300).unwrap();
+  assert_eq!(snapshot.branch, "feature/checkout");
+  let branch = snapshot
+    .branches
+    .iter()
+    .find(|branch| branch.full_name == "refs/heads/feature/checkout")
+    .unwrap();
+  assert_eq!(branch.upstream, "origin/feature/checkout");
+  let tip = branch.hash.clone();
+  mutate(&service, repo, "checkout", serde_json::json!({ "name": "main" }));
+  service
+    .run(repo, &["branch", "-m", "feature/checkout", "renamed-local"], false)
+    .unwrap();
+  commit(&service, remote_repo, "new.txt", "remote update\n", "Remote update");
+  service
+    .run(remote_repo, &["branch", "-f", "feature/checkout", "HEAD"], false)
+    .unwrap();
+  service.mutate(repo, "checkout", &payload).unwrap();
+  let snapshot = service.snapshot(repo, 300).unwrap();
+  assert_eq!(snapshot.branch, "renamed-local");
+  assert_eq!(
+    snapshot
+      .branches
+      .iter()
+      .find(|branch| branch.full_name == "refs/heads/renamed-local")
+      .unwrap()
+      .hash,
+    tip
+  );
+  assert_ne!(
+    snapshot
+      .branches
+      .iter()
+      .find(|branch| branch.full_name == reference)
+      .unwrap()
+      .hash,
+    tip
+  );
+  mutate(&service, repo, "checkout", serde_json::json!({ "name": "main" }));
+  service
+    .run(repo, &["branch", "--unset-upstream", "renamed-local"], false)
+    .unwrap();
+  service.run(repo, &["branch", "feature/checkout"], false).unwrap();
+  assert!(service.mutate(repo, "checkout", &payload).is_err());
+  assert_eq!(service.snapshot(repo, 300).unwrap().branch, "main");
+  for reference in [
+    "refs/heads/main",
+    "refs/remotes/origin/HEAD",
+    "refs/remotes/origin/missing",
+  ] {
+    let payload =
+      serde_json::from_value(serde_json::json!({ "name": "origin/feature/checkout", "reference": reference })).unwrap();
+    assert!(service.mutate(repo, "checkout", &payload).is_err());
+  }
+}
+
+#[test]
 fn merge_history_tags_and_first_parent_diff() {
   let (temp, service) = repository();
   let repo = temp.path();

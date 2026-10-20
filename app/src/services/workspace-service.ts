@@ -168,6 +168,7 @@ export class WorkspaceService {
         branch: 'Branch created',
         'branch-rename': 'Branch renamed',
         'branch-delete': 'Branch deleted',
+        'branch-delete-remote': 'Remote branch deleted',
         'branch-upstream': 'Upstream updated',
         reset: 'Branch reset',
         'remote-fetch': 'Remote fetched',

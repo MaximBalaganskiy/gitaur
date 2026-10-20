@@ -10,8 +10,9 @@
       <ui-list><ui-list-item repeat.for="branch of $host.items" value.bind="branch">${branch.name}</ui-list-item></ui-list>
       <span au-slot="helper">Pull and push use this remote branch. Fetch first if it is missing from this list.</span>
     </ui-select>
-    <p if.bind="model.action === 'delete'" class="col-span-12 text-sm">Delete this local branch? Branches checked out in any worktree cannot be deleted.</p>
-    <ui-checkbox if.bind="model.action === 'delete'" class="col-span-12" checked.bind="force" disabled.bind="workspace.busy">
+    <p if.bind="model.action === 'delete' && model.branch.kind === 'remote'" class="col-span-12 text-sm">Delete this branch from the remote server? This affects everyone using the remote. Local branches are kept. Deletion is refused if the remote branch has changed since your last fetch.</p>
+    <p if.bind="model.action === 'delete' && model.branch.kind === 'local'" class="col-span-12 text-sm">Delete this local branch? Branches checked out in any worktree cannot be deleted.</p>
+    <ui-checkbox if.bind="model.action === 'delete' && model.branch.kind === 'local'" class="col-span-12" checked.bind="force" disabled.bind="workspace.busy">
       Delete even if the branch has unmerged commits
       <span au-slot="helper" if.bind="force" class="text-warning-text">Unmerged commits may become unreachable. Keep another branch or tag if you need them.</span>
     </ui-checkbox>

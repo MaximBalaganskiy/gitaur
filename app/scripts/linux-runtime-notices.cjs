@@ -50,11 +50,11 @@ const runtime = spawnSync(path.join(bundle, appImages[0]), ['--appimage-version'
 if (runtime.error) throw runtime.error;
 if (runtime.status !== 0) throw new Error(`AppImage runtime inspection failed: ${runtime.stderr}`);
 const runtimeVersion = `${runtime.stdout}\n${runtime.stderr}`.trim();
-if (!runtimeVersion.includes('/8f39b89')) throw new Error(`Review updated AppImage runtime licenses: ${runtimeVersion}`);
+if (!runtimeVersion.includes('/fedfad5')) throw new Error(`Review updated AppImage runtime licenses: ${runtimeVersion}`);
 const sourceRoot = path.resolve('../licenses/upstream');
 const launcherSources = JSON.parse(fs.readFileSync(path.join(sourceRoot, 'linux-sources.json'), 'utf8'));
 sections.push(
-  `${runtimeVersion}\nRuntime source and rebuild instructions, including the upstream libfuse patch:\nhttps://github.com/AppImage/type2-runtime/tree/8f39b89e2ac31e1640b3d3f7e9a5108e6ce805fa\n\nThe runtime statically links musl, libfuse, squashfuse, zstd and zlib.\nIts build scripts identify the dependency sources and configuration.\nA rebuilt runtime may be joined to the existing SquashFS payload at the\noffset printed by --appimage-offset; the payload is also extractable.\n\nAppRun.wrapped is the Tauri apprun-old mirror of AppImageKit:\nhttps://github.com/tauri-apps/binary-releases/releases/tag/apprun-old\nSHA-256: ${createHash(
+  `${runtimeVersion}\nRuntime source and rebuild instructions, including the upstream libfuse patch:\nhttps://github.com/AppImage/type2-runtime/tree/fedfad51acc2860b2916a1eef32ba4a500ff31ef\n\nThe runtime statically links musl, libfuse, squashfuse, zstd and zlib.\nIts build scripts identify the dependency sources and configuration.\nA rebuilt runtime may be joined to the existing SquashFS payload at the\noffset printed by --appimage-offset; the payload is also extractable.\n\nAppRun.wrapped is the Tauri apprun-old mirror of AppImageKit:\nhttps://github.com/tauri-apps/binary-releases/releases/tag/apprun-old\nSHA-256: ${createHash(
     'sha256'
   )
     .update(fs.readFileSync(path.join(bundle, appDirs[0], 'AppRun.wrapped')))

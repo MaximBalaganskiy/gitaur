@@ -214,6 +214,43 @@ impl GitService {
     }
     if action.starts_with("branch-") {
       self.require_idle(repo)?;
+      if action == "branch-delete-remote" {
+        let name = payload.name.as_deref().ok_or("Select a remote branch.")?;
+        let remote = self
+          .remotes(repo)?
+          .into_iter()
+          .filter(|remote| name.starts_with(&format!("{}/", remote.name)))
+          .max_by_key(|remote| remote.name.len())
+          .ok_or("Select a branch belonging to an existing remote.")?;
+        let branch = &name[remote.name.len() + 1..];
+        self.validate_branch(repo, branch)?;
+        let tracking = format!("refs/remotes/{name}");
+        if branch == "HEAD"
+          || self
+            .run(repo, &["symbolic-ref", "--quiet", &tracking], true)?
+            .status
+            .success()
+        {
+          return Err("Select a remote branch, not a symbolic reference.".into());
+        }
+        let hash = self.resolve_reference(repo, &tracking)?;
+        if payload.reference.as_deref() != Some(&hash) {
+          return Err("The branch tip changed. Reopen this dialog.".into());
+        }
+        let reference = format!("refs/heads/{branch}");
+        self.run(
+          repo,
+          &[
+            "push",
+            &format!("--force-with-lease={reference}:{hash}"),
+            "--",
+            &remote.name,
+            &format!(":{reference}"),
+          ],
+          false,
+        )?;
+        return Ok(());
+      }
       let name = payload.name.as_deref().ok_or("Select a local branch.")?;
       self.validate_branch(repo, name)?;
       let reference = format!("refs/heads/{name}");

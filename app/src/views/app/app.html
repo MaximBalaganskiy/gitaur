@@ -7,12 +7,14 @@
 <div class="app-shell flex h-dvh flex-col overflow-hidden">
   <header class="topbar flex min-h-11 shrink-0 select-none items-center gap-2 border-b border-card-border bg-card-muted px-3 py-1" data-tauri-drag-region="deep">
     <img class="size-6 shrink-0" src.bind="logo" alt="" aria-hidden="true" draggable="false" />
-    <strong class="app-name shrink-0 text-xs font-medium text-ink-500">${workspace.mode === 'commit' ? 'Commit — Gitaur' : 'Gitaur'}</strong>
-    <span class="app-version shrink-0 text-[10px] text-ink-500" title="Gitaur version ${version}">v${version}</span>
-    <repository-switcher if.bind="!workspace.initializing && workspace.mode === 'browse'"></repository-switcher>
-    <div class="topbar-context flex min-w-0 max-w-[25vw] items-center gap-2" if.bind="workspace.snapshot">
-      <strong class="truncate" if.bind="workspace.mode === 'commit'" title.bind="workspace.repo">${workspace.snapshot.name}</strong>
-      <span class="branch-pill truncate rounded bg-info-bg px-2 py-1 text-xs text-info-text" title.bind="workspace.snapshot.branch">${workspace.snapshot.branch}</span>
+    <div class="flex min-w-0 items-baseline gap-2">
+      <strong class="app-name shrink-0 text-xs font-medium text-ink-500">${workspace.mode === 'commit' ? 'Commit — Gitaur' : 'Gitaur'}</strong>
+      <span class="app-version shrink-0 text-[10px] text-ink-500" title="Gitaur version ${version}">v${version}</span>
+      <repository-switcher if.bind="!workspace.initializing && workspace.mode === 'browse'"></repository-switcher>
+      <div class="topbar-context flex min-w-0 max-w-[25vw] items-baseline gap-2" if.bind="workspace.snapshot">
+        <strong class="truncate" if.bind="workspace.mode === 'commit'" title.bind="workspace.repo">${workspace.snapshot.name}</strong>
+        <span class="branch-pill truncate rounded bg-info-bg px-2 py-1 text-xs text-info-text" title.bind="workspace.snapshot.branch">${workspace.snapshot.branch}</span>
+      </div>
     </div>
     <div class="spacer min-w-8 self-stretch flex-1" data-tauri-drag-region></div>
     <div class="flex w-28 shrink-0 items-center justify-end gap-2 text-xs text-ink-500" role="status" aria-live="polite" aria-atomic="true">

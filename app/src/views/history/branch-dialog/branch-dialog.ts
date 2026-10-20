@@ -19,6 +19,9 @@ export class BranchDialog extends ValidatedForm {
   error = '';
 
   get title() {
+    if (this.model.action === 'delete' && this.model.branch.kind === 'remote') {
+      return 'Delete remote branch';
+    }
     return { rename: 'Rename branch', delete: 'Delete branch', upstream: 'Set upstream' }[this.model.action];
   }
 
@@ -45,7 +48,7 @@ export class BranchDialog extends ValidatedForm {
     }
     if (
       await this.workspace.action(
-        `branch-${this.model.action}`,
+        this.model.action === 'delete' && this.model.branch.kind === 'remote' ? 'branch-delete-remote' : `branch-${this.model.action}`,
         {
           name: this.model.branch.name,
           reference: this.model.branch.hash,
