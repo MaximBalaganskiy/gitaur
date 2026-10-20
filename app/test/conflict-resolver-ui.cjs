@@ -91,11 +91,23 @@ const path = require('node:path');
     await dialog.locator('.merge-word-difference').first().waitFor();
     // Source panes cannot be edited, even through keyboard commands.
     const oursEditor = dialog.getByRole('textbox', { name: 'Ours', exact: true });
-    const oursBefore = await oursEditor.innerText();
     await oursEditor.focus();
     await commit.keyboard.press('Control+a');
     await commit.keyboard.press('Backspace');
-    assert.equal((await oursEditor.innerText()).trim(), oursBefore.trim());
+    await commit.evaluate(() => {
+      document.addEventListener(
+        'copy',
+        event => {
+          window.copiedSource = event.clipboardData.getData('text/plain');
+        },
+        { once: true }
+      );
+    });
+    // Copy the full selection: rendered DOM lines change as CodeMirror virtualizes the viewport.
+    await oursEditor.press('Control+a');
+    await oursEditor.press('Control+c');
+    await commit.waitForFunction(() => window.copiedSource !== undefined);
+    assert.equal((await commit.evaluate(() => window.copiedSource)).replaceAll('\r\n', '\n'), ours.replaceAll('\r\n', '\n'));
     await oursEditor.press('Control+Home');
     await result.focus();
     await commit.keyboard.press('Control+Home');
