@@ -82,9 +82,17 @@ export class RepositorySidebar {
     if (!branch) {
       return;
     }
+    if (this.workspace.busy && action !== 'tip' && action !== 'copy') {
+      return;
+    }
+    if (this.workspace.snapshot?.operation && ['merge', 'rebase', 'rebase-plan', 'rename', 'upstream', 'delete'].includes(action)) {
+      return;
+    }
+    if (action === 'delete' && branch.kind === 'local' && branch.name === this.workspace.snapshot?.branch) {
+      return;
+    }
     if (action === 'tip') {
-      this.selectedNode = branch.fullName;
-      this.element.dispatchEvent(new CustomEvent('branch-selected', { detail: branch, bubbles: true }));
+      this.focusBranch(branch);
     } else if (action === 'checkout') {
       await this.checkout(branch);
     } else if (action === 'copy') {
@@ -137,8 +145,13 @@ export class RepositorySidebar {
 
   selectNode(node: BranchTreeNode) {
     if (node.branch) {
-      this.element.dispatchEvent(new CustomEvent('branch-selected', { detail: node.branch, bubbles: true }));
+      this.focusBranch(node.branch);
     }
+  }
+
+  private focusBranch(branch: Branch) {
+    this.selectedNode = branch.fullName;
+    this.element.dispatchEvent(new CustomEvent('branch-selected', { detail: branch, bubbles: true }));
   }
 
   canCheckout(branch?: Branch | null) {
@@ -150,10 +163,18 @@ export class RepositorySidebar {
   async checkout(branch: Branch, event?: Event) {
     event?.stopPropagation();
     if (!this.workspace.busy && this.canCheckout(branch)) {
-      await this.workspace.action('checkout', {
+      const switched = await this.workspace.action('checkout', {
         name: branch.name,
         reference: branch.kind === 'remote' ? branch.fullName : undefined
       });
+      if (switched) {
+        const current = this.workspace.snapshot?.branches.find(
+          item => item.kind === 'local' && item.name === this.workspace.snapshot?.branch
+        );
+        if (current) {
+          this.focusBranch(current);
+        }
+      }
     }
   }
 }

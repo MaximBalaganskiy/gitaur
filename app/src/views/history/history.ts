@@ -13,6 +13,7 @@ import { BranchDialog } from './branch-dialog/branch-dialog';
 import { HistoryOperationDialog } from './history-operation-dialog/history-operation-dialog';
 import { ReflogDialog } from './reflog-dialog/reflog-dialog';
 import { TagsDialog } from './tags-dialog/tags-dialog';
+import { DeleteTagDialog } from './delete-tag-dialog/delete-tag-dialog';
 import { SubmodulesDialog } from './submodules-dialog/submodules-dialog';
 import { LfsDialog } from './lfs-dialog/lfs-dialog';
 import type { RepositoryToolDialog } from './repository-tool-dialog';
@@ -127,7 +128,9 @@ export class History {
   }
 
   async branchAction(detail: { action: string; branch: Branch }) {
-    if (detail.action === 'merge') {
+    if (detail.action === 'delete-tag' || detail.action === 'delete-tag-remote') {
+      await this.dialogs.open({ component: DeleteTagDialog, model: { tag: detail.branch, remote: detail.action === 'delete-tag-remote' } });
+    } else if (detail.action === 'merge') {
       await this.mergeReference(detail.branch.fullName, detail.branch.name);
     } else if (detail.action === 'branch') {
       await this.createBranch(detail.branch.hash);

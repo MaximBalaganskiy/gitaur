@@ -48,27 +48,29 @@
   </div>
 </aside>
 
-<ui-menu component.ref="branchMenu" close-on-select menu-select.trigger="branchAction($event.detail)">
+<ui-menu component.ref="branchMenu" close-on-select>
   <ui-list>
-    <ui-list-item value="tip">Go to branch tip</ui-list-item>
-    <ui-list-item value="copy">Copy reference name</ui-list-item>
-    <ui-list-item value="checkout" if.bind="canCheckout(contextBranch)" disabled.bind="workspace.busy">Check out branch</ui-list-item>
-    <ui-list-item value="branch" disabled.bind="workspace.busy">Create branch from here…</ui-list-item>
-    <ui-list-item value="merge" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Merge into current branch…</ui-list-item>
-    <ui-list-item value="rebase" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Rebase current branch onto here…</ui-list-item>
-    <ui-list-item value="rebase-plan" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Edit rebase plan from here…</ui-list-item>
-    <ui-list-item value="rename" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Rename branch…</ui-list-item>
-    <ui-list-item value="upstream" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Set upstream…</ui-list-item>
-    <ui-list-item value="delete" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || !!workspace.snapshot.operation || contextBranch.name === workspace.snapshot.branch">Delete branch…</ui-list-item>
-    <ui-list-item value="delete" if.bind="contextBranch.kind === 'remote' && !contextBranch.name.endsWith('/HEAD')" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Delete remote branch…</ui-list-item>
+    <ui-list-item non-selectable value="tip" click.trigger="branchAction('tip')">Go to branch tip</ui-list-item>
+    <ui-list-item non-selectable value="copy" click.trigger="branchAction('copy')">Copy reference name</ui-list-item>
+    <ui-list-item non-selectable value="checkout" click.trigger="branchAction('checkout')" if.bind="canCheckout(contextBranch)" disabled.bind="workspace.busy">Check out branch</ui-list-item>
+    <ui-list-item non-selectable value="branch" click.trigger="branchAction('branch')" disabled.bind="workspace.busy">Create branch from here…</ui-list-item>
+    <ui-list-item non-selectable value="merge" click.trigger="branchAction('merge')" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Merge into current branch…</ui-list-item>
+    <ui-list-item non-selectable value="rebase" click.trigger="branchAction('rebase')" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Rebase current branch onto here…</ui-list-item>
+    <ui-list-item non-selectable value="rebase-plan" click.trigger="branchAction('rebase-plan')" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Edit rebase plan from here…</ui-list-item>
+    <ui-list-item non-selectable value="rename" click.trigger="branchAction('rename')" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Rename branch…</ui-list-item>
+    <ui-list-item non-selectable value="upstream" click.trigger="branchAction('upstream')" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Set upstream…</ui-list-item>
+    <ui-list-item non-selectable value="delete" click.trigger="branchAction('delete')" if.bind="contextBranch.kind === 'local'" disabled.bind="workspace.busy || !!workspace.snapshot.operation || contextBranch.name === workspace.snapshot.branch">Delete branch…</ui-list-item>
+    <ui-list-item non-selectable value="delete" click.trigger="branchAction('delete')" if.bind="contextBranch.kind === 'remote' && !contextBranch.name.endsWith('/HEAD')" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Delete remote branch…</ui-list-item>
+    <ui-list-item non-selectable value="delete-tag" click.trigger="branchAction('delete-tag')" if.bind="contextBranch.kind === 'tag'" disabled.bind="workspace.busy">Delete local tag…</ui-list-item>
+    <ui-list-item non-selectable value="delete-tag-remote" click.trigger="branchAction('delete-tag-remote')" if.bind="contextBranch.kind === 'tag'" disabled.bind="workspace.busy">Delete remote tag…</ui-list-item>
   </ui-list>
 </ui-menu>
 
-<ui-menu component.ref="remoteMenu" close-on-select menu-select.trigger="remoteAction($event.detail)">
+<ui-menu component.ref="remoteMenu" close-on-select>
   <ui-list>
-    <ui-list-item value="add" disabled.bind="workspace.busy">Add remote…</ui-list-item>
-    <ui-list-item value="fetch" if.bind="contextRemote" disabled.bind="workspace.busy">Fetch remote</ui-list-item>
-    <ui-list-item value="edit" if.bind="contextRemote" disabled.bind="workspace.busy">Edit remote…</ui-list-item>
-    <ui-list-item value="remove" if.bind="contextRemote" disabled.bind="workspace.busy">Remove remote…</ui-list-item>
+    <ui-list-item non-selectable value="add" click.trigger="remoteAction('add')" disabled.bind="workspace.busy">Add remote…</ui-list-item>
+    <ui-list-item non-selectable value="fetch" click.trigger="remoteAction('fetch')" if.bind="contextRemote" disabled.bind="workspace.busy">Fetch remote</ui-list-item>
+    <ui-list-item non-selectable value="edit" click.trigger="remoteAction('edit')" if.bind="contextRemote" disabled.bind="workspace.busy">Edit remote…</ui-list-item>
+    <ui-list-item non-selectable value="remove" click.trigger="remoteAction('remove')" if.bind="contextRemote" disabled.bind="workspace.busy">Remove remote…</ui-list-item>
   </ui-list>
 </ui-menu>
