@@ -1,0 +1,18 @@
+<template class="w-[520px] max-w-[90vw] max-h-[90vh] overflow-auto p-6">
+  <h2 class="mb-4 text-xl!">${title}</h2>
+  <p class="mb-3 break-words text-sm">
+    <strong>${tag.name}</strong>
+    · ${tag.hash.slice(0, 8)}
+  </p>
+  <p class="mb-3 text-sm" if.bind="remoteDeletion">Delete this tag from the selected remote server? This affects everyone using that remote. The local tag is kept. Deletion is refused if the remote tag differs from the local tag.</p>
+  <p class="mb-3 text-sm" else>Delete this local tag? Remote copies and commits are kept.</p>
+  <ui-form class="block" submit.trigger:prevent="save()">
+    <ui-select class="col-span-12" if.bind="remoteDeletion && remotes.length" label="Tag remote" items.bind="remotes" value.bind="remote" value-field="name" label-field="name" disabled.bind="loading || workspace.busy">
+      <ui-list><ui-list-item repeat.for="item of $host.items; key: name" value.bind="item">${item.name}</ui-list-item></ui-list>
+    </ui-select>
+    <p class="col-span-12 text-sm" if.bind="remoteDeletion && !loading && !remotes.length">No remotes configured.</p>
+    <ui-alert class="col-span-12" if.bind="error" tone="danger" role="alert">${error}</ui-alert>
+    <button ui-button class="col-span-6" type="button" click.trigger="close()" disabled.bind="loading || workspace.busy">Cancel</button>
+    <button ui-button class="col-span-6" danger type="submit" disabled.bind="loading || workspace.busy || !object || (remoteDeletion && !remote)">${title}</button>
+  </ui-form>
+</template>

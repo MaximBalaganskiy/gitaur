@@ -126,6 +126,7 @@ const { version } = require('../package.json');
     await checkoutSearch.press('Enter');
     await page.getByText('Commit or stash your changes before switching branches.', { exact: true }).waitFor();
     assert.equal((await git(repo, ['branch', '--show-current'])).stdout.trim(), 'main');
+    assert.equal(await page.locator('.commit-row.selected').getAttribute('id'), selectedBeforeCheckout);
     await page.getByRole('region', { name: 'Notifications' }).getByRole('button', { name: 'Dismiss' }).click();
     await fs.writeFile(path.join(repo, 'README.md'), '# A clear history\n\nStart here.\n');
     await fs.unlink(path.join(repo, 'notes.txt'));
@@ -139,7 +140,8 @@ const { version } = require('../package.json');
       .filter({ hasText: /^feat\/search$/ })
       .waitFor();
     assert.equal((await git(repo, ['branch', '--show-current'])).stdout.trim(), 'feat/search');
-    assert.equal(await page.locator('.commit-row.selected').getAttribute('id'), selectedBeforeCheckout);
+    const checkedOutTip = (await git(repo, ['rev-parse', 'HEAD'])).stdout.trim();
+    await page.locator(`#commit-${checkedOutTip}.selected`).waitFor();
     await page.getByRole('button', { name: 'Switch to main', exact: true }).click();
     await page
       .locator('.branch-pill')
