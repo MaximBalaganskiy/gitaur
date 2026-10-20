@@ -36,6 +36,7 @@ pub fn run() {
     })
     .invoke_handler(tauri::generate_handler![
       commands::open_project_repository,
+      commands::open_release,
       commands::bootstrap,
       commands::reflog,
       commands::tags,

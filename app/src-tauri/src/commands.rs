@@ -15,6 +15,26 @@ use tauri::{AppHandle, Emitter, Manager, WebviewWindow};
 use tauri_plugin_dialog::DialogExt;
 
 #[tauri::command]
+pub async fn open_release(version: String) -> Result<(), String> {
+  if version.is_empty()
+    || !version
+      .bytes()
+      .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'.' | b'-'))
+  {
+    return Err("Invalid release version".into());
+  }
+  tauri::async_runtime::spawn_blocking(move || {
+    tauri_plugin_opener::open_url(
+      format!("https://github.com/MaximBalaganskiy/gitaur/releases/tag/v{version}"),
+      None::<&str>,
+    )
+    .map_err(|error| error.to_string())
+  })
+  .await
+  .map_err(|error| error.to_string())?
+}
+
+#[tauri::command]
 pub async fn open_project_repository() -> Result<(), String> {
   tauri::async_runtime::spawn_blocking(|| {
     tauri_plugin_opener::open_url("https://github.com/MaximBalaganskiy/gitaur", None::<&str>)

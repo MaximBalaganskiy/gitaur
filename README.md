@@ -21,6 +21,8 @@ Screenshots use a synthetic demonstration repository.
 
 Download the Windows executable or installer, or the Linux AppImage or Debian package, from [GitHub Releases](https://github.com/MaximBalaganskiy/gitaur/releases). Download visibility follows repository access. Keep the accompanying license and third-party notices when redistributing binaries.
 
+The main window checks public GitHub Releases at startup and every six hours. A newer version shows a dismissible notification with a link to its release page. Each version is announced once per profile, including across restarts; another notice appears only for a newer version. Beta installations include prereleases, while stable installations check stable releases only. Offline, inaccessible and rate-limited checks stay quiet. Updates are downloaded and installed manually.
+
 Open `app/release/windows/Gitaur.exe` after packaging, or run from source:
 
 ```powershell

@@ -5,6 +5,7 @@ import { invoke } from '@tauri-apps/api/core';
 import { version } from '../../../package.json';
 import { WorkspaceService } from '../../services/workspace-service';
 import { AppearanceService } from '../../services/appearance-service';
+import { UpdateService } from '../../services/update-service';
 import logo from '../../assets/gitaur.svg?url';
 import './app.css';
 
@@ -14,6 +15,7 @@ export class App {
   readonly workspace = resolve(WorkspaceService);
   readonly appearance = resolve(AppearanceService);
   private alerts = resolve(AlertService);
+  private updates = resolve(UpdateService);
   private timer?: ReturnType<typeof setInterval>;
   private progressTimer?: ReturnType<typeof setTimeout>;
   private progressSubscription?: Subscription;
@@ -45,6 +47,7 @@ export class App {
 
   attached() {
     void this.workspace.initialize();
+    this.updates.start();
     window.addEventListener('keydown', this.onKey);
     window.addEventListener('focus', this.onFocus);
     window.addEventListener('storage', this.onStorage);
@@ -56,6 +59,7 @@ export class App {
   }
 
   detaching() {
+    this.updates.stop();
     clearInterval(this.timer);
     window.removeEventListener('keydown', this.onKey);
     window.removeEventListener('focus', this.onFocus);
