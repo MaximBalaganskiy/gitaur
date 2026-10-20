@@ -1,4 +1,4 @@
-<template class="block min-w-0 max-w-[32vw]">
+<template class="flex min-w-0 max-w-[32vw]">
   <button ui-button ref="anchor" class="max-w-full gap-2 border-0! bg-transparent! text-left font-medium!" click.trigger="open = !open" keydown.trigger="openWithKeyboard($event)" disabled.bind="workspace.busy" aria-label="Repository menu" aria-haspopup="menu" aria-expanded.bind="open" title.bind="workspace.repo">
     <span class="truncate">${workspace.snapshot.name || 'Open repository'}</span>
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" class="shrink-0 text-ink-500" aria-hidden="true"><path d="m 4 6 4 4 4 -4"></path></svg>
