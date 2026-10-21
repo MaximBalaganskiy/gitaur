@@ -127,11 +127,23 @@
         <h2>${selected.subject}</h2>
         <p>${selected.author} · ${fullDate(selected.date)}</p>
         <pre>${detail.message}</pre>
-        <div class="metadata grid grid-cols-[80px_1fr] gap-2.5 text-[11px] text-ink-500">
+        <div class="metadata grid grid-cols-[100px_minmax(0,1fr)] gap-2.5 text-[11px] text-ink-500">
           <span>Commit</span>
           <code>${selected.hash}</code>
           <span>Parents</span>
           <code>${selected.parents.join(' · ') || 'Root commit'}</code>
+          <span>Local branches</span>
+          <div class="local-containing-branches" aria-live="polite">
+            <code class="block" repeat.for="branch of detail.localBranches">${branch}</code>
+            <span if.bind="!detail">${detailError || 'Loading…'}</span>
+            <span if.bind="detail && !detail.localBranches.length">None</span>
+          </div>
+          <span>Remote branches</span>
+          <div class="remote-containing-branches" aria-live="polite">
+            <code class="block" repeat.for="branch of detail.remoteBranches">${branch}</code>
+            <span if.bind="!detail">${detailError || 'Loading…'}</span>
+            <span if.bind="detail && !detail.remoteBranches.length">None</span>
+          </div>
         </div>
       </div>
       <div class="command-log overflow-auto px-4 py-2.5" if.bind="tab === 'log'">

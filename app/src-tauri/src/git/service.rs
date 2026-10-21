@@ -266,9 +266,38 @@ impl GitService {
         path: fields[1].into(),
       })
       .collect();
+    let refs = self.text(
+      repo,
+      &[
+        "for-each-ref",
+        "--contains",
+        hash,
+        "--sort=refname",
+        "--format=%(refname)%00%(symref)",
+        "refs/heads",
+        "refs/remotes",
+      ],
+    )?;
+    let mut local_branches = Vec::new();
+    let mut remote_branches = Vec::new();
+    for line in refs.lines() {
+      let Some((reference, symbolic)) = line.trim_end_matches('\r').split_once('\0') else {
+        continue;
+      };
+      if !symbolic.is_empty() {
+        continue;
+      }
+      if let Some(name) = reference.strip_prefix("refs/heads/") {
+        local_branches.push(name.to_owned());
+      } else if let Some(name) = reference.strip_prefix("refs/remotes/") {
+        remote_branches.push(name.to_owned());
+      }
+    }
     Ok(Detail {
       message: self.text(repo, &["show", "-s", "--format=%B", hash])?.trim_end().into(),
       files,
+      local_branches,
+      remote_branches,
     })
   }
 

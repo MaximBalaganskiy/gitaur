@@ -56,6 +56,7 @@ export class History {
   rows: GraphRow[] = [];
   selected: Commit | null = null;
   detail: Detail | null = null;
+  detailError = '';
   selectedFile = '';
   diff = '';
   diffLoading = false;
@@ -250,6 +251,8 @@ export class History {
       return;
     }
 
+    const branchesChanged = JSON.stringify(snapshot.branches) !== JSON.stringify(this.lastSnapshot?.branches);
+    const repositoryChanged = snapshot.path !== this.lastSnapshot?.path;
     this.lastSnapshot = snapshot;
     this.rows = buildGraph(snapshot.commits, this.appearance.rowHeight);
     const commit = snapshot.commits.find(item => item.hash === this.selected?.hash) ?? snapshot.commits[0];
@@ -262,7 +265,7 @@ export class History {
       this.diff = '';
       this.diffLoading = false;
     }
-    if (commit && commit.hash !== this.selected?.hash) {
+    if (commit && (commit.hash !== this.selected?.hash || branchesChanged || repositoryChanged)) {
       void this.selectCommit(commit);
     }
   }
@@ -272,6 +275,7 @@ export class History {
     ++this.diffGeneration;
     this.selected = commit;
     this.detail = null;
+    this.detailError = '';
     this.selectedFile = '';
     this.diff = '';
     this.diffLoading = false;
@@ -286,6 +290,7 @@ export class History {
       await this.selectFirstChangedFile();
     } catch (error) {
       if (generation === this.detailGeneration) {
+        this.detailError = 'Unavailable';
         this.workspace.fail(error);
       }
     }
