@@ -3,14 +3,11 @@ body {
   font-family: var(--font-sans);
   color: var(--color-ink-900);
   background: var(--color-canvas);
+  overflow-wrap: anywhere;
 }
 
-dialog {
-  overflow-wrap: anywhere;
-
-  &:has(.conflict-editor, .stash-manager, .history-operation-dialog, .repository-tool-dialog) {
-    max-width: 95vw;
-  }
+dialog:has(.conflict-editor, .stash-manager, .history-operation-dialog, .repository-tool-dialog) {
+  max-width: 95vw;
 }
 
 h2 {

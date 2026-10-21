@@ -8,7 +8,7 @@
   </div>
   <div class="spacer flex-1"></div>
   <button ui-icon-button click.trigger="treeLayout = !treeLayout" aria-label="${treeLayout ? 'Show flat file list' : 'Show file tree'}" title="${treeLayout ? 'Show flat file list' : 'Show file tree'}">${treeLayout ? '☷' : '⑂'}</button>
-  <span class="branch-pill rounded bg-info-bg px-2 py-1 text-xs whitespace-nowrap text-info-text">⑂ ${workspace.snapshot.branch}</span>
+  <span class="branch-pill min-w-0 max-w-1/2 truncate rounded bg-info-bg px-2 py-1 text-xs text-info-text" title.bind="workspace.snapshot.branch">⑂ ${workspace.snapshot.branch}</span>
 </div>
 <div class="operation-banner flex shrink-0 items-center gap-3 bg-warning-bg px-5 py-2 text-xs text-warning-text" if.bind="workspace.snapshot.operation">
   <span class="flex-1">${workspace.snapshot.operation} in progress. ${replaying ? 'Resolve and stage conflicts, then continue. Git keeps the original commit message. Skip if the current commit is empty or unwanted.' : 'Resolve remaining conflicts, review the staged result, then commit.'}</span>
@@ -71,7 +71,7 @@
   <section class="commit-editor flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
     <div class="diff-panel flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
       <div class="diff-heading flex min-h-8 shrink-0 items-center justify-between gap-2.5 border-b border-card-border px-3.5 text-[11px]">
-        <span>${workingFile ? workingFile.path : 'Review your changes'}</span>
+        <span title.bind="workingFile ? workingFile.path : ''">${workingFile ? workingFile.path : 'Review your changes'}</span>
         <span class="diff-mode ml-auto text-[9px] tracking-widest ${workingStaged ? 'text-accent' : ''}">${workingFile ? workingStaged ? 'STAGED' : 'UNSTAGED' : ''}</span>
         <button ui-button click.trigger="toggleFullFile()" disabled.bind="!workingFile || diffLoading || workspace.busy" aria-pressed.bind="fullFile">${fullFile ? 'Show changes only' : 'Show full file'}</button>
         <button ui-button class="text-[11px]!" if.bind="workingFile && !workingFile.conflict" disabled.bind="workspace.busy" click.trigger="stage(workingFile, workingStaged)">${workingStaged ? '↑ Unstage file' : '↓ Stage file'}</button>
@@ -100,7 +100,7 @@
           <kbd>Ctrl Enter</kbd>
           to commit
         </span>
-        <button ui-button primary class="col-span-6 justify-self-end gap-2" type="submit" formnovalidate disabled.bind="!canCommit">${workspace.busy ? 'Working…' : amendHead ? 'Review amend…' : '✓ Commit to ' + workspace.snapshot.branch}</button>
+        <button ui-button primary class="col-span-6 min-w-0 max-w-full justify-self-end gap-2" type="submit" formnovalidate disabled.bind="!canCommit" title="${workspace.busy ? 'Working…' : amendHead ? 'Review amend…' : 'Commit to ' + workspace.snapshot.branch}"><span class="min-w-0 truncate">${workspace.busy ? 'Working…' : amendHead ? 'Review amend…' : '✓ Commit to ' + workspace.snapshot.branch}</span></button>
       </ui-form>
     </section>
   </section>

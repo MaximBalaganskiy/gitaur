@@ -19,7 +19,7 @@
       </div>
       <p if.bind="loading && !trees.length" class="px-2 py-2 text-xs text-ink-500" role="status">Loading worktrees…</p>
       <div if.bind="error" class="grid gap-2 px-2 py-2 text-xs text-danger-text">
-        <p role="alert" class="break-words">${error}</p>
+        <p role="alert">${error}</p>
         <button ui-button click.trigger="load()" disabled.bind="loading">Retry worktrees</button>
       </div>
     </template>
