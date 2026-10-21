@@ -5,8 +5,12 @@ body {
   background: var(--color-canvas);
 }
 
-dialog:has(.conflict-editor, .stash-manager, .history-operation-dialog, .repository-tool-dialog) {
-  max-width: 95vw;
+dialog {
+  overflow-wrap: anywhere;
+
+  &:has(.conflict-editor, .stash-manager, .history-operation-dialog, .repository-tool-dialog) {
+    max-width: 95vw;
+  }
 }
 
 h2 {
