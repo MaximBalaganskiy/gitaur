@@ -3,6 +3,7 @@ import { IDialogService } from '@aurelia/dialog';
 import { WorkspaceService } from '../../services/workspace-service';
 import { buildGraph } from '../../services/graph-layout';
 import { AppearanceService } from '../../services/appearance-service';
+import { CommitSelectionHistory } from '../../services/commit-selection-history';
 import { NewBranchDialog } from './new-branch-dialog/new-branch-dialog';
 import { RemoteDialog } from './remote-dialog/remote-dialog';
 import { NewWorktreeDialog } from './new-worktree-dialog/new-worktree-dialog';
@@ -52,6 +53,7 @@ export class History {
   private detailGeneration = 0;
   private diffGeneration = 0;
   private branchGeneration = 0;
+  private selectionHistory = new CommitSelectionHistory();
 
   rows: GraphRow[] = [];
   selected: Commit | null = null;
@@ -238,6 +240,68 @@ export class History {
     this.refresh();
   }
 
+  attached() {
+    window.addEventListener('keydown', this.onNavigationKey, true);
+    window.addEventListener('mousedown', this.onNavigationMouseDown, true);
+    window.addEventListener('mouseup', this.onNavigationMouseUp, true);
+    window.addEventListener('auxclick', this.onNavigationMouseDown, true);
+  }
+
+  detaching() {
+    window.removeEventListener('keydown', this.onNavigationKey, true);
+    window.removeEventListener('mousedown', this.onNavigationMouseDown, true);
+    window.removeEventListener('mouseup', this.onNavigationMouseUp, true);
+    window.removeEventListener('auxclick', this.onNavigationMouseDown, true);
+  }
+
+  private onNavigationKey = (event: KeyboardEvent) => {
+    const back = event.key === 'BrowserBack' || (event.altKey && event.key === 'ArrowLeft');
+    const forward = event.key === 'BrowserForward' || (event.altKey && event.key === 'ArrowRight');
+    if ((!back && !forward) || event.ctrlKey || event.metaKey || event.shiftKey) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    this.navigateSelection(back ? -1 : 1);
+  };
+
+  private onNavigationMouseDown = (event: MouseEvent) => {
+    if (event.button === 3 || event.button === 4) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+
+  private onNavigationMouseUp = (event: MouseEvent) => {
+    if (event.button === 3 || event.button === 4) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.navigateSelection(event.button === 3 ? -1 : 1);
+    }
+  };
+
+  navigateSelection(direction: -1 | 1) {
+    if (this.dialogs.controllers.length) {
+      return;
+    }
+
+    const previous = this.selectionHistory.move(direction);
+    if (!previous) {
+      return;
+    }
+
+    ++this.branchGeneration;
+    const commit = this.workspace.snapshot?.commits.find(item => item.hash === previous.hash) ?? previous;
+    void this.selectCommit(commit, false);
+    requestAnimationFrame(() => {
+      if (this.selected?.hash === commit.hash) {
+        const row = document.getElementById('commit-' + commit.hash);
+        row?.scrollIntoView({ block: 'center' });
+      }
+    });
+  }
+
   unbinding() {
     this.unsubscribe?.();
     ++this.detailGeneration;
@@ -253,6 +317,9 @@ export class History {
 
     const branchesChanged = JSON.stringify(snapshot.branches) !== JSON.stringify(this.lastSnapshot?.branches);
     const repositoryChanged = snapshot.path !== this.lastSnapshot?.path;
+    if (repositoryChanged) {
+      this.selectionHistory = new CommitSelectionHistory();
+    }
     this.lastSnapshot = snapshot;
     this.rows = buildGraph(snapshot.commits, this.appearance.rowHeight);
     const commit = snapshot.commits.find(item => item.hash === this.selected?.hash) ?? snapshot.commits[0];
@@ -270,7 +337,11 @@ export class History {
     }
   }
 
-  async selectCommit(commit: Commit) {
+  async selectCommit(commit: Commit, remember = true) {
+    if (remember) {
+      this.selectionHistory.visit(commit);
+    }
+
     const generation = ++this.detailGeneration;
     ++this.diffGeneration;
     this.selected = commit;

@@ -72,6 +72,7 @@ Measured Windows x64 release (14 October 2026): **3.64 MiB** executable, **1.44 
 | Ctrl+K | Open commit window |
 | F5 | Refresh |
 | Enter in commit search | Select next match |
+| Alt+Left / Alt+Right, mouse Back / Forward | Previous / next selected commit |
 | Ctrl+Enter in commit window | Commit staged files |
 | Ctrl+F / Ctrl+H in merge editor | Find / replace in result |
 | F7 / Shift+F7 in merge editor | Next / previous unresolved conflict |

@@ -99,9 +99,74 @@ const path = require('node:path');
       await fs.rename(backup, object);
     }
     await select(feature, ['added-after-selection', 'feature/nested', 'main'], ['origin/main']);
+    await select(base, ['added-after-selection', 'feature/nested', 'main', 'older'], ['origin/main']);
+    await local.getByRole('button', { name: 'main', exact: true }).click();
+    await page.locator(`#commit-${main}.selected`).waitFor();
+    await page.keyboard.press('Alt+ArrowLeft');
+    await page.locator(`#commit-${base}.selected`).waitFor();
+    await page.keyboard.press('Alt+ArrowRight');
+    await page.locator(`#commit-${main}.selected`).waitFor();
+    const cdp = await app.context.newCDPSession(page);
+    async function mouseNavigate(button) {
+      await cdp.send('Input.dispatchMouseEvent', { type: 'mousePressed', button, x: 500, y: 250, clickCount: 1 });
+      await cdp.send('Input.dispatchMouseEvent', { type: 'mouseReleased', button, x: 500, y: 250, clickCount: 1 });
+    }
+    await mouseNavigate('back');
+    await page.locator(`#commit-${base}.selected`).waitFor();
+    await mouseNavigate('forward');
+    await page.locator(`#commit-${main}.selected`).waitFor();
+    await page.keyboard.press('Alt+ArrowLeft');
+    await page.locator(`#commit-${base}.selected`).waitFor();
+    await page.keyboard.press('F5');
+    await page.locator('.statusbar').getByText('Ready', { exact: true }).waitFor();
+    await page.keyboard.press('Alt+ArrowRight');
+    await page.locator(`#commit-${main}.selected`).waitFor();
+    await page.keyboard.press('Alt+ArrowLeft');
+    await page.locator(`#commit-${base}.selected`).waitFor();
+    await select(feature, ['added-after-selection', 'feature/nested', 'main'], ['origin/main']);
+    await page.keyboard.press('Alt+ArrowRight');
+    await page.locator(`#commit-${feature}.selected`).waitFor();
+    await page.getByRole('button', { name: '⑂ New branch', exact: true }).click();
+    await page.getByRole('dialog').waitFor();
+    await page.keyboard.press('Alt+ArrowLeft');
+    assert.equal(await page.locator(`#commit-${feature}.selected`).count(), 1);
+    await page.keyboard.press('Escape');
+    await page.getByRole('dialog').waitFor({ state: 'hidden' });
+    await page.keyboard.press('Alt+ArrowLeft');
+    await page.locator(`#commit-${base}.selected`).waitFor();
+    const search = page.getByRole('textbox', { name: 'Search commits', exact: true });
+    await search.fill('Detached');
+    await search.press('Enter');
+    await page.locator(`#commit-${detached}.selected`).waitFor();
+    await search.press('Alt+ArrowLeft');
+    await page.locator(`#commit-${base}.selected`).waitFor();
+    await search.fill('');
+    const other = path.join(root, 'other');
+    await fs.mkdir(other);
+    await git(other, ['init', '-b', 'main']);
+    await git(other, [
+      '-c',
+      'user.name=Other Test',
+      '-c',
+      'user.email=test@example.invalid',
+      '-c',
+      'commit.gpgsign=false',
+      'commit',
+      '--allow-empty',
+      '-m',
+      'Other repository'
+    ]);
+    const otherHead = (await git(other, ['rev-parse', 'HEAD'])).stdout.trim();
+    await page.evaluate(directory => window.__TAURI_INTERNALS__.invoke('open_repository', { directory }), other);
+    await page.keyboard.press('F5');
+    await page.locator(`#commit-${otherHead}.selected`).waitFor();
+    await page.keyboard.press('Alt+ArrowLeft');
+    await mouseNavigate('forward');
+    assert.equal(await page.locator(`#commit-${otherHead}.selected`).count(), 1);
+    await cdp.detach();
     assert.deepEqual(errors, []);
     console.log(
-      'PASS: commit containment, local/remote tip navigation without checkout, keyboard, reference refresh, and lookup failure recovery.'
+      'PASS: containing branches, tip jumps, mouse/keyboard selection history, forward-path replacement, modal isolation, refresh, and lookup failure recovery.'
     );
   } catch (error) {
     console.error(await page.locator('.detail-panel').innerText());
