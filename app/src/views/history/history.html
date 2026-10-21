@@ -29,6 +29,14 @@
   <section class="repository-content flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-card">
     <section class="history-panel flex h-[410px] min-h-0 flex-col overflow-hidden">
       <div class="panel-toolbar flex min-h-12 shrink-0 py-1 items-center gap-4 px-3">
+        <div class="flex shrink-0 gap-1" role="group" aria-label="Commit selection navigation">
+          <button ui-icon-button click.trigger="navigateSelection(-1)" disabled.bind="!canGoBack" aria-label="Back to previous selected commit" title="Back · Alt+Left">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m 12 5 -7 7 7 7 M 5 12 h 14"></path></svg>
+          </button>
+          <button ui-icon-button click.trigger="navigateSelection(1)" disabled.bind="!canGoForward" aria-label="Forward to next selected commit" title="Forward · Alt+Right">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m 12 5 7 7 -7 7 M 5 12 h 14"></path></svg>
+          </button>
+        </div>
         <h2>
           History
           <span class="muted text-ink-500">/ All branches</span>

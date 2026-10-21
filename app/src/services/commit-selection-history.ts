@@ -4,6 +4,14 @@ export class CommitSelectionHistory {
   private commits: Commit[] = [];
   private index = -1;
 
+  get canGoBack() {
+    return this.index > 0;
+  }
+
+  get canGoForward() {
+    return this.index + 1 < this.commits.length;
+  }
+
   visit(commit: Commit) {
     if (this.commits[this.index]?.hash === commit.hash) {
       this.commits[this.index] = commit;

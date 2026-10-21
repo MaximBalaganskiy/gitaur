@@ -235,6 +235,14 @@ export class History {
     return this.rows.filter(row => this.matches(row.commit)).length;
   }
 
+  get canGoBack() {
+    return this.selectionHistory.canGoBack;
+  }
+
+  get canGoForward() {
+    return this.selectionHistory.canGoForward;
+  }
+
   binding() {
     this.unsubscribe = this.workspace.subscribe(() => this.refresh());
     this.refresh();
