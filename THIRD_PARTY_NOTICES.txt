@@ -1,6 +1,6 @@
 Gitaur third-party notices
 
-Lockfile SHA-256: 2c23c9bb942c305cee4e0578a327b634d5532578e391b35864495355ddccb871
+Lockfile SHA-256: f014a78a73779f296a004a8d9c40707d35b4faad92059a8c84d82b97b81f5f8d
 
 Gitaur's own source is MIT licensed. Third-party components retain their
 own licenses below. This inventory includes the renderer dependencies and

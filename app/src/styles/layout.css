@@ -3,6 +3,7 @@ body {
   font-family: var(--font-sans);
   color: var(--color-ink-900);
   background: var(--color-canvas);
+  overflow-wrap: anywhere;
 }
 
 dialog:has(.conflict-editor, .stash-manager, .history-operation-dialog, .repository-tool-dialog) {

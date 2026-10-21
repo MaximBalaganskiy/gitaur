@@ -37,7 +37,7 @@
     </ui-tree>
     <div class="px-3 py-2 text-sm text-ink-500" if.bind="!nodes.length">No matching branches or tags</div>
     <div if.bind="remotesError" class="grid gap-2 px-2 py-2 text-xs text-danger-text">
-      <p role="alert" class="break-words">${remotesError}</p>
+      <p role="alert">${remotesError}</p>
       <button ui-button click.trigger="loadRemotes()" disabled.bind="remotesLoading">Retry remotes</button>
     </div>
   </div>

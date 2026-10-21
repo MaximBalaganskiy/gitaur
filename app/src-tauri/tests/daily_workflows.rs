@@ -68,6 +68,89 @@ fn partial(git: &GitService, repo: &Path, staged: bool, texts: &[&str]) {
 }
 
 #[test]
+fn reset_hunks_and_lines_preserves_index_and_other_working_changes() {
+  let (temp, git) = repo();
+  let repo = temp.path();
+  let base: String = (1..=30).map(|index| format!("line {index}\n")).collect();
+  commit(&git, repo, &base, "Base");
+  let indexed = base.replace("line 15\n", "staged 15\n");
+  fs::write(repo.join("file.txt"), &indexed).unwrap();
+  action(&git, repo, "stage", json!({"paths":["file.txt"]}));
+  let working = indexed
+    .replace("line 2\n", "changed 2\n")
+    .replace("line 28\n", "changed 28\n");
+  fs::write(repo.join("file.txt"), &working).unwrap();
+  let original = diff(&git, repo, false);
+  let lines: Vec<_> = original
+    .lines()
+    .enumerate()
+    .filter(|(_, line)| ["-line 2", "+changed 2"].contains(line))
+    .map(|(index, _)| index)
+    .collect();
+  action(
+    &git,
+    repo,
+    "partial-reset",
+    json!({"paths":["file.txt"],"original":original,"lines":lines}),
+  );
+  assert_eq!(
+    fs::read_to_string(repo.join("file.txt")).unwrap(),
+    indexed.replace("line 28\n", "changed 28\n")
+  );
+  assert_eq!(content(&git, repo, ":file.txt"), indexed);
+  assert_eq!(content(&git, repo, "HEAD:file.txt"), base);
+  let original = diff(&git, repo, false);
+  let line = original.lines().position(|line| line == "+changed 28").unwrap();
+  action(
+    &git,
+    repo,
+    "partial-reset",
+    json!({"paths":["file.txt"],"original":original,"lines":[line]}),
+  );
+  assert_eq!(
+    fs::read_to_string(repo.join("file.txt")).unwrap(),
+    indexed.replace("line 28\n", "")
+  );
+  action(
+    &git,
+    repo,
+    "reset-file",
+    json!({"paths":["file.txt"],"original":diff(&git, repo, false)}),
+  );
+  assert_eq!(fs::read_to_string(repo.join("file.txt")).unwrap(), indexed);
+  assert_eq!(content(&git, repo, ":file.txt"), indexed);
+  fs::remove_file(repo.join("file.txt")).unwrap();
+  action(
+    &git,
+    repo,
+    "reset-file",
+    json!({"paths":["file.txt"],"original":diff(&git, repo, false)}),
+  );
+  assert_eq!(fs::read_to_string(repo.join("file.txt")).unwrap(), indexed);
+}
+
+#[test]
+fn reset_rejects_stale_diffs_staged_changes_and_untracked_files() {
+  let (temp, git) = repo();
+  let repo = temp.path();
+  commit(&git, repo, "base\n", "Base");
+  fs::write(repo.join("file.txt"), "reviewed\n").unwrap();
+  let original = diff(&git, repo, false);
+  fs::write(repo.join("file.txt"), "external edit\n").unwrap();
+  for name in ["reset-file", "partial-reset"] {
+    let payload = serde_json::from_value(json!({"paths":["file.txt"],"original":original,"lines":[4,5]})).unwrap();
+    assert!(git.mutate(repo, name, &payload).unwrap_err().contains("diff changed"));
+    assert_eq!(fs::read_to_string(repo.join("file.txt")).unwrap(), "external edit\n");
+    let payload = serde_json::from_value(json!({"paths":["file.txt"],"staged":true})).unwrap();
+    assert!(git.mutate(repo, name, &payload).unwrap_err().contains("Unstage"));
+  }
+  fs::write(repo.join("untracked.txt"), "keep\n").unwrap();
+  let payload = serde_json::from_value(json!({"paths":["untracked.txt"]})).unwrap();
+  assert!(git.mutate(repo, "reset-file", &payload).is_err());
+  assert_eq!(fs::read_to_string(repo.join("untracked.txt")).unwrap(), "keep\n");
+}
+
+#[test]
 fn publish_sets_upstream_and_normal_push_works() {
   let (temp, git) = repo();
   let repo = temp.path();

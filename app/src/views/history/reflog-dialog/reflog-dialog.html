@@ -8,7 +8,7 @@
     <ui-list items.bind="filtered" selected.bind="selected" typeahead-field="message" aria-label="Reflog entries">
       <ui-list-item repeat.for="entry of filtered" value.bind="entry">
         <div class="min-w-0">
-          <div class="break-words">${entry.message}</div>
+          <div class="min-w-0">${entry.message}</div>
           <small class="break-all text-ink-500">${entry.hash.slice(0, 10)} · ${entry.reference}</small>
         </div>
       </ui-list-item>

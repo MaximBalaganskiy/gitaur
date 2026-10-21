@@ -1,5 +1,5 @@
 <import from="../../../elements/diff-view/diff-view"></import>
-<template class="stash-manager flex w-[900px] max-w-[95vw] max-h-[90vh] flex-col gap-3 overflow-auto p-5">
+<template class="stash-manager flex w-[900px] max-w-full max-h-[90vh] min-w-0 flex-col gap-3 overflow-auto p-5">
   <h2 class="text-xl!">Stashes</h2>
   <ui-form class="block border-b border-card-border" submit.trigger:prevent="act('stash-save')">
     <ui-input class="col-span-9" label="Stash message (optional)" value.bind="message" disabled.bind="workspace.busy"></ui-input>

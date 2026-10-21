@@ -49,9 +49,9 @@
 
   <footer class="statusbar flex h-[27px] shrink-0 items-center gap-2.5 border-t border-card-border bg-card-muted px-4 text-[10px] text-ink-500">
     <span class="status-dot mr-1 inline-block size-[5px] shrink-0 rounded-full bg-success-border ${workspace.busy || workspace.refreshing ? 'pulsing' : ''}"></span>
-    <span>${workspace.busy ? 'Running Git operation…' : workspace.refreshing ? 'Refreshing…' : working ? 'Loading…' : 'Ready'}</span>
-    <span if.bind="workspace.snapshot">${workspace.snapshot.branch} ${tracking}</span>
-    <div class="spacer flex-1"></div>
-    <span if.bind="workspace.snapshot">${workspace.snapshot.files.length} changes</span>
+    <span class="shrink-0">${workspace.busy ? 'Running Git operation…' : workspace.refreshing ? 'Refreshing…' : working ? 'Loading…' : 'Ready'}</span>
+    <span if.bind="workspace.snapshot" class="min-w-0 flex-1 truncate" title="${workspace.snapshot.branch} ${tracking}">${workspace.snapshot.branch} ${tracking}</span>
+    <div if.bind="!workspace.snapshot" class="spacer flex-1"></div>
+    <span if.bind="workspace.snapshot" class="shrink-0">${workspace.snapshot.files.length} changes</span>
   </footer>
 </div>

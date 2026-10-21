@@ -25,6 +25,7 @@
     <ui-list>
       <ui-list-item value="selected">View changes</ui-list-item>
       <ui-list-item value="stage" disabled.bind="workspace.busy || contextFile.conflict">${staged ? 'Unstage file' : 'Stage file'}</ui-list-item>
+      <ui-list-item value="reset" if.bind="!staged && contextFile && contextFile.index !== '?' && !contextFile.conflict && !contextFile.originalPath" disabled.bind="workspace.busy">Reset file changes…</ui-list-item>
       <ui-list-item value="resolve" if.bind="contextFile.conflict" disabled.bind="workspace.busy">Resolve conflict…</ui-list-item>
       <ui-list-item value="ignore" if.bind="contextFile.index === '?'" disabled.bind="workspace.busy">Add file to .gitignore</ui-list-item>
     </ui-list>

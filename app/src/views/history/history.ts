@@ -79,6 +79,43 @@ export class History {
   commitMenu!: UiMenu;
   contextCommit: Commit | null = null;
 
+  get contextBranches() {
+    return (this.workspace.snapshot?.branches ?? []).filter(
+      branch =>
+        branch.hash === this.contextCommit?.hash &&
+        (branch.kind === 'local' || (branch.kind === 'remote' && !branch.name.endsWith('/HEAD')))
+    );
+  }
+
+  setCommitContext(commit: Commit, event: Event) {
+    this.contextCommit = commit;
+    this.commitMenu.tabReference = event.currentTarget as HTMLElement;
+  }
+
+  async checkoutBranch(branch: Branch) {
+    if (
+      this.workspace.busy ||
+      this.workspace.snapshot?.operation ||
+      (branch.kind === 'local' && branch.name === this.workspace.snapshot?.branch)
+    ) {
+      return;
+    }
+
+    this.commitMenu.open = false;
+    const switched = await this.workspace.action('checkout', {
+      name: branch.name,
+      reference: branch.kind === 'remote' ? branch.fullName : undefined
+    });
+    if (switched) {
+      const current = this.workspace.snapshot?.branches.find(
+        item => item.kind === 'local' && item.name === this.workspace.snapshot?.branch
+      );
+      if (current) {
+        await this.focusBranch(current);
+      }
+    }
+  }
+
   @observable
   tab = 'diff';
   tabChanged() {

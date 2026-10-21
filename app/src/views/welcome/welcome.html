@@ -8,8 +8,8 @@
   </div>
   <div class="recent mt-6 w-[480px] max-w-full text-left" if.bind="workspace.recent.length">
     <h2>Recent repositories</h2>
-    <button ui-button repeat.for="item of workspace.recent" click.trigger="workspace.open(item)" disabled.bind="workspace.busy">
-      <span>
+    <button ui-button repeat.for="item of workspace.recent" click.trigger="workspace.open(item)" disabled.bind="workspace.busy" title.bind="item">
+      <span class="min-w-0 flex-1">
         <strong>${basename(item)}</strong>
         <small>${item}</small>
       </span>

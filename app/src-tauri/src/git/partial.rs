@@ -3,7 +3,7 @@ use crate::models::mutation::Mutation;
 use std::{collections::HashSet, path::Path};
 
 impl GitService {
-  pub(super) fn apply_partial(&self, repo: &Path, payload: &Mutation) -> Result<(), String> {
+  pub(super) fn apply_partial(&self, repo: &Path, payload: &Mutation, reset: bool) -> Result<(), String> {
     let path = payload
       .paths
       .as_ref()
@@ -12,6 +12,9 @@ impl GitService {
       .ok_or("Select one file.")?;
     validation::path(path)?;
     let staged = payload.staged.unwrap_or(false);
+    if reset && staged {
+      return Err("Unstage changes before resetting them.".into());
+    }
     let snapshot = self.snapshot(repo, 1)?;
     let file = snapshot
       .files
@@ -52,12 +55,51 @@ impl GitService {
       .as_ref()
       .filter(|lines| !lines.is_empty())
       .ok_or("Select changed lines or a hunk.")?;
-    let patch = selected_patch(&current, selection, staged)?;
-    self.run_input(
+    let patch = selected_patch(&current, selection, staged || reset)?;
+    let args = if reset {
+      vec!["apply", "--unidiff-zero", "--whitespace=nowarn", "-"]
+    } else {
+      vec!["apply", "--cached", "--unidiff-zero", "--whitespace=nowarn", "-"]
+    };
+    self.run_input(repo, &args, false, Some(patch.as_bytes()))?;
+    Ok(())
+  }
+
+  pub(super) fn reset_file(&self, repo: &Path, payload: &Mutation) -> Result<(), String> {
+    let path = payload
+      .paths
+      .as_ref()
+      .filter(|paths| paths.len() == 1)
+      .and_then(|paths| paths.first())
+      .ok_or("Select one file.")?;
+    validation::path(path)?;
+    if payload.staged.unwrap_or(false) {
+      return Err("Unstage changes before resetting them.".into());
+    }
+    let snapshot = self.snapshot(repo, 1)?;
+    let file = snapshot
+      .files
+      .iter()
+      .find(|file| file.path == *path)
+      .ok_or("The file changed. Refresh the diff.")?;
+    if file.conflict || file.index == "?" || file.original_path.is_some() || !file.unstaged {
+      return Err("Select an unstaged tracked file without conflicts or renames.".into());
+    }
+    let current = self.diff(
       repo,
-      &["apply", "--cached", "--unidiff-zero", "--whitespace=nowarn", "-"],
+      &crate::models::diff_request::DiffRequest {
+        path: path.clone(),
+        full_file: payload.full_file.unwrap_or(false),
+        ..Default::default()
+      },
+    )?;
+    if payload.original.as_deref() != Some(&current) {
+      return Err("The diff changed since it was displayed. Review the refreshed diff and try again.".into());
+    }
+    self.run(
+      repo,
+      &["--literal-pathspecs", "restore", "--worktree", "--", path],
       false,
-      Some(patch.as_bytes()),
     )?;
     Ok(())
   }
