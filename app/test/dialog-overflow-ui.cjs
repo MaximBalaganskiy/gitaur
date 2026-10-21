@@ -47,6 +47,7 @@ const path = require('node:path');
     await dialog.waitFor();
     for (const width of [1200, 900]) {
       await page.setViewportSize({ width, height: 900 });
+      await dialog.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       const overflow = await dialog.evaluate(element => {
         return [element, ...element.querySelectorAll('*')]
           .filter(container => {
@@ -60,7 +61,11 @@ const path = require('node:path');
               (container === element || ['auto', 'scroll'].includes(style.overflowX))
             );
           })
-          .map(container => `${container.tagName}.${container.className}`);
+          .map(container => ({
+            element: `${container.tagName}.${container.className}`,
+            width: container.clientWidth,
+            content: container.scrollWidth
+          }));
       });
       assert.deepEqual(overflow, [], `${label} must not scroll horizontally at ${width}px`);
     }
@@ -131,6 +136,11 @@ const path = require('node:path');
     await button('Stashes').click();
     await dialog.getByRole('button', { name: 'Drop…', exact: true }).click();
     await check('stash');
+    await dialog.evaluate(element => {
+      element.style.borderWidth = '4px';
+    });
+    await check('stash-border');
+    await dialog.evaluate(element => element.style.removeProperty('border-width'));
     assert.ok(
       await dialog.locator('diff-view').evaluate(element => element.scrollWidth > element.clientWidth),
       'Wide diffs keep their horizontal scroll'
