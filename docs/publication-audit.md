@@ -30,6 +30,10 @@ The Linux packaging check detected AppImage runtime `fedfad51acc2860b2916a1eef32
 
 For 0.4.0-beta.7, Gitleaks 8.30.1 scanned all 71 reachable commits without findings, and npm audit reported zero vulnerabilities. Cargo audit passed with the same five warnings reviewed above. Dependency versions are unchanged; only the application version changes in the lockfiles. No advisory ignores were added.
 
+### 21 October 2026 beta.8 release review
+
+For 0.4.0-beta.8, Gitleaks 8.30.1 scanned all reachable Git history without findings, and npm audit reported zero vulnerabilities. Cargo audit passed with the same five warnings reviewed above. Dependency versions are unchanged; only the application version changes in the lockfiles. Regenerated dependency notices retain the existing license inventory. No advisory ignores were added.
+
 ## Remaining external checks
 
 Actual GNOME/KDE, GPU/scaling, cross-application clipboard, and native chooser validation remain pending; see [platform testing](platform-testing.md). Windows signing requires publisher credentials.

@@ -46,6 +46,7 @@ Measured Windows x64 release (14 October 2026): **3.64 MiB** executable, **1.44 
 - Context menus on commits and references for browsing, copying, creating branches, checking out, and merging.
 - A separate native desktop window for staging, unstaging, reviewing, and committing whole files.
 - Stage or unstage selected lines and complete hunks in modified UTF-8 text files. The working file stays intact; stale diffs are rejected. Added/deleted/renamed files, mode changes, binary files, links, and submodules still use whole-file staging.
+- Reset unstaged tracked files, hunks, or selected changed lines after confirmation. Staged changes are kept, and stale diffs are rejected. Partial reset supports modified UTF-8 text files; untracked, renamed, and conflicted files are excluded from reset.
 - Flat/tree staging lists, changed-file filtering, and an action to ignore an untracked file. Ignore rules escape pattern characters; the resulting `.gitignore` edit remains unstaged for review.
 - Commit drafts saved per repository; changes synchronize between open windows.
 - Commit-message dropdown with recent messages, the repository's configured `commit.template`, and named templates saved in the app.
