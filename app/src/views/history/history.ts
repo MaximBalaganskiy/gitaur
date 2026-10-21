@@ -333,6 +333,16 @@ export class History {
     return `${commit.subject} ${commit.author} ${commit.hash} ${commit.refs.join(' ')}`.toLowerCase().includes(this.query.toLowerCase());
   }
 
+  async focusContainingBranch(name: string, kind: 'local' | 'remote') {
+    const branch = this.workspace.snapshot?.branches.find(item => item.name === name && item.kind === kind);
+    if (!branch) {
+      this.workspace.fail(new Error('This branch is no longer available. Refresh the repository and try again.'));
+      return;
+    }
+
+    await this.focusBranch(branch);
+  }
+
   async focusBranch(branch: Branch) {
     const generation = ++this.branchGeneration;
     const repo = this.workspace.repo;

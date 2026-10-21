@@ -134,13 +134,13 @@
           <code>${selected.parents.join(' · ') || 'Root commit'}</code>
           <span>Local branches</span>
           <div class="local-containing-branches" aria-live="polite">
-            <code class="block" repeat.for="branch of detail.localBranches">${branch}</code>
+            <button ui-button class="block! max-w-full min-h-0! px-1! py-0! text-left text-[11px]! text-accent! whitespace-normal!" repeat.for="branch of detail.localBranches" click.trigger="focusContainingBranch(branch, 'local')" title="Jump to local branch tip: ${branch}"><code>${branch}</code></button>
             <span if.bind="!detail">${detailError || 'Loading…'}</span>
             <span if.bind="detail && !detail.localBranches.length">None</span>
           </div>
           <span>Remote branches</span>
           <div class="remote-containing-branches" aria-live="polite">
-            <code class="block" repeat.for="branch of detail.remoteBranches">${branch}</code>
+            <button ui-button class="block! max-w-full min-h-0! px-1! py-0! text-left text-[11px]! text-accent! whitespace-normal!" repeat.for="branch of detail.remoteBranches" click.trigger="focusContainingBranch(branch, 'remote')" title="Jump to remote branch tip: ${branch}"><code>${branch}</code></button>
             <span if.bind="!detail">${detailError || 'Loading…'}</span>
             <span if.bind="detail && !detail.remoteBranches.length">None</span>
           </div>

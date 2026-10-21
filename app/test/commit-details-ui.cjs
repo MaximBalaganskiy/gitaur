@@ -29,6 +29,7 @@ const path = require('node:path');
   await git(repo, ['switch', 'main']);
   await commit('main.txt', 'Main');
   await git(repo, ['merge', '--no-edit', 'feature/nested']);
+  const main = (await git(repo, ['rev-parse', 'HEAD'])).stdout.trim();
   await git(repo, ['update-ref', 'refs/remotes/origin/main', 'HEAD']);
   await git(repo, ['symbolic-ref', 'refs/remotes/origin/HEAD', 'refs/remotes/origin/main']);
   await git(repo, ['switch', '--detach']);
@@ -64,6 +65,16 @@ const path = require('node:path');
     await tab.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await select(base, ['feature/nested', 'main', 'older'], ['origin/main']);
+    await local.getByRole('button', { name: 'main', exact: true }).click();
+    await page.locator(`#commit-${main}.selected`).waitFor();
+    await select(base, ['feature/nested', 'main', 'older'], ['origin/main']);
+    await remote.getByRole('button', { name: 'origin/main', exact: true }).press('Enter');
+    await page.locator(`#commit-${main}.selected`).waitFor();
+    await select(base, ['feature/nested', 'main', 'older'], ['origin/main']);
+    await local.getByRole('button', { name: 'feature/nested', exact: true }).press('Space');
+    await page.locator(`#commit-${feature}.selected`).waitFor();
+    assert.equal((await git(repo, ['branch', '--show-current'])).stdout.trim(), 'main');
+    assert.equal((await git(repo, ['rev-parse', 'HEAD'])).stdout.trim(), main);
     await select(feature, ['feature/nested', 'main'], ['origin/main']);
     await fs.mkdir(path.resolve('test-results'), { recursive: true });
     await page.screenshot({ path: path.resolve('test-results/commit-details.png') });
@@ -90,7 +101,7 @@ const path = require('node:path');
     await select(feature, ['added-after-selection', 'feature/nested', 'main'], ['origin/main']);
     assert.deepEqual(errors, []);
     console.log(
-      'PASS: commit containment across merged ancestry, local/remote refs, aliases, tag-only commits, reference refresh, keyboard, and lookup failure recovery.'
+      'PASS: commit containment, local/remote tip navigation without checkout, keyboard, reference refresh, and lookup failure recovery.'
     );
   } catch (error) {
     console.error(await page.locator('.detail-panel').innerText());
