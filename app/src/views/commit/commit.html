@@ -38,7 +38,7 @@
           <button ui-button class="text-[11px]!" click.trigger="stageAll(false)" disabled.bind="!canStageAll">Stage all ↓</button>
         </div>
         <div class="stage-files min-h-0 flex-1 overflow-auto">
-          <change-list files.bind="visibleUnstaged" staged.bind="false" tree.bind="treeLayout" selected-path.bind="workingStaged === false ? workingFile.path : ''" file-selected.trigger="selectWorking($event.detail.file, $event.detail.staged)" file-stage.trigger="stage($event.detail.file, $event.detail.staged)" file-ignore.trigger="ignore($event.detail.file)" file-resolve.trigger="resolveConflict($event.detail.file)"></change-list>
+          <change-list files.bind="visibleUnstaged" staged.bind="false" tree.bind="treeLayout" selected-path.bind="workingStaged === false ? workingFile.path : ''" file-selected.trigger="selectWorking($event.detail.file, $event.detail.staged)" file-stage.trigger="stage($event.detail.file, $event.detail.staged)" file-reset.trigger="resetFile($event.detail.file)" file-ignore.trigger="ignore($event.detail.file)" file-resolve.trigger="resolveConflict($event.detail.file)"></change-list>
           <p if.bind="fileQuery && unstaged.length && !visibleUnstaged.length" class="p-4 text-xs text-ink-500">No matching files.</p>
           <div class="empty-small px-4 py-6 text-center text-[11px] leading-relaxed text-ink-500" if.bind="!unstaged.length">
             <span class="empty-check mb-1 block text-xl text-success-text">✓</span>
@@ -56,7 +56,7 @@
           <button ui-button class="text-[11px]!" click.trigger="stageAll(true)" disabled.bind="workspace.busy || !staged.length">Unstage all ↑</button>
         </div>
         <div class="stage-files min-h-0 flex-1 overflow-auto">
-          <change-list files.bind="visibleStaged" staged.bind="true" tree.bind="treeLayout" selected-path.bind="workingStaged === true ? workingFile.path : ''" file-selected.trigger="selectWorking($event.detail.file, $event.detail.staged)" file-stage.trigger="stage($event.detail.file, $event.detail.staged)" file-ignore.trigger="ignore($event.detail.file)" file-resolve.trigger="resolveConflict($event.detail.file)"></change-list>
+          <change-list files.bind="visibleStaged" staged.bind="true" tree.bind="treeLayout" selected-path.bind="workingStaged === true ? workingFile.path : ''" file-selected.trigger="selectWorking($event.detail.file, $event.detail.staged)" file-stage.trigger="stage($event.detail.file, $event.detail.staged)" file-reset.trigger="resetFile($event.detail.file)" file-ignore.trigger="ignore($event.detail.file)" file-resolve.trigger="resolveConflict($event.detail.file)"></change-list>
           <p if.bind="fileQuery && staged.length && !visibleStaged.length" class="p-4 text-xs text-ink-500">No matching files.</p>
           <div class="empty-small px-4 py-6 text-center text-[11px] leading-relaxed text-ink-500" if.bind="!staged.length">
             Stage changes to include
@@ -75,10 +75,11 @@
         <span class="diff-mode ml-auto text-[9px] tracking-widest ${workingStaged ? 'text-accent' : ''}">${workingFile ? workingStaged ? 'STAGED' : 'UNSTAGED' : ''}</span>
         <button ui-button click.trigger="toggleFullFile()" disabled.bind="!workingFile || diffLoading || workspace.busy" aria-pressed.bind="fullFile">${fullFile ? 'Show changes only' : 'Show full file'}</button>
         <button ui-button class="text-[11px]!" if.bind="workingFile && !workingFile.conflict" disabled.bind="workspace.busy" click.trigger="stage(workingFile, workingStaged)">${workingStaged ? '↑ Unstage file' : '↓ Stage file'}</button>
+        <button ui-button danger if.bind="canResetFile(workingFile)" disabled.bind="workspace.busy || diffLoading" click.trigger="resetFile(workingFile)">Reset file changes…</button>
         <button ui-button if.bind="workingFile.index === '?'" click.trigger="ignore(workingFile)" disabled.bind="workspace.busy">Add to .gitignore</button>
         <button ui-button primary if.bind="workingFile.conflict" click.trigger="resolveConflict(workingFile)" disabled.bind="workspace.busy">Resolve conflict…</button>
       </div>
-      <diff-view file-path.bind="workingFile ? workingFile.path : ''" text.bind="diff" is-loading.bind="diffLoading" selectable.bind="canStageSelection" staged.bind="workingStaged" disabled.bind="workspace.busy" stage-selection.trigger="stageSelection($event.detail)"></diff-view>
+      <diff-view file-path.bind="workingFile ? workingFile.path : ''" text.bind="diff" is-loading.bind="diffLoading" selectable.bind="canStageSelection" staged.bind="workingStaged" disabled.bind="workspace.busy" resettable.bind="canResetFile(workingFile)" stage-selection.trigger="stageSelection($event.detail)" reset-selection.trigger="resetSelection($event.detail)"></diff-view>
     </div>
     <ui-splitter splitter-bounds show.bind="!replaying" direction="vertical" target="next" size="300" min.bind="0" max.bind="Number.MAX_SAFE_INTEGER" storage-key="${workspace.splitterStoragePrefix}:commit-message" aria-label="Resize diff and commit message"></ui-splitter>
     <section show.bind="!replaying" class="message-composer flex min-h-0 shrink-0 flex-col overflow-auto bg-card p-3">

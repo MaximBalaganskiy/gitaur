@@ -3,6 +3,7 @@
   <div if.bind="selectable && !isLoading && !truncated" class="sticky top-0 z-10 flex items-center gap-3 border-b border-card-border bg-card px-3 py-2">
     <span class="text-xs text-ink-500">${selected.length} changed lines selected</span>
     <button ui-button click.trigger="apply()" disabled.bind="disabled || !selected.length">${staged ? 'Unstage selected lines' : 'Stage selected lines'}</button>
+    <button ui-button danger if.bind="resettable" click.trigger="apply(selected, true)" disabled.bind="disabled || !selected.length">Reset selected lines…</button>
     <button ui-button click.trigger="selected = []" disabled.bind="!selected.length">Clear selection</button>
   </div>
   <div class="diff-empty grid h-full min-h-40 place-items-center text-xs text-ink-500" if.bind="isLoading">Loading diff…</div>
@@ -17,6 +18,7 @@
       <!-- prettier-ignore -->
       <code><span if.bind="line.kind === 'added' || line.kind === 'removed' || line.kind === 'context'" class="diff-marker select-none" aria-hidden="true">${line.text[0]}</span><span class="diff-content" innerhtml.bind="line.html"></span></code>
       <button ui-button if.bind="selectable && !truncated && line.kind === 'hunk'" class="mx-2 text-xs!" disabled.bind="disabled" click.trigger="applyHunk($index)">${staged ? 'Unstage hunk' : 'Stage hunk'}</button>
+      <button ui-button danger if.bind="selectable && resettable && !truncated && line.kind === 'hunk'" class="mx-2 text-xs!" disabled.bind="disabled" click.trigger="applyHunk($index, true)">Reset hunk…</button>
     </div>
     <div if.bind="truncated" class="diff-limit p-4 text-ink-500">Preview limited to 12,000 lines.</div>
   </div>

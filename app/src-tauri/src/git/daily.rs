@@ -152,7 +152,9 @@ impl GitService {
         }
         self.run(repo, &["reset", "--soft", parents[0]], false)?;
       }
-      "partial-stage" => self.apply_partial(repo, payload)?,
+      "partial-stage" => self.apply_partial(repo, payload, false)?,
+      "partial-reset" => self.apply_partial(repo, payload, true)?,
+      "reset-file" => self.reset_file(repo, payload)?,
       _ => return Err("Unsupported daily operation.".into()),
     }
     Ok(())

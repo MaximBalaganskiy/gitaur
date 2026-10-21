@@ -164,6 +164,8 @@ export class WorkspaceService {
         amend: 'Commit amended',
         'undo-commit': 'Commit undone; changes remain staged',
         'partial-stage': 'Selected changes updated in the index',
+        'partial-reset': 'Selected changes reset',
+        'reset-file': 'Unstaged file changes reset',
         checkout: 'Branch switched',
         branch: 'Branch created',
         'branch-rename': 'Branch renamed',

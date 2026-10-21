@@ -295,6 +295,49 @@ export class Commit extends ValidatedForm {
     return !!file && !file.conflict && !file.originalPath && (this.workingStaged ? file.index : file.worktree) === 'M';
   }
 
+  canResetFile(file: ChangedFile | null, staged = this.workingStaged) {
+    return !!file && !staged && !file.conflict && file.index !== '?' && !file.originalPath && file.unstaged;
+  }
+
+  async resetFile(file: ChangedFile) {
+    if (!this.canResetFile(file, false) || this.workspace.busy) {
+      return;
+    }
+    try {
+      const original = await this.workspace.client.diff({ path: file.path, fullFile: this.fullFile });
+      return this.dialogs.open({
+        component: ActionDialog,
+        model: {
+          title: 'Reset file changes',
+          description: `Discard all unstaged changes in ${file.path}? The file will be restored from the index. Staged changes will be kept. This cannot be undone.`,
+          action: 'reset-file',
+          payload: { paths: [file.path], original, full_file: this.fullFile },
+          confirm: 'Reset file',
+          danger: true
+        }
+      });
+    } catch (error) {
+      this.workspace.fail(error);
+    }
+  }
+
+  resetSelection(lines: number[]) {
+    if (!this.canResetFile(this.workingFile) || !this.canStageSelection || !lines.length || this.diffLoading || this.workspace.busy) {
+      return;
+    }
+    return this.dialogs.open({
+      component: ActionDialog,
+      model: {
+        title: 'Reset selected changes',
+        description: `Discard the ${lines.length} selected changed lines in ${this.workingFile!.path}? Other unstaged changes and staged changes will be kept. This cannot be undone.`,
+        action: 'partial-reset',
+        payload: { paths: [this.workingFile!.path], original: this.diff, lines, full_file: this.fullFile },
+        confirm: 'Reset changes',
+        danger: true
+      }
+    });
+  }
+
   stageSelection(lines: number[]) {
     return this.workspace.action('partial-stage', {
       paths: [this.workingFile?.path],
