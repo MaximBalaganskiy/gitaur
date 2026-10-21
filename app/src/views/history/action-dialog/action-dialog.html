@@ -1,4 +1,4 @@
-<template class="w-[480px] max-w-[90vw] max-h-[90vh] overflow-auto p-6">
+<template class="w-[480px] max-w-[90vw] max-h-[90vh] overflow-auto p-6 [overflow-wrap:anywhere]">
   <h2 class="mb-4 text-xl!">${model.title}</h2>
   <p class="mb-4 whitespace-pre-wrap">${model.description}</p>
   <ui-alert if.bind="error" tone="danger" role="alert">${error}</ui-alert>

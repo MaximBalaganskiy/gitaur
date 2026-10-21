@@ -17,7 +17,9 @@ const path = require('node:path');
   ]) {
     await git(repo, ['config', key, value]);
   }
-  const file = path.join(repo, 'file.txt');
+  const relative = 'Services/InboxService/Dynamik.Inbox.MessageReceiver/Consumers/MessageReceivedNotificationConsumerImplementation.cs';
+  const file = path.join(repo, relative);
+  await fs.mkdir(path.dirname(file), { recursive: true });
   const base = Array.from({ length: 30 }, (_, index) => `line ${index + 1}\n`).join('');
   await fs.writeFile(file, base);
   await git(repo, ['add', '.']);
@@ -46,7 +48,7 @@ const path = require('node:path');
     await dialog.getByRole('button', { name: 'Reset changes', exact: true }).press('Enter');
     await dialog.waitFor({ state: 'hidden' });
     assert.equal(await fs.readFile(file, 'utf8'), indexed.replace('line 28\n', 'changed 28\n'));
-    assert.equal((await git(repo, ['show', ':file.txt'])).stdout, indexed);
+    assert.equal((await git(repo, ['show', `:${relative}`])).stdout, indexed);
     await button('Show full file').click();
     await commit.locator('.diff-content').getByText('line 12', { exact: true }).waitFor();
     await commit.locator('.diff-line.added').filter({ hasText: '+changed 28' }).getByRole('button').press('Space');
@@ -56,6 +58,19 @@ const path = require('node:path');
     assert.equal(await fs.readFile(file, 'utf8'), indexed.replace('line 28\n', ''));
     await button('Reset file changes…').click();
     await dialog.waitFor();
+    await commit.setViewportSize({ width: 900, height: 640 });
+    await dialog.evaluate(element => {
+      for (const container of [element, ...element.querySelectorAll('*')]) {
+        assertNoHorizontalScroll(container);
+      }
+      function assertNoHorizontalScroll(container) {
+        if (container.clientWidth && container.scrollWidth > container.clientWidth + 1) {
+          throw new Error(`Dialog overflows horizontally: ${container.tagName}`);
+        }
+      }
+    });
+    await dialog.screenshot({ path: path.resolve('test-results/reset-long-path-dialog.png') });
+    await commit.setViewportSize({ width: 1200, height: 900 });
     const external = indexed.replace('line 28\n', 'external edit\n');
     await fs.writeFile(file, external);
     await dialog.getByRole('button', { name: 'Reset file', exact: true }).click();
@@ -70,8 +85,8 @@ const path = require('node:path');
         await button('Show file tree').click();
       }
       const row = tree
-        ? commit.locator('.unstaged-section [title="file.txt"]')
-        : commit.locator('.unstaged-section .stage-file').filter({ hasText: 'file.txt' });
+        ? commit.locator(`.unstaged-section [title="${relative}"]`)
+        : commit.locator('.unstaged-section .stage-file').filter({ hasText: relative });
       await row.click({ button: 'right' });
       await commit.getByRole('option', { name: 'Reset file changes…', exact: true }).click();
       await dialog.waitFor();
@@ -82,8 +97,8 @@ const path = require('node:path');
     await dialog.getByRole('button', { name: 'Reset file', exact: true }).press('Enter');
     await dialog.waitFor({ state: 'hidden' });
     assert.equal(await fs.readFile(file, 'utf8'), indexed);
-    assert.equal((await git(repo, ['show', ':file.txt'])).stdout, indexed);
-    assert.equal((await git(repo, ['show', 'HEAD:file.txt'])).stdout, base);
+    assert.equal((await git(repo, ['show', `:${relative}`])).stdout, indexed);
+    assert.equal((await git(repo, ['show', `HEAD:${relative}`])).stdout, base);
     assert.equal(await fs.readFile(path.join(repo, 'untracked.txt'), 'utf8'), 'keep\n');
     assert.equal(await button('Reset file changes…').count(), 0);
     assert.deepEqual(errors, []);
