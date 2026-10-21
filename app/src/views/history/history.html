@@ -52,8 +52,8 @@
         <span>SHA</span>
       </div>
       <div class="history-scroll min-h-0 flex-1 overflow-auto [scrollbar-gutter:stable]">
-        <div class="commit-rows" ui-context-menu.bind="commitMenu" role="list" aria-label="Commit history">
-          <button ui-button repeat.for="row of rows; key: commit.hash" id="commit-${row.commit.hash}" class="commit-row grid! h-[var(--app-row-height)] w-full min-w-[650px] items-center gap-0 rounded-none! border-0! border-l-2! border-transparent! p-0! text-left text-sm! leading-normal! font-normal! transform-none! ${selected && selected.hash === row.commit.hash ? 'selected' : ''} ${!matches(row.commit) ? 'dimmed' : ''}" contextmenu.trigger="contextCommit = row.commit" click.trigger="selectCommit(row.commit)" aria-label.bind="row.commit.subject" title.bind="row.commit.subject">
+        <div class="commit-rows" ui-context-menu="value.bind: commitMenu; filter: .commit-row" role="list" aria-label="Commit history">
+          <button ui-button repeat.for="row of rows; key: commit.hash" id="commit-${row.commit.hash}" class="commit-row grid! h-[var(--app-row-height)] w-full min-w-[650px] items-center gap-0 rounded-none! border-0! border-l-2! border-transparent! p-0! text-left text-sm! leading-normal! font-normal! transform-none! ${selected && selected.hash === row.commit.hash ? 'selected' : ''} ${!matches(row.commit) ? 'dimmed' : ''}" contextmenu.trigger="setCommitContext(row.commit, $event)" click.trigger="selectCommit(row.commit)" aria-label.bind="row.commit.subject" title.bind="row.commit.subject">
             <span class="graph-and-subject flex h-full min-w-0 items-center">
               <svg class="graph block flex-none overflow-visible" width.bind="row.width" height.bind="appearance.rowHeight" aria-hidden="true">
                 <path repeat.for="edge of row.edges" d.bind="edge.d" stroke.bind="edge.color" fill="none" stroke-width="1.8"></path>
@@ -152,6 +152,7 @@
     <ui-list-item value="copy">Copy commit hash</ui-list-item>
     <ui-list-item value="branch" disabled.bind="workspace.busy">Create branch here…</ui-list-item>
     <ui-list-item value="tag" disabled.bind="workspace.busy">Create tag here…</ui-list-item>
+    <ui-list-item repeat.for="branch of contextBranches; key: fullName" non-selectable click.trigger="checkoutBranch(branch)" disabled.bind="workspace.busy || !!workspace.snapshot.operation || (branch.kind === 'local' && branch.name === workspace.snapshot.branch)">Check out ${branch.kind} branch ${branch.name}</ui-list-item>
     <ui-list-item value="checkout" disabled.bind="workspace.busy">Check out commit…</ui-list-item>
     <ui-list-item value="merge" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Merge into current branch…</ui-list-item>
     <ui-list-item value="cherry-pick" disabled.bind="workspace.busy || !!workspace.snapshot.operation">Cherry-pick commit…</ui-list-item>
