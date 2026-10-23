@@ -58,7 +58,7 @@
     "aurelia": "2.0.0-rc.2",
     "diff": "^9.0.0",
     "lowlight": "^3.3.0",
-    "playwright": "^1.56.0",
+    "playwright": "^1.64.1",
     "prettier": "^3.9.10",
     "rxjs": "7.8.2",
     "tailwindcss": "^4.3.3",
