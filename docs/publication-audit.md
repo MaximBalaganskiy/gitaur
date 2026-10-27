@@ -34,6 +34,10 @@ For 0.4.0-beta.7, Gitleaks 8.30.1 scanned all 71 reachable commits without findi
 
 For 0.4.0-beta.8, Gitleaks 8.30.1 scanned all reachable Git history without findings, and npm audit reported zero vulnerabilities. Cargo audit passed with the same five warnings reviewed above. Dependency versions are unchanged; only the application version changes in the lockfiles. Regenerated dependency notices retain the existing license inventory. No advisory ignores were added.
 
+### 28 October 2026 beta.9 release review
+
+For 0.4.0-beta.9, Gitleaks 8.30.1 scanned all reachable Git history without findings, and npm audit reported zero vulnerabilities. Cargo audit passed with the same five informational warnings reviewed above. The image preview implementation adds a direct dependency on the already locked `base64` 0.22.1 crate; its MIT/Apache-2.0 notices are included in the regenerated inventory. No advisory ignores were added.
+
 ## Remaining external checks
 
 Actual GNOME/KDE, GPU/scaling, cross-application clipboard, and native chooser validation remain pending; see [platform testing](platform-testing.md). Windows signing requires publisher credentials.
