@@ -5,6 +5,7 @@ import type { Submodule } from './submodule';
 import type { LfsStatus } from './lfs-status';
 import type { Detail } from './detail';
 import type { DiffRequest } from './diff-request';
+import type { ImageDiff } from './image-diff';
 import type { CommandEntry } from './command-entry';
 import type { BootstrapState } from './bootstrap-state';
 import type { Remote } from './remote';
@@ -38,6 +39,7 @@ export interface GitClient {
   commitTree(hash: string): Promise<TreeEntry[]>;
   commitFile(hash: string, path: string): Promise<FilePreview>;
   diff(request: DiffRequest): Promise<string>;
+  imageDiff(request: DiffRequest): Promise<ImageDiff>;
   mutate(action: string, payload?: Record<string, unknown>): Promise<boolean>;
   log(): Promise<CommandEntry[]>;
   openCommit(): Promise<void>;

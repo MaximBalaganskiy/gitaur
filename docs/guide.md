@@ -41,7 +41,7 @@ Measured Windows x64 release (14 October 2026): **3.64 MiB** executable, **1.44 
 - Local branches, remote branches, tags, commit search, and paginated history (up to 100,000 commits). Selecting an unloaded branch tip automatically expands history and scrolls to it.
 - Headless reference tree groups slash-separated branch and tag names into folders, with remotes grouped by name. Arrow keys navigate the tree; search reveals matching paths and clearing it restores collapsed folders.
 - Changed files, syntax-highlighted unified diffs using Lowlight/highlight.js, full commit messages, and a Git command log.
-- Files tab with the complete selected commit's file tree and highlighted historical contents, including unchanged files. Binary files and submodule pointers show an explanatory preview; text previews are limited to 2 MiB and 12,000 lines.
+- Files tab with the complete selected commit's file tree and highlighted historical contents, including unchanged files. Image files show a preview with dimensions and fit/actual-size controls. Changes show Before/After images from the selected commit, index, or working tree. PNG, JPEG, GIF, WebP, SVG, BMP, ICO, and AVIF previews are limited to 10 MiB per image; decoding depends on the system webview. Other binary files and submodule pointers show an explanatory preview; text previews are limited to 2 MiB and 12,000 lines.
 - Filename filtering and search within historical file contents, with a search icon inside each input.
 - Context menus on commits and references for browsing, copying, creating branches, checking out, and merging.
 - A separate native desktop window for staging, unstaging, reviewing, and committing whole files.

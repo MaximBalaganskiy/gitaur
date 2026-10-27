@@ -8,6 +8,7 @@ pub mod conflict_stage;
 pub mod detail;
 pub mod diff_request;
 pub mod file_preview;
+pub mod image_diff;
 pub mod lfs_status;
 pub mod message_options;
 pub mod mutation;

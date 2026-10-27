@@ -22,6 +22,7 @@ export class CommitFiles {
   message = '';
   error = '';
   truncated = false;
+  image = '';
 
   rawLines: string[] = [];
   contentQuery = '';
@@ -87,6 +88,7 @@ export class CommitFiles {
     this.rawLines = [];
     this.selectedNode = '';
     this.selectedPath = '';
+    this.image = '';
     this.lines = [];
     this.message = '';
     this.error = '';
@@ -121,6 +123,7 @@ export class CommitFiles {
     }
     const generation = ++this.fileGeneration;
     this.selectedPath = node.path;
+    this.image = '';
     this.lines = [];
     this.rawLines = [];
     this.matchLine = -1;
@@ -133,7 +136,8 @@ export class CommitFiles {
       if (generation !== this.fileGeneration) {
         return;
       }
-      this.message = preview.message || (preview.text ? '' : 'Empty file.');
+      this.image = preview.image || '';
+      this.message = preview.message || (preview.text || preview.image ? '' : 'Empty file.');
       const lines = preview.text.split('\n');
       this.truncated = lines.length > 12000;
       this.rawLines = lines.slice(0, 12000);

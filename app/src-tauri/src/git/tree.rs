@@ -17,6 +17,13 @@ impl GitService {
       .into_iter()
       .find(|entry| entry.path == path)
       .ok_or("File not found in this commit.")?;
+    if entry.kind == "blob" {
+      if let Some(mime) = super::images::image_mime(path) {
+        return self
+          .revision_image(repo, &entry.object_id, mime)?
+          .ok_or("Image not found.".into());
+      }
+    }
     let message = if entry.kind == "commit" {
       format!("Submodule at commit {}", entry.object_id)
     } else if entry.kind != "blob" {
@@ -30,6 +37,7 @@ impl GitService {
       return Ok(FilePreview {
         text: String::new(),
         message,
+        image: None,
       });
     }
     let bytes = self.run(repo, &["cat-file", "blob", &entry.object_id], false)?.stdout;
@@ -37,11 +45,13 @@ impl GitService {
       return Ok(FilePreview {
         text: String::new(),
         message: "Binary or non-UTF-8 file — no text preview available.".into(),
+        image: None,
       });
     }
     Ok(FilePreview {
       text: String::from_utf8(bytes).map_err(|error| error.to_string())?,
       message: String::new(),
+      image: None,
     })
   }
 }

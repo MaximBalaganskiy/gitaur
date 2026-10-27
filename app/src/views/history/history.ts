@@ -1,6 +1,8 @@
 import { observable, resolve, watch } from 'aurelia';
 import { IDialogService } from '@aurelia/dialog';
 import { WorkspaceService } from '../../services/workspace-service';
+import type { ImageDiff } from '../../interfaces/image-diff';
+import { isImagePath } from '../../services/image-path';
 import { buildGraph } from '../../services/graph-layout';
 import { AppearanceService } from '../../services/appearance-service';
 import { CommitSelectionHistory } from '../../services/commit-selection-history';
@@ -61,6 +63,7 @@ export class History {
   detailError = '';
   selectedFile = '';
   diff = '';
+  images: ImageDiff | null = null;
   diffLoading = false;
   fullFile = false;
   query = '';
@@ -337,6 +340,7 @@ export class History {
       this.selected = null;
       this.detail = null;
       this.selectedFile = '';
+      this.images = null;
       this.diff = '';
       this.diffLoading = false;
     }
@@ -356,6 +360,7 @@ export class History {
     this.detail = null;
     this.detailError = '';
     this.selectedFile = '';
+    this.images = null;
     this.diff = '';
     this.diffLoading = false;
 
@@ -389,12 +394,16 @@ export class History {
 
     const generation = ++this.diffGeneration;
     this.selectedFile = path;
+    this.images = null;
     this.diffLoading = true;
     this.diff = '';
 
     try {
-      const text = await this.workspace.client.diff({ path, hash: this.selected.hash, fullFile: this.fullFile });
+      const request = { path, hash: this.selected.hash, fullFile: this.fullFile };
+      const images = isImagePath(path) ? await this.workspace.client.imageDiff(request) : null;
+      const text = images ? '' : await this.workspace.client.diff(request);
       if (generation === this.diffGeneration) {
+        this.images = images;
         this.diff = text || 'No text changes for this file.';
       }
     } catch (error) {

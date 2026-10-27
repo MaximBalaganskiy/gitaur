@@ -1,5 +1,6 @@
 <template class="flex min-h-0 min-w-0 flex-1 overflow-hidden">
   <import from="../../../attributes/code-selection"></import>
+  <import from="../../../elements/image-preview/image-preview"></import>
   <import from="../../../attributes/splitter-bounds"></import>
   <div class="w-[280px] min-w-0 shrink-0 overflow-auto">
     <div class="px-3 py-2 text-xs text-ink-500">Files at this commit · ${fileCount}</div>
@@ -36,6 +37,7 @@
     </ui-form>
     <div class="min-h-0 flex-1 overflow-auto">
       <div if.bind="fileLoading" class="p-8 text-center text-sm text-ink-500">Loading file…</div>
+      <image-preview if.bind="!fileLoading && image" class="p-4" source.bind="image" label.bind="selectedPath"></image-preview>
       <div if.bind="!fileLoading && (!selectedPath || message)" class="p-8 text-center text-sm text-ink-500">${message || 'Select a file to view its contents at this commit.'}</div>
       <div if.bind="!fileLoading && lines.length" class="file-content min-w-max py-2 text-xs leading-[21px]" tabindex="0" aria-label="File contents" code-selection="code">
         <div repeat.for="line of lines" data-line.bind="$index" class="flex min-h-[21px] whitespace-pre ${matchLine === $index ? 'bg-warning-bg' : ''}">

@@ -264,6 +264,18 @@ pub async fn diff(app: AppHandle, window: WebviewWindow, request: DiffRequest) -
 }
 
 #[tauri::command]
+pub async fn image_diff(
+  app: AppHandle,
+  window: WebviewWindow,
+  request: DiffRequest,
+) -> Result<crate::models::image_diff::ImageDiff, String> {
+  let repo = app.state::<AppState>().repo(window.label())?;
+  tauri::async_runtime::spawn_blocking(move || app.state::<AppState>().git.image_diff(&repo, &request))
+    .await
+    .map_err(|error| error.to_string())?
+}
+
+#[tauri::command]
 pub async fn mutate(app: AppHandle, window: WebviewWindow, action: String, payload: Mutation) -> Result<bool, String> {
   let repo = app.state::<AppState>().repo(window.label())?;
   tauri::async_runtime::spawn_blocking(move || {

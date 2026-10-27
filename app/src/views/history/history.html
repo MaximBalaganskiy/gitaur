@@ -123,10 +123,10 @@
         <div class="diff-panel flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
           <div class="diff-heading flex min-h-8 shrink-0 items-center justify-between gap-2.5 border-b border-card-border px-3.5 text-[11px]">
             <span title.bind="selectedFile">${selectedFile || 'File preview'}</span>
-            <span class="muted text-ink-500">Unified diff</span>
-            <button ui-button click.trigger="toggleFullFile()" disabled.bind="!selectedFile || diffLoading" aria-pressed.bind="fullFile">${fullFile ? 'Show changes only' : 'Show full file'}</button>
+            <span class="muted text-ink-500">${images ? 'Image comparison' : 'Unified diff'}</span>
+            <button ui-button if.bind="!images" click.trigger="toggleFullFile()" disabled.bind="!selectedFile || diffLoading" aria-pressed.bind="fullFile">${fullFile ? 'Show changes only' : 'Show full file'}</button>
           </div>
-          <diff-view file-path.bind="selectedFile" text.bind="diff" is-loading.bind="diffLoading"></diff-view>
+          <diff-view file-path.bind="selectedFile" text.bind="diff" images.bind="images" is-loading.bind="diffLoading"></diff-view>
         </div>
       </div>
       <commit-files if.bind="tab === 'files' && selected" hash.bind="selected.hash" repository.bind="workspace.repo"></commit-files>

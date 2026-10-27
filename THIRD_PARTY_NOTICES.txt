@@ -1,6 +1,6 @@
 Gitaur third-party notices
 
-Lockfile SHA-256: f014a78a73779f296a004a8d9c40707d35b4faad92059a8c84d82b97b81f5f8d
+Lockfile SHA-256: ade9f859de97f38f4d2e637f23bf8b71ebc1a140d4c6193635b691be0aa20e48
 
 Gitaur's own source is MIT licensed. Third-party components retain their
 own licenses below. This inventory includes the renderer dependencies and
@@ -112,35 +112,40 @@ License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/autocfg/1.5.1/download
 Full notices: 11, 14
 
+cargo:base64@0.22.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/base64/0.22.1/download
+Full notices: 11, 15
+
 cargo:base64@0.23.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/base64/0.23.1/download
-Full notices: 11, 15
+Full notices: 11, 16
 
 cargo:bit-set@0.8.0
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/bit-set/0.8.0/download
-Full notices: 16, 17
+Full notices: 17, 18
 
 cargo:bit-vec@0.8.0
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/bit-vec/0.8.0/download
-Full notices: 16, 17
+Full notices: 17, 18
 
 cargo:bitflags@1.3.2
 License: MIT/Apache-2.0
 Source: https://crates.io/api/v1/crates/bitflags/1.3.2/download
-Full notices: 11, 18
+Full notices: 11, 19
 
 cargo:bitflags@2.13.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/bitflags/2.13.2/download
-Full notices: 11, 18
+Full notices: 11, 19
 
 cargo:block-buffer@0.10.4
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/block-buffer/0.10.4/download
-Full notices: 19, 20
+Full notices: 20, 21
 
 cargo:blocking@1.7.0
 License: Apache-2.0 OR MIT
@@ -155,12 +160,12 @@ Full notices: 6
 cargo:brotli@9.0.0
 License: BSD-3-Clause AND MIT
 Source: https://crates.io/api/v1/crates/brotli/9.0.0/download
-Full notices: 6, 21
+Full notices: 6, 22
 
 cargo:bs58@0.5.1
 License: MIT/Apache-2.0
 Source: https://crates.io/api/v1/crates/bs58/0.5.1/download
-Full notices: 11, 22
+Full notices: 11, 23
 
 cargo:byteorder@1.5.0
 License: Unlicense OR MIT
@@ -170,7 +175,7 @@ Full notices: 4, 5
 cargo:bytes@1.12.1
 License: MIT
 Source: https://crates.io/api/v1/crates/bytes/1.12.1/download
-Full notices: 23
+Full notices: 24
 
 cargo:cairo-rs@0.18.5
 License: MIT
@@ -195,7 +200,7 @@ Full notices: 3
 cargo:cargo_toml@1.0.1
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/cargo_toml/1.0.1/download
-Full notices: 24
+Full notices: 25
 
 cargo:cargo-platform@0.1.9
 License: MIT OR Apache-2.0
@@ -205,27 +210,27 @@ Full notices: 2, 3
 cargo:cc@1.8.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/cc/1.8.0/download
-Full notices: 11, 25
+Full notices: 11, 26
 
 cargo:cfb@0.14.0
 License: MIT
 Source: https://crates.io/api/v1/crates/cfb/0.14.0/download
-Full notices: 26
+Full notices: 27
 
 cargo:cfg-expr@0.15.8
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/cfg-expr/0.15.8/download
-Full notices: 16, 27
+Full notices: 17, 28
 
 cargo:cfg-if@1.0.5
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/cfg-if/1.0.5/download
-Full notices: 11, 25
+Full notices: 11, 26
 
 cargo:chrono@0.4.45
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/chrono/0.4.45/download
-Full notices: 28
+Full notices: 29
 
 cargo:concurrent-queue@2.5.0
 License: Apache-2.0 OR MIT
@@ -235,112 +240,112 @@ Full notices: 11, 3
 cargo:cookie@0.18.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/cookie/0.18.2/download
-Full notices: 29, 30
+Full notices: 30, 31
 
 cargo:cpufeatures@0.2.17
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/cpufeatures/0.2.17/download
-Full notices: 19, 31
+Full notices: 20, 32
 
 cargo:crc32fast@1.5.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/crc32fast/1.5.2/download
-Full notices: 32, 33
+Full notices: 33, 34
 
 cargo:crossbeam-channel@0.5.17
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/crossbeam-channel/0.5.17/download
-Full notices: 11, 34, 35
+Full notices: 11, 35, 36
 
 cargo:crossbeam-utils@0.8.23
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/crossbeam-utils/0.8.23/download
-Full notices: 11, 34
+Full notices: 11, 35
 
 cargo:crypto-common@0.1.7
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/crypto-common/0.1.7/download
-Full notices: 19, 36
+Full notices: 20, 37
 
 cargo:cssparser-macros@0.7.1
 License: MPL-2.0
 Source: https://crates.io/api/v1/crates/cssparser-macros/0.7.1/download
-Full notices: 37
+Full notices: 38
 
 cargo:cssparser@0.37.0
 License: MPL-2.0
 Source: https://crates.io/api/v1/crates/cssparser/0.37.0/download
-Full notices: 37
+Full notices: 38
 
 cargo:ctor@1.0.13
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/ctor/1.0.13/download
-Full notices: 32, 38
+Full notices: 33, 39
 
 cargo:darling_core@0.24.1
 License: MIT
 Source: https://crates.io/api/v1/crates/darling_core/0.24.1/download
-Full notices: 39
+Full notices: 40
 
 cargo:darling_macro@0.24.1
 License: MIT
 Source: https://crates.io/api/v1/crates/darling_macro/0.24.1/download
-Full notices: 39
+Full notices: 40
 
 cargo:darling@0.24.1
 License: MIT
 Source: https://crates.io/api/v1/crates/darling/0.24.1/download
-Full notices: 39
+Full notices: 40
 
 cargo:dbus@0.9.12
 License: Apache-2.0/MIT
 Source: https://crates.io/api/v1/crates/dbus/0.9.12/download
-Full notices: 40, 41
+Full notices: 41, 42
 
 cargo:defmt-macros@1.1.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/defmt-macros/1.1.1/download
-Full notices: 16, 42
+Full notices: 17, 43
 
 cargo:defmt-parser@1.0.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/defmt-parser/1.0.0/download
-Full notices: 43
+Full notices: 44
 
 cargo:defmt@1.1.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/defmt/1.1.1/download
-Full notices: 16, 42
+Full notices: 17, 43
 
 cargo:deranged@0.5.9
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/deranged/0.5.9/download
-Full notices: 44, 45
+Full notices: 45, 46
 
 cargo:derive_more-impl@2.1.1
 License: MIT
 Source: https://crates.io/api/v1/crates/derive_more-impl/2.1.1/download
-Full notices: 46
+Full notices: 47
 
 cargo:derive_more@2.1.1
 License: MIT
 Source: https://crates.io/api/v1/crates/derive_more/2.1.1/download
-Full notices: 46
+Full notices: 47
 
 cargo:digest@0.10.7
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/digest/0.10.7/download
-Full notices: 19, 47
+Full notices: 20, 48
 
 cargo:dirs-sys@0.5.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/dirs-sys/0.5.0/download
-Full notices: 48, 49
+Full notices: 49, 50
 
 cargo:dirs@7.0.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/dirs/7.0.0/download
-Full notices: 48, 49
+Full notices: 49, 50
 
 cargo:displaydoc@0.2.7
 License: MIT OR Apache-2.0
@@ -350,27 +355,27 @@ Full notices: 11, 3
 cargo:dlopen2_derive@0.4.3
 License: MIT
 Source: https://crates.io/api/v1/crates/dlopen2_derive/0.4.3/download
-Full notices: 50
+Full notices: 51
 
 cargo:dlopen2@0.8.2
 License: MIT
 Source: https://crates.io/api/v1/crates/dlopen2/0.8.2/download
-Full notices: 50
+Full notices: 51
 
 cargo:dom_query@0.28.0
 License: MIT
 Source: https://crates.io/api/v1/crates/dom_query/0.28.0/download
-Full notices: 51
+Full notices: 52
 
 cargo:dpi@0.1.2
 License: Apache-2.0 AND MIT
 Source: https://crates.io/api/v1/crates/dpi/0.1.2/download
-Full notices: 32, 52
+Full notices: 33, 53
 
 cargo:dtoa-short@0.3.5
 License: MPL-2.0
 Source: https://crates.io/api/v1/crates/dtoa-short/0.3.5/download
-Full notices: 37
+Full notices: 38
 
 cargo:dtoa@1.0.11
 License: MIT OR Apache-2.0
@@ -380,7 +385,7 @@ Full notices: 8, 3
 cargo:dunce@1.0.5
 License: CC0-1.0 OR MIT-0 OR Apache-2.0
 Source: https://crates.io/api/v1/crates/dunce/1.0.5/download
-Full notices: 53
+Full notices: 54
 
 cargo:dyn-clone@1.0.20
 License: MIT OR Apache-2.0
@@ -390,7 +395,7 @@ Full notices: 8, 3
 cargo:embed-resource@3.0.12
 License: MIT
 Source: https://crates.io/api/v1/crates/embed-resource/3.0.12/download
-Full notices: 54
+Full notices: 55
 
 cargo:endi@1.1.1
 License: MIT
@@ -400,17 +405,17 @@ Full notices: 3
 cargo:enumflags2_derive@0.7.12
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/enumflags2_derive/0.7.12/download
-Full notices: 55, 56
+Full notices: 56, 57
 
 cargo:enumflags2@0.7.12
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/enumflags2/0.7.12/download
-Full notices: 57, 58
+Full notices: 58, 59
 
 cargo:equivalent@1.0.3
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/equivalent/1.0.3/download
-Full notices: 11, 59
+Full notices: 11, 60
 
 cargo:erased-serde@0.4.10
 License: MIT OR Apache-2.0
@@ -420,7 +425,7 @@ Full notices: 8, 3
 cargo:errno@0.3.14
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/errno/0.3.14/download
-Full notices: 11, 60
+Full notices: 11, 61
 
 cargo:event-listener-strategy@0.5.4
 License: Apache-2.0 OR MIT
@@ -440,57 +445,57 @@ Full notices: 11, 3
 cargo:fdeflate@0.3.7
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/fdeflate/0.3.7/download
-Full notices: 61, 62
+Full notices: 62, 63
 
 cargo:field-offset@0.3.6
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/field-offset/0.3.6/download
-Full notices: 61, 63
+Full notices: 62, 64
 
 cargo:find-msvc-tools@0.1.14
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/find-msvc-tools/0.1.14/download
-Full notices: 11, 25
+Full notices: 11, 26
 
 cargo:flate2@1.1.10
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/flate2/1.1.10/download
-Full notices: 11, 64
+Full notices: 11, 65
 
 cargo:fnv@1.0.7
 License: Apache-2.0 / MIT
 Source: https://crates.io/api/v1/crates/fnv/1.0.7/download
-Full notices: 11, 65
+Full notices: 11, 66
 
 cargo:foldhash@0.2.0
 License: Zlib
 Source: https://crates.io/api/v1/crates/foldhash/0.2.0/download
-Full notices: 66
+Full notices: 67
 
 cargo:form_urlencoded@1.2.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/form_urlencoded/1.2.2/download
-Full notices: 11, 67
+Full notices: 11, 68
 
 cargo:futures-channel@0.3.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/futures-channel/0.3.34/download
-Full notices: 68, 69
+Full notices: 69, 70
 
 cargo:futures-core@0.3.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/futures-core/0.3.34/download
-Full notices: 68, 69
+Full notices: 69, 70
 
 cargo:futures-executor@0.3.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/futures-executor/0.3.34/download
-Full notices: 68, 69
+Full notices: 69, 70
 
 cargo:futures-io@0.3.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/futures-io/0.3.34/download
-Full notices: 68, 69
+Full notices: 69, 70
 
 cargo:futures-lite@2.6.1
 License: Apache-2.0 OR MIT
@@ -500,22 +505,22 @@ Full notices: 11, 3, 13
 cargo:futures-macro@0.3.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/futures-macro/0.3.34/download
-Full notices: 68, 69
+Full notices: 69, 70
 
 cargo:futures-sink@0.3.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/futures-sink/0.3.34/download
-Full notices: 68, 69
+Full notices: 69, 70
 
 cargo:futures-task@0.3.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/futures-task/0.3.34/download
-Full notices: 68, 69
+Full notices: 69, 70
 
 cargo:futures-util@0.3.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/futures-util/0.3.34/download
-Full notices: 68, 69
+Full notices: 69, 70
 
 cargo:gdk-pixbuf-sys@0.18.0
 License: MIT
@@ -555,17 +560,17 @@ Full notices: 12
 cargo:generic-array@0.14.7
 License: MIT
 Source: https://crates.io/api/v1/crates/generic-array/0.14.7/download
-Full notices: 70
+Full notices: 71
 
 cargo:getrandom@0.3.4
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/getrandom/0.3.4/download
-Full notices: 71, 72
+Full notices: 72, 73
 
 cargo:getrandom@0.4.3
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/getrandom/0.4.3/download
-Full notices: 71, 73
+Full notices: 72, 74
 
 cargo:gio-sys@0.18.1
 License: MIT
@@ -595,7 +600,7 @@ Full notices: 12
 cargo:glob@0.3.4
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/glob/0.3.4/download
-Full notices: 11, 18
+Full notices: 11, 19
 
 cargo:gobject-sys@0.18.0
 License: MIT
@@ -620,122 +625,122 @@ Full notices: 12
 cargo:hashbrown@0.12.3
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/hashbrown/0.12.3/download
-Full notices: 11, 74
+Full notices: 11, 75
 
 cargo:hashbrown@0.17.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/hashbrown/0.17.1/download
-Full notices: 11, 74
+Full notices: 11, 75
 
 cargo:heck@0.4.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/heck/0.4.1/download
-Full notices: 11, 75
+Full notices: 11, 76
 
 cargo:heck@0.5.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/heck/0.5.0/download
-Full notices: 11, 75
+Full notices: 11, 76
 
 cargo:hex@0.4.3
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/hex/0.4.3/download
-Full notices: 32, 76
+Full notices: 33, 77
 
 cargo:html5ever@0.39.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/html5ever/0.39.0/download
-Full notices: 11, 77
+Full notices: 11, 78
 
 cargo:http@1.5.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/http/1.5.0/download
-Full notices: 78, 79
+Full notices: 79, 80
 
 cargo:iana-time-zone@0.1.65
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/iana-time-zone/0.1.65/download
-Full notices: 80, 81
+Full notices: 81, 82
 
 cargo:ico@0.5.0
 License: MIT
 Source: https://crates.io/api/v1/crates/ico/0.5.0/download
-Full notices: 82
+Full notices: 83
 
 cargo:icu_collections@2.3.0
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/icu_collections/2.3.0/download
-Full notices: 83
+Full notices: 84
 
 cargo:icu_locale_core@2.3.0
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/icu_locale_core/2.3.0/download
-Full notices: 83
+Full notices: 84
 
 cargo:icu_normalizer_data@2.3.0
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/icu_normalizer_data/2.3.0/download
-Full notices: 83
+Full notices: 84
 
 cargo:icu_normalizer@2.3.0
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/icu_normalizer/2.3.0/download
-Full notices: 83
+Full notices: 84
 
 cargo:icu_properties_data@2.3.0
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/icu_properties_data/2.3.0/download
-Full notices: 83
+Full notices: 84
 
 cargo:icu_properties@2.3.0
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/icu_properties/2.3.0/download
-Full notices: 83
+Full notices: 84
 
 cargo:icu_provider@2.3.1
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/icu_provider/2.3.1/download
-Full notices: 83
+Full notices: 84
 
 cargo:ident_case@1.0.1
 License: MIT/Apache-2.0
 Source: https://crates.io/api/v1/crates/ident_case/1.0.1/download
-Full notices: 84
+Full notices: 85
 
 cargo:idna_adapter@1.2.2
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/idna_adapter/1.2.2/download
-Full notices: 11, 85
+Full notices: 11, 86
 
 cargo:idna@1.1.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/idna/1.1.0/download
-Full notices: 11, 86
+Full notices: 11, 87
 
 cargo:indexmap@1.9.3
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/indexmap/1.9.3/download
-Full notices: 11, 87
+Full notices: 11, 88
 
 cargo:indexmap@2.14.2
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/indexmap/2.14.2/download
-Full notices: 11, 87
+Full notices: 11, 88
 
 cargo:infer@0.22.0
 License: MIT
 Source: https://crates.io/api/v1/crates/infer/0.22.0/download
-Full notices: 88
+Full notices: 89
 
 cargo:is-docker@0.2.0
 License: MIT
 Source: https://crates.io/api/v1/crates/is-docker/0.2.0/download
-Full notices: 89
+Full notices: 90
 
 cargo:is-wsl@0.4.0
 License: MIT
 Source: https://crates.io/api/v1/crates/is-wsl/0.4.0/download
-Full notices: 89
+Full notices: 90
 
 cargo:itoa@1.0.18
 License: MIT OR Apache-2.0
@@ -745,12 +750,12 @@ Full notices: 8, 3
 cargo:javascriptcore-rs-sys@1.1.1
 License: MIT
 Source: https://crates.io/api/v1/crates/javascriptcore-rs-sys/1.1.1/download
-Full notices: 90
+Full notices: 91
 
 cargo:javascriptcore-rs@1.1.2
 License: MIT
 Source: https://crates.io/api/v1/crates/javascriptcore-rs/1.1.2/download
-Full notices: 91
+Full notices: 92
 
 cargo:jiff-core@0.1.1
 License: Unlicense OR MIT
@@ -775,67 +780,67 @@ Full notices: 4, 5
 cargo:json-patch@4.2.0
 License: MIT/Apache-2.0
 Source: https://crates.io/api/v1/crates/json-patch/4.2.0/download
-Full notices: 32, 92
+Full notices: 33, 93
 
 cargo:jsonptr@0.7.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/jsonptr/0.7.1/download
-Full notices: 93, 94
+Full notices: 94, 95
 
 cargo:keyboard-types@0.8.3
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/keyboard-types/0.8.3/download
-Full notices: 11, 95
+Full notices: 11, 96
 
 cargo:libappindicator-sys@0.9.0
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/libappindicator-sys/0.9.0/download
-Full notices: 96
+Full notices: 97
 
 cargo:libappindicator@0.9.0
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/libappindicator/0.9.0/download
-Full notices: 11, 97
+Full notices: 11, 98
 
 cargo:libc@0.2.190
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/libc/0.2.190/download
-Full notices: 8, 98
+Full notices: 8, 99
 
 cargo:libdbus-sys@0.2.7
 License: Apache-2.0/MIT
 Source: https://crates.io/api/v1/crates/libdbus-sys/0.2.7/download
-Full notices: 40, 41
+Full notices: 41, 42
 
 cargo:libloading@0.7.4
 License: ISC
 Source: https://crates.io/api/v1/crates/libloading/0.7.4/download
-Full notices: 99
+Full notices: 100
 
 cargo:linux-raw-sys@0.12.1
 License: Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/linux-raw-sys/0.12.1/download
-Full notices: 11, 100, 3
+Full notices: 11, 101, 3
 
 cargo:litemap@0.8.3
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/litemap/0.8.3/download
-Full notices: 83
+Full notices: 84
 
 cargo:lock_api@0.4.14
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/lock_api/0.4.14/download
-Full notices: 11, 101
+Full notices: 11, 102
 
 cargo:log@0.4.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/log/0.4.34/download
-Full notices: 11, 18
+Full notices: 11, 19
 
 cargo:markup5ever@0.39.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/markup5ever/0.39.0/download
-Full notices: 11, 77
+Full notices: 11, 78
 
 cargo:memchr@2.8.3
 License: Unlicense OR MIT
@@ -845,47 +850,47 @@ Full notices: 4, 5
 cargo:memoffset@0.9.1
 License: MIT
 Source: https://crates.io/api/v1/crates/memoffset/0.9.1/download
-Full notices: 102
+Full notices: 103
 
 cargo:mime@0.3.17
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/mime/0.3.17/download
-Full notices: 11, 103
+Full notices: 11, 104
 
 cargo:miniz_oxide@0.8.9
 License: MIT OR Zlib OR Apache-2.0
 Source: https://crates.io/api/v1/crates/miniz_oxide/0.8.9/download
-Full notices: 104, 61, 105, 106
+Full notices: 105, 62, 106, 107
 
 cargo:miniz_oxide@0.9.1
 License: MIT OR Zlib OR Apache-2.0
 Source: https://crates.io/api/v1/crates/miniz_oxide/0.9.1/download
-Full notices: 104, 61, 105, 106
+Full notices: 105, 62, 106, 107
 
 cargo:mio@1.2.4
 License: MIT
 Source: https://crates.io/api/v1/crates/mio/1.2.4/download
-Full notices: 107
+Full notices: 108
 
 cargo:muda@0.20.0
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/muda/0.20.0/download
-Full notices: 11, 108, 109
+Full notices: 11, 109, 110
 
 cargo:new_debug_unreachable@1.0.6
 License: MIT
 Source: https://crates.io/api/v1/crates/new_debug_unreachable/1.0.6/download
-Full notices: 110
+Full notices: 111
 
 cargo:num-conv@0.2.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/num-conv/0.2.2/download
-Full notices: 61, 111
+Full notices: 62, 112
 
 cargo:num-traits@0.2.19
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/num-traits/0.2.19/download
-Full notices: 11, 18
+Full notices: 11, 19
 
 cargo:once_cell@1.21.4
 License: MIT OR Apache-2.0
@@ -895,12 +900,12 @@ Full notices: 11, 3
 cargo:open@5.4.4
 License: MIT
 Source: https://crates.io/api/v1/crates/open/5.4.4/download
-Full notices: 112
+Full notices: 113
 
 cargo:option-ext@0.2.0
 License: MPL-2.0
 Source: https://crates.io/api/v1/crates/option-ext/0.2.0/download
-Full notices: 113
+Full notices: 114
 
 cargo:ordered-stream@0.2.0
 License: MIT OR Apache-2.0
@@ -920,52 +925,52 @@ Full notices: 12
 cargo:parking_lot_core@0.9.12
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/parking_lot_core/0.9.12/download
-Full notices: 11, 101
+Full notices: 11, 102
 
 cargo:parking_lot@0.12.5
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/parking_lot/0.12.5/download
-Full notices: 11, 101
+Full notices: 11, 102
 
 cargo:parking@2.2.1
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/parking/2.2.1/download
-Full notices: 11, 3, 114
+Full notices: 11, 3, 115
 
 cargo:percent-encoding@2.3.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/percent-encoding/2.3.2/download
-Full notices: 11, 86
+Full notices: 11, 87
 
 cargo:phf_codegen@0.13.1
 License: MIT
 Source: https://crates.io/api/v1/crates/phf_codegen/0.13.1/download
-Full notices: 115
+Full notices: 116
 
 cargo:phf_generator@0.13.1
 License: MIT
 Source: https://crates.io/api/v1/crates/phf_generator/0.13.1/download
-Full notices: 115
+Full notices: 116
 
 cargo:phf_macros@0.13.1
 License: MIT
 Source: https://crates.io/api/v1/crates/phf_macros/0.13.1/download
-Full notices: 115
+Full notices: 116
 
 cargo:phf_shared@0.13.1
 License: MIT
 Source: https://crates.io/api/v1/crates/phf_shared/0.13.1/download
-Full notices: 115
+Full notices: 116
 
 cargo:phf@0.13.1
 License: MIT
 Source: https://crates.io/api/v1/crates/phf/0.13.1/download
-Full notices: 115
+Full notices: 116
 
 cargo:pin-project-lite@0.2.17
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/pin-project-lite/0.2.17/download
-Full notices: 61, 3
+Full notices: 62, 3
 
 cargo:piper@0.2.5
 License: MIT OR Apache-2.0
@@ -975,22 +980,22 @@ Full notices: 11, 3
 cargo:pkg-config@0.3.34
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/pkg-config/0.3.34/download
-Full notices: 11, 25
+Full notices: 11, 26
 
 cargo:plist@1.10.1
 License: MIT
 Source: https://crates.io/api/v1/crates/plist/1.10.1/download
-Full notices: 116, 117
+Full notices: 117, 118
 
 cargo:png@0.17.16
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/png/0.17.16/download
-Full notices: 11, 118
+Full notices: 11, 119
 
 cargo:png@0.18.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/png/0.18.1/download
-Full notices: 11, 118
+Full notices: 11, 119
 
 cargo:polling@3.11.0
 License: Apache-2.0 OR MIT
@@ -1000,17 +1005,17 @@ Full notices: 11, 3
 cargo:potential_utf@0.1.6
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/potential_utf/0.1.6/download
-Full notices: 83
+Full notices: 84
 
 cargo:powerfmt@0.2.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/powerfmt/0.2.1/download
-Full notices: 119, 120
+Full notices: 120, 121
 
 cargo:precomputed-hash@0.1.1
 License: MIT
 Source: https://crates.io/api/v1/crates/precomputed-hash/0.1.1/download
-Full notices: 121
+Full notices: 122
 
 cargo:proc-macro-crate@1.3.1
 License: MIT OR Apache-2.0
@@ -1030,12 +1035,12 @@ Full notices: 2, 3
 cargo:proc-macro-error-attr@1.0.4
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/proc-macro-error-attr/1.0.4/download
-Full notices: 122, 123
+Full notices: 123, 124
 
 cargo:proc-macro-error@1.0.4
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/proc-macro-error/1.0.4/download
-Full notices: 122, 123
+Full notices: 123, 124
 
 cargo:proc-macro2@1.0.107
 License: MIT OR Apache-2.0
@@ -1045,7 +1050,7 @@ Full notices: 8, 3
 cargo:quick-xml@0.42.0
 License: MIT
 Source: https://crates.io/api/v1/crates/quick-xml/0.42.0/download
-Full notices: 124
+Full notices: 125
 
 cargo:quote@1.0.47
 License: MIT OR Apache-2.0
@@ -1055,7 +1060,7 @@ Full notices: 8, 3
 cargo:raw-window-handle@0.6.2
 License: MIT OR Apache-2.0 OR Zlib
 Source: https://crates.io/api/v1/crates/raw-window-handle/0.6.2/download
-Full notices: 61, 125, 126
+Full notices: 62, 126, 127
 
 cargo:ref-cast-impl@1.0.27
 License: MIT OR Apache-2.0
@@ -1070,27 +1075,27 @@ Full notices: 8, 3
 cargo:regex-automata@0.4.18
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/regex-automata/0.4.18/download
-Full notices: 11, 18
+Full notices: 11, 19
 
 cargo:regex-syntax@0.8.11
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/regex-syntax/0.8.11/download
-Full notices: 11, 18
+Full notices: 11, 19
 
 cargo:regex@1.13.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/regex/1.13.1/download
-Full notices: 11, 18
+Full notices: 11, 19
 
 cargo:rfd@0.16.0
 License: MIT
 Source: https://crates.io/api/v1/crates/rfd/0.16.0/download
-Full notices: 127
+Full notices: 128
 
 cargo:rustc_version@0.4.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/rustc_version/0.4.1/download
-Full notices: 11, 101
+Full notices: 11, 102
 
 cargo:rustc-hash@2.1.3
 License: Apache-2.0 OR MIT
@@ -1100,42 +1105,42 @@ Full notices: 8, 3
 cargo:rustix@1.1.5
 License: Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/rustix/1.1.5/download
-Full notices: 11, 100, 3
+Full notices: 11, 101, 3
 
 cargo:same-file@1.0.6
 License: Unlicense/MIT
 Source: https://crates.io/api/v1/crates/same-file/1.0.6/download
-Full notices: 4, 128
+Full notices: 4, 129
 
 cargo:schemars_derive@0.8.22
 License: MIT
 Source: https://crates.io/api/v1/crates/schemars_derive/0.8.22/download
-Full notices: 129
+Full notices: 130
 
 cargo:schemars@0.8.22
 License: MIT
 Source: https://crates.io/api/v1/crates/schemars/0.8.22/download
-Full notices: 129
+Full notices: 130
 
 cargo:schemars@0.9.0
 License: MIT
 Source: https://crates.io/api/v1/crates/schemars/0.9.0/download
-Full notices: 129
+Full notices: 130
 
 cargo:schemars@1.2.3
 License: MIT
 Source: https://crates.io/api/v1/crates/schemars/1.2.3/download
-Full notices: 129
+Full notices: 130
 
 cargo:scopeguard@1.2.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/scopeguard/1.2.0/download
-Full notices: 11, 130
+Full notices: 11, 131
 
 cargo:selectors@0.38.0
 License: MPL-2.0
 Source: https://crates.io/api/v1/crates/selectors/0.38.0/download
-Full notices: 131
+Full notices: 132
 
 cargo:semver@1.0.28
 License: MIT OR Apache-2.0
@@ -1170,22 +1175,22 @@ Full notices: 8, 3
 cargo:serde_spanned@0.6.9
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/serde_spanned/0.6.9/download
-Full notices: 32, 132
+Full notices: 33, 133
 
 cargo:serde_spanned@1.1.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/serde_spanned/1.1.2/download
-Full notices: 133, 132
+Full notices: 134, 133
 
 cargo:serde_with_macros@3.24.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/serde_with_macros/3.24.0/download
-Full notices: 11, 134
+Full notices: 11, 135
 
 cargo:serde_with@3.24.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/serde_with/3.24.0/download
-Full notices: 11, 134
+Full notices: 11, 135
 
 cargo:serde-untagged@0.1.9
 License: MIT OR Apache-2.0
@@ -1200,12 +1205,12 @@ Full notices: 8, 3
 cargo:serialize-to-javascript-impl@0.1.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/serialize-to-javascript-impl/0.1.2/download
-Full notices: 135, 136
+Full notices: 136, 137
 
 cargo:serialize-to-javascript@0.1.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/serialize-to-javascript/0.1.2/download
-Full notices: 135, 136
+Full notices: 136, 137
 
 cargo:servo_arc@0.4.3
 License: MIT OR Apache-2.0
@@ -1215,77 +1220,77 @@ Full notices: 11, 3
 cargo:sha2@0.10.9
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/sha2/0.10.9/download
-Full notices: 19, 137
+Full notices: 20, 138
 
 cargo:shlex@2.0.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/shlex/2.0.1/download
-Full notices: 138, 139
+Full notices: 139, 140
 
 cargo:signal-hook-registry@1.4.8
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/signal-hook-registry/1.4.8/download
-Full notices: 11, 140
+Full notices: 11, 141
 
 cargo:simd-adler32@0.3.10
 License: MIT
 Source: https://crates.io/api/v1/crates/simd-adler32/0.3.10/download
-Full notices: 141
+Full notices: 142
 
 cargo:siphasher@1.0.4
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/siphasher/1.0.4/download
-Full notices: 142, 135, 12
+Full notices: 143, 136, 12
 
 cargo:slab@0.4.12
 License: MIT
 Source: https://crates.io/api/v1/crates/slab/0.4.12/download
-Full notices: 143
+Full notices: 144
 
 cargo:smallvec@1.16.3
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/smallvec/1.16.3/download
-Full notices: 11, 144
+Full notices: 11, 145
 
 cargo:socket2@0.6.5
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/socket2/0.6.5/download
-Full notices: 11, 25
+Full notices: 11, 26
 
 cargo:softbuffer@0.4.8
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/softbuffer/0.4.8/download
-Full notices: 145, 146
+Full notices: 146, 147
 
 cargo:soup3-sys@0.5.0
 License: MIT
 Source: https://crates.io/api/v1/crates/soup3-sys/0.5.0/download
-Full notices: 90
+Full notices: 91
 
 cargo:soup3@0.5.0
 License: MIT
 Source: https://crates.io/api/v1/crates/soup3/0.5.0/download
-Full notices: 90
+Full notices: 91
 
 cargo:stable_deref_trait@1.2.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/stable_deref_trait/1.2.1/download
-Full notices: 11, 147
+Full notices: 11, 148
 
 cargo:string_cache_codegen@0.6.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/string_cache_codegen/0.6.1/download
-Full notices: 11, 148
+Full notices: 11, 149
 
 cargo:string_cache@0.9.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/string_cache/0.9.0/download
-Full notices: 11, 148
+Full notices: 11, 149
 
 cargo:strsim@0.11.1
 License: MIT
 Source: https://crates.io/api/v1/crates/strsim/0.11.1/download
-Full notices: 149
+Full notices: 150
 
 cargo:syn@1.0.109
 License: MIT OR Apache-2.0
@@ -1305,7 +1310,7 @@ Full notices: 8, 3
 cargo:synstructure@0.14.0
 License: MIT
 Source: https://crates.io/api/v1/crates/synstructure/0.14.0/download
-Full notices: 150
+Full notices: 151
 
 cargo:system-deps@6.2.2
 License: MIT OR Apache-2.0
@@ -1315,87 +1320,87 @@ Full notices: 11, 3
 cargo:tao@0.37.1
 License: Apache-2.0
 Source: https://crates.io/api/v1/crates/tao/0.37.1/download
-Full notices: 32, 151
+Full notices: 33, 152
 
 cargo:target-lexicon@0.12.16
 License: Apache-2.0 WITH LLVM-exception
 Source: https://crates.io/api/v1/crates/target-lexicon/0.12.16/download
-Full notices: 100
+Full notices: 101
 
 cargo:tauri-build@2.7.2
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-build/2.7.2/download
-Full notices: 61, 152
+Full notices: 62, 153
 
 cargo:tauri-codegen@2.7.2
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-codegen/2.7.2/download
-Full notices: 61, 152
+Full notices: 62, 153
 
 cargo:tauri-macros@2.7.2
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-macros/2.7.2/download
-Full notices: 61, 152
+Full notices: 62, 153
 
 cargo:tauri-plugin-dialog@2.8.2
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-plugin-dialog/2.8.2/download
-Full notices: 153, 61, 152
+Full notices: 154, 62, 153
 
 cargo:tauri-plugin-fs@2.7.0
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-plugin-fs/2.7.0/download
-Full notices: 153, 61, 152
+Full notices: 154, 62, 153
 
 cargo:tauri-plugin-opener@2.7.2
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-plugin-opener/2.7.2/download
-Full notices: 153, 61, 152
+Full notices: 154, 62, 153
 
 cargo:tauri-plugin-window-state@2.5.0
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-plugin-window-state/2.5.0/download
-Full notices: 153, 61, 152
+Full notices: 154, 62, 153
 
 cargo:tauri-plugin@2.7.1
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-plugin/2.7.1/download
-Full notices: 154
+Full notices: 155
 
 cargo:tauri-runtime-wry@2.12.1
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-runtime-wry/2.12.1/download
-Full notices: 61, 152
+Full notices: 62, 153
 
 cargo:tauri-runtime@2.12.1
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-runtime/2.12.1/download
-Full notices: 61, 152
+Full notices: 62, 153
 
 cargo:tauri-utils@2.10.1
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri-utils/2.10.1/download
-Full notices: 61, 152
+Full notices: 62, 153
 
 cargo:tauri-winres@0.3.6
 License: MIT
 Source: https://crates.io/api/v1/crates/tauri-winres/0.3.6/download
-Full notices: 155
+Full notices: 156
 
 cargo:tauri@2.12.3
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tauri/2.12.3/download
-Full notices: 61, 152
+Full notices: 62, 153
 
 cargo:tempfile@3.27.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/tempfile/3.27.0/download
-Full notices: 11, 156
+Full notices: 11, 157
 
 cargo:tendril@0.5.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/tendril/0.5.1/download
-Full notices: 11, 157
+Full notices: 11, 158
 
 cargo:thiserror-impl@1.0.69
 License: MIT OR Apache-2.0
@@ -1420,97 +1425,97 @@ Full notices: 8, 3
 cargo:time-core@0.1.9
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/time-core/0.1.9/download
-Full notices: 61, 158
+Full notices: 62, 159
 
 cargo:time-macros@0.2.32
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/time-macros/0.2.32/download
-Full notices: 61, 158
+Full notices: 62, 159
 
 cargo:time@0.3.55
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/time/0.3.55/download
-Full notices: 61, 158
+Full notices: 62, 159
 
 cargo:tinystr@0.8.4
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/tinystr/0.8.4/download
-Full notices: 83
+Full notices: 84
 
 cargo:tinyvec@1.13.3
 License: Zlib OR Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/tinyvec/1.13.3/download
-Full notices: 135, 38, 159
+Full notices: 136, 39, 160
 
 cargo:tokio@1.53.3
 License: MIT
 Source: https://crates.io/api/v1/crates/tokio/1.53.3/download
-Full notices: 160
+Full notices: 161
 
 cargo:toml_datetime@0.6.3
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/toml_datetime/0.6.3/download
-Full notices: 11, 25
+Full notices: 11, 26
 
 cargo:toml_datetime@1.1.2+spec-1.1.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/toml_datetime/1.1.2+spec-1.1.0/download
-Full notices: 133, 132
+Full notices: 134, 133
 
 cargo:toml_edit@0.19.15
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/toml_edit/0.19.15/download
-Full notices: 32, 132
+Full notices: 33, 133
 
 cargo:toml_edit@0.20.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/toml_edit/0.20.2/download
-Full notices: 32, 132
+Full notices: 33, 133
 
 cargo:toml_edit@0.25.17+spec-1.1.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/toml_edit/0.25.17+spec-1.1.0/download
-Full notices: 133, 132
+Full notices: 134, 133
 
 cargo:toml_parser@1.1.5+spec-1.1.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/toml_parser/1.1.5+spec-1.1.0/download
-Full notices: 133, 132
+Full notices: 134, 133
 
 cargo:toml_writer@1.1.3+spec-1.1.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/toml_writer/1.1.3+spec-1.1.0/download
-Full notices: 133, 132
+Full notices: 134, 133
 
 cargo:toml@0.8.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/toml/0.8.2/download
-Full notices: 32, 132
+Full notices: 33, 133
 
 cargo:toml@1.1.8+spec-1.1.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/toml/1.1.8+spec-1.1.0/download
-Full notices: 133, 132
+Full notices: 134, 133
 
 cargo:tracing-attributes@0.1.31
 License: MIT
 Source: https://crates.io/api/v1/crates/tracing-attributes/0.1.31/download
-Full notices: 161
+Full notices: 162
 
 cargo:tracing-core@0.1.36
 License: MIT
 Source: https://crates.io/api/v1/crates/tracing-core/0.1.36/download
-Full notices: 161
+Full notices: 162
 
 cargo:tracing@0.1.44
 License: MIT
 Source: https://crates.io/api/v1/crates/tracing/0.1.44/download
-Full notices: 161
+Full notices: 162
 
 cargo:tray-icon@0.25.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/tray-icon/0.25.1/download
-Full notices: 11, 108, 162
+Full notices: 11, 109, 163
 
 cargo:typeid@1.0.3
 License: MIT OR Apache-2.0
@@ -1520,57 +1525,57 @@ Full notices: 8, 3
 cargo:typenum@1.20.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/typenum/1.20.1/download
-Full notices: 163, 164, 165
+Full notices: 164, 165, 166
 
 cargo:unicode-ident@1.0.27
 License: (MIT OR Apache-2.0) AND Unicode-3.0
 Source: https://crates.io/api/v1/crates/unicode-ident/1.0.27/download
-Full notices: 8, 3, 166
+Full notices: 8, 3, 167
 
 cargo:unicode-segmentation@1.13.3
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/unicode-segmentation/1.13.3/download
-Full notices: 11, 75
+Full notices: 11, 76
 
 cargo:url@2.5.8
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/url/2.5.8/download
-Full notices: 11, 86
+Full notices: 11, 87
 
 cargo:urlpattern@0.6.0
 License: MIT
 Source: https://crates.io/api/v1/crates/urlpattern/0.6.0/download
-Full notices: 167
+Full notices: 168
 
 cargo:utf8_iter@1.0.4
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/utf8_iter/1.0.4/download
-Full notices: 135, 168
+Full notices: 136, 169
 
 cargo:uuid@1.28.0
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/uuid/1.28.0/download
-Full notices: 11, 169
+Full notices: 11, 170
 
 cargo:version_check@0.9.5
 License: MIT/Apache-2.0
 Source: https://crates.io/api/v1/crates/version_check/0.9.5/download
-Full notices: 11, 170
+Full notices: 11, 171
 
 cargo:version-compare@0.2.1
 License: MIT
 Source: https://crates.io/api/v1/crates/version-compare/0.2.1/download
-Full notices: 171
+Full notices: 172
 
 cargo:vswhom-sys@0.1.3
 License: MIT
 Source: https://crates.io/api/v1/crates/vswhom-sys/0.1.3/download
-Full notices: 172
+Full notices: 173
 
 cargo:vswhom@0.1.0
 License: MIT
 Source: https://crates.io/api/v1/crates/vswhom/0.1.0/download
-Full notices: 172
+Full notices: 173
 
 cargo:walkdir@2.5.0
 License: Unlicense/MIT
@@ -1580,152 +1585,152 @@ Full notices: 4, 5
 cargo:web_atoms@0.2.6
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/web_atoms/0.2.6/download
-Full notices: 11, 77
+Full notices: 11, 78
 
 cargo:web-time@1.1.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/web-time/1.1.0/download
-Full notices: 173, 174
+Full notices: 174, 175
 
 cargo:webkit2gtk-sys@2.0.2
 License: MIT
 Source: https://crates.io/api/v1/crates/webkit2gtk-sys/2.0.2/download
-Full notices: 175
+Full notices: 176
 
 cargo:webkit2gtk@2.0.2
 License: MIT
 Source: https://crates.io/api/v1/crates/webkit2gtk/2.0.2/download
-Full notices: 176
+Full notices: 177
 
 cargo:webview2-com-macros@0.8.1
 License: MIT
 Source: https://crates.io/api/v1/crates/webview2-com-macros/0.8.1/download
-Full notices: 177
+Full notices: 178
 
 cargo:webview2-com-sys@0.39.1
 License: MIT
 Source: https://crates.io/api/v1/crates/webview2-com-sys/0.39.1/download
-Full notices: 178
+Full notices: 179
 
 cargo:webview2-com@0.39.1
 License: MIT
 Source: https://crates.io/api/v1/crates/webview2-com/0.39.1/download
-Full notices: 178
+Full notices: 179
 
 cargo:winapi-util@0.1.11
 License: Unlicense OR MIT
 Source: https://crates.io/api/v1/crates/winapi-util/0.1.11/download
-Full notices: 4, 128
+Full notices: 4, 129
 
 cargo:window-vibrancy@0.8.1
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/window-vibrancy/0.8.1/download
-Full notices: 11, 179, 180
+Full notices: 11, 180, 181
 
 cargo:windows_x86_64_msvc@0.53.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows_x86_64_msvc/0.53.1/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-collections@0.3.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-collections/0.3.2/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-core@0.62.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-core/0.62.2/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-future@0.3.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-future/0.3.2/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-implement@0.60.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-implement/0.60.2/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-interface@0.59.3
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-interface/0.59.3/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-link@0.2.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-link/0.2.1/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-numerics@0.3.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-numerics/0.3.1/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-result@0.4.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-result/0.4.1/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-strings@0.5.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-strings/0.5.1/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-sys@0.60.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-sys/0.60.2/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-sys@0.61.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-sys/0.61.2/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-targets@0.53.5
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-targets/0.53.5/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-threading@0.2.1
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-threading/0.2.1/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows-version@0.1.7
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows-version/0.1.7/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:windows@0.62.2
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/windows/0.62.2/download
-Full notices: 181, 182
+Full notices: 182, 183
 
 cargo:winnow@0.5.40
 License: MIT
 Source: https://crates.io/api/v1/crates/winnow/0.5.40/download
-Full notices: 183
+Full notices: 184
 
 cargo:winnow@1.0.4
 License: MIT
 Source: https://crates.io/api/v1/crates/winnow/1.0.4/download
-Full notices: 183
+Full notices: 184
 
 cargo:winreg@0.56.0
 License: MIT
 Source: https://crates.io/api/v1/crates/winreg/0.56.0/download
-Full notices: 184
+Full notices: 185
 
 cargo:writeable@0.6.4
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/writeable/0.6.4/download
-Full notices: 83
+Full notices: 84
 
 cargo:wry@0.57.0
 License: Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/wry/0.57.0/download
-Full notices: 11, 185, 186
+Full notices: 11, 186, 187
 
 cargo:x11-dl@2.21.0
 License: MIT
@@ -1740,62 +1745,62 @@ Full notices: 3
 cargo:yoke-derive@0.8.4
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/yoke-derive/0.8.4/download
-Full notices: 83
+Full notices: 84
 
 cargo:yoke@0.8.3
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/yoke/0.8.3/download
-Full notices: 83
+Full notices: 84
 
 cargo:zbus_macros@5.19.0
 License: MIT
 Source: https://crates.io/api/v1/crates/zbus_macros/5.19.0/download
-Full notices: 187
+Full notices: 188
 
 cargo:zbus_names@4.3.5
 License: MIT
 Source: https://crates.io/api/v1/crates/zbus_names/4.3.5/download
-Full notices: 187
+Full notices: 188
 
 cargo:zbus@5.19.0
 License: MIT
 Source: https://crates.io/api/v1/crates/zbus/5.19.0/download
-Full notices: 187
+Full notices: 188
 
 cargo:zcheapstr@1.1.0
 License: MIT
 Source: https://crates.io/api/v1/crates/zcheapstr/1.1.0/download
-Full notices: 188
+Full notices: 189
 
 cargo:zerofrom-derive@0.1.8
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/zerofrom-derive/0.1.8/download
-Full notices: 83
+Full notices: 84
 
 cargo:zerofrom@0.1.8
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/zerofrom/0.1.8/download
-Full notices: 83
+Full notices: 84
 
 cargo:zerotrie@0.2.5
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/zerotrie/0.2.5/download
-Full notices: 83
+Full notices: 84
 
 cargo:zerovec-derive@0.11.6
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/zerovec-derive/0.11.6/download
-Full notices: 83
+Full notices: 84
 
 cargo:zerovec@0.11.8
 License: Unicode-3.0
 Source: https://crates.io/api/v1/crates/zerovec/0.11.8/download
-Full notices: 83
+Full notices: 84
 
 cargo:zlib-rs@0.6.8
 License: Zlib
 Source: https://crates.io/api/v1/crates/zlib-rs/0.6.8/download
-Full notices: 189
+Full notices: 190
 
 cargo:zmij@1.0.23
 License: MIT
@@ -1805,7 +1810,7 @@ Full notices: 3
 cargo:zvariant_derive@5.15.1
 License: MIT
 Source: https://crates.io/api/v1/crates/zvariant_derive/5.15.1/download
-Full notices: 187
+Full notices: 188
 
 cargo:zvariant_utils@4.2.0
 License: MIT
@@ -1815,252 +1820,252 @@ Full notices: 3
 cargo:zvariant@5.15.1
 License: MIT
 Source: https://crates.io/api/v1/crates/zvariant/5.15.1/download
-Full notices: 187
+Full notices: 188
 
 icon:octicons-mark-github@6dbe38e4e9b4987b2c9332d719c57fbbdd083e2d
 License: MIT
 Source: https://github.com/primer/octicons/blob/6dbe38e4e9b4987b2c9332d719c57fbbdd083e2d/icons/mark-github-16.svg
-Full notices: 190
+Full notices: 191
 
 npm:@aurelia-ui-toolkits/headless-tailwind@1.3.8
 License: MIT
 Source: https://registry.npmjs.org/@aurelia-ui-toolkits/headless-tailwind/-/headless-tailwind-1.3.8.tgz
-Full notices: 191
+Full notices: 192
 
 npm:@aurelia-ui-toolkits/headless@1.3.8
 License: MIT
 Source: https://registry.npmjs.org/@aurelia-ui-toolkits/headless/-/headless-1.3.8.tgz
-Full notices: 191
+Full notices: 192
 
 npm:@aurelia/dialog@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/dialog/-/dialog-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/expression-parser@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/expression-parser/-/expression-parser-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/fetch-client@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/fetch-client/-/fetch-client-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/kernel@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/kernel/-/kernel-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/metadata@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/metadata/-/metadata-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/platform-browser@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/platform-browser/-/platform-browser-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/platform@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/platform/-/platform-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/runtime-html@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/runtime-html/-/runtime-html-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/runtime@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/runtime/-/runtime-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/template-compiler@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/template-compiler/-/template-compiler-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/validation-html@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/validation-html/-/validation-html-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@aurelia/validation@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/@aurelia/validation/-/validation-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:@codemirror/autocomplete@6.20.3
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/autocomplete/-/autocomplete-6.20.3.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@codemirror/commands@6.11.1
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/commands/-/commands-6.11.1.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@codemirror/lang-javascript@6.2.5
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/lang-javascript/-/lang-javascript-6.2.5.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@codemirror/language@6.13.1
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/language/-/language-6.13.1.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@codemirror/legacy-modes@6.5.5
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/legacy-modes/-/legacy-modes-6.5.5.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@codemirror/lint@6.9.7
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/lint/-/lint-6.9.7.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@codemirror/merge@6.12.2
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/merge/-/merge-6.12.2.tgz
-Full notices: 194
+Full notices: 195
 
 npm:@codemirror/search@6.7.2
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/search/-/search-6.7.2.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@codemirror/state@6.7.6
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/state/-/state-6.7.6.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@codemirror/streamparser@6.0.0
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/streamparser/-/streamparser-6.0.0.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@codemirror/view@6.43.14
 License: MIT
 Source: https://registry.npmjs.org/@codemirror/view/-/view-6.43.14.tgz
-Full notices: 193
+Full notices: 194
 
 npm:@lezer/common@1.5.3
 License: MIT
 Source: https://registry.npmjs.org/@lezer/common/-/common-1.5.3.tgz
-Full notices: 195
+Full notices: 196
 
 npm:@lezer/highlight@1.2.5
 License: MIT
 Source: https://registry.npmjs.org/@lezer/highlight/-/highlight-1.2.5.tgz
-Full notices: 195
+Full notices: 196
 
 npm:@lezer/javascript@1.5.6
 License: MIT
 Source: https://registry.npmjs.org/@lezer/javascript/-/javascript-1.5.6.tgz
-Full notices: 195
+Full notices: 196
 
 npm:@lezer/lr@1.4.11
 License: MIT
 Source: https://registry.npmjs.org/@lezer/lr/-/lr-1.4.11.tgz
-Full notices: 195
+Full notices: 196
 
 npm:@marijn/find-cluster-break@1.0.4
 License: MIT
 Source: https://registry.npmjs.org/@marijn/find-cluster-break/-/find-cluster-break-1.0.4.tgz
-Full notices: 196
+Full notices: 197
 
 npm:@tauri-apps/api@2.12.3
 License: Apache-2.0 OR MIT
 Source: https://registry.npmjs.org/@tauri-apps/api/-/api-2.12.3.tgz
-Full notices: 61, 152, 197
+Full notices: 62, 153, 198
 
 npm:@types/hast@3.0.5
 License: MIT
 Source: https://registry.npmjs.org/@types/hast/-/hast-3.0.5.tgz
-Full notices: 182
+Full notices: 183
 
 npm:@types/inputmask@5.0.7
 License: MIT
 Source: https://registry.npmjs.org/@types/inputmask/-/inputmask-5.0.7.tgz
-Full notices: 182
+Full notices: 183
 
 npm:@types/unist@3.0.3
 License: MIT
 Source: https://registry.npmjs.org/@types/unist/-/unist-3.0.3.tgz
-Full notices: 182
+Full notices: 183
 
 npm:aurelia@2.0.0-rc.2
 License: MIT
 Source: https://registry.npmjs.org/aurelia/-/aurelia-2.0.0-rc.2.tgz
-Full notices: 192
+Full notices: 193
 
 npm:crelt@1.0.7
 License: MIT
 Source: https://registry.npmjs.org/crelt/-/crelt-1.0.7.tgz
-Full notices: 198
+Full notices: 199
 
 npm:date-fns@4.4.0
 License: MIT
 Source: https://registry.npmjs.org/date-fns/-/date-fns-4.4.0.tgz
-Full notices: 199
+Full notices: 200
 
 npm:dequal@2.0.3
 License: MIT
 Source: https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz
-Full notices: 200
+Full notices: 201
 
 npm:devlop@1.1.0
 License: MIT
 Source: https://registry.npmjs.org/devlop/-/devlop-1.1.0.tgz
-Full notices: 201
+Full notices: 202
 
 npm:diff@9.0.0
 License: BSD-3-Clause
 Source: https://registry.npmjs.org/diff/-/diff-9.0.0.tgz
-Full notices: 202
+Full notices: 203
 
 npm:highlight.js@11.11.2
 License: BSD-3-Clause
 Source: https://registry.npmjs.org/highlight.js/-/highlight.js-11.11.2.tgz
-Full notices: 203
+Full notices: 204
 
 npm:inputmask@5.0.10
 License: MIT
 Source: https://registry.npmjs.org/inputmask/-/inputmask-5.0.10.tgz
-Full notices: 204
+Full notices: 205
 
 npm:lowlight@3.3.0
 License: MIT
 Source: https://registry.npmjs.org/lowlight/-/lowlight-3.3.0.tgz
-Full notices: 205
+Full notices: 206
 
 npm:rxjs@7.8.2
 License: Apache-2.0
 Source: https://registry.npmjs.org/rxjs/-/rxjs-7.8.2.tgz
-Full notices: 206
+Full notices: 207
 
 npm:style-mod@4.1.4
 License: MIT
 Source: https://registry.npmjs.org/style-mod/-/style-mod-4.1.4.tgz
-Full notices: 207
+Full notices: 208
 
 npm:tslib@2.8.1
 License: 0BSD
 Source: https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz
-Full notices: 208
+Full notices: 209
 
 npm:w3c-keyname@2.2.8
 License: MIT
 Source: https://registry.npmjs.org/w3c-keyname/-/w3c-keyname-2.2.8.tgz
-Full notices: 209
+Full notices: 210
 
 theme:dark-plus@2.9.0
 License: BSD-3-Clause
 Source: https://github.com/samdark/intellij-visual-studio-code-dark-plus/tree/v2.9.0
-Full notices: 210
+Full notices: 211
 
 ==============================================================================
 NOTICE 1
@@ -3084,7 +3089,7 @@ NOTICE 15
 
 The MIT License (MIT)
 
-Copyright (c) 2025 Alice Maz, Marshall Pierce
+Copyright (c) 2015 Alice Maz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -3106,6 +3111,31 @@ THE SOFTWARE.
 
 ==============================================================================
 NOTICE 16
+
+The MIT License (MIT)
+
+Copyright (c) 2025 Alice Maz, Marshall Pierce
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+==============================================================================
+NOTICE 17
 
 Apache License
                         Version 2.0, January 2004
@@ -3310,7 +3340,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 17
+NOTICE 18
 
 Copyright (c) 2023 The Rust Project Developers
 
@@ -3339,7 +3369,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 18
+NOTICE 19
 
 Copyright (c) 2014 The Rust Project Developers
 
@@ -3368,7 +3398,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 19
+NOTICE 20
 
 Apache License
                         Version 2.0, January 2004
@@ -3573,7 +3603,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 20
+NOTICE 21
 
 Copyright (c) 2018-2019 The RustCrypto Project Developers
 
@@ -3602,7 +3632,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 21
+NOTICE 22
 
 Copyright (c) 2009, 2010, 2013-2016 by the Brotli Authors.
 
@@ -3625,7 +3655,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 22
+NOTICE 23
 
 MIT License
 Copyright (c) 2016 The roaring-rs developers.
@@ -3649,7 +3679,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 23
+NOTICE 24
 
 Copyright (c) 2018 Carl Lerche
 
@@ -3678,7 +3708,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 24
+NOTICE 25
 
 © Kornel Lesiński
 
@@ -3884,7 +3914,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 25
+NOTICE 26
 
 Copyright (c) 2014 Alex Crichton
 
@@ -3913,7 +3943,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 26
+NOTICE 27
 
 MIT License
 
@@ -3938,7 +3968,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 27
+NOTICE 28
 
 Copyright (c) 2019 Embark Studios
 
@@ -3967,7 +3997,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 28
+NOTICE 29
 
 Rust-chrono is dual-licensed under The MIT License [1] and
 Apache 2.0 License [2]. Copyright (c) 2014--2026, Kang Seonghoon and
@@ -4210,7 +4240,7 @@ limitations under the License.
 ~~~~
 
 ==============================================================================
-NOTICE 29
+NOTICE 30
 
 Apache License
                         Version 2.0, January 2004
@@ -4416,7 +4446,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 30
+NOTICE 31
 
 Copyright (c) 2017 Sergio Benitez
 Copyright (c) 2014 Alex Crichton
@@ -4446,7 +4476,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 31
+NOTICE 32
 
 Copyright (c) 2020-2025 The RustCrypto Project Developers
 
@@ -4475,7 +4505,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 32
+NOTICE 33
 
 Apache License
                            Version 2.0, January 2004
@@ -4680,7 +4710,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-NOTICE 33
+NOTICE 34
 
 MIT License
 
@@ -4705,7 +4735,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 34
+NOTICE 35
 
 The MIT License (MIT)
 
@@ -4736,7 +4766,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 35
+NOTICE 36
 
 ===============================================================================
 
@@ -5333,7 +5363,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 36
+NOTICE 37
 
 Copyright (c) 2021 RustCrypto Developers
 
@@ -5362,7 +5392,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 37
+NOTICE 38
 
 Mozilla Public License Version 2.0
 ==================================
@@ -5739,7 +5769,7 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
   defined by the Mozilla Public License, v. 2.0.
 
 ==============================================================================
-NOTICE 38
+NOTICE 39
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -5748,7 +5778,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 39
+NOTICE 40
 
 MIT License
 
@@ -5773,7 +5803,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 40
+NOTICE 41
 
 Apache License
                            Version 2.0, January 2004
@@ -5978,7 +6008,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-NOTICE 41
+NOTICE 42
 
 Copyright (c) 2014-2018 David Henningsson <diwic@ubuntu.com> and other contributors
 
@@ -6001,7 +6031,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 42
+NOTICE 43
 
 Copyright (c) Ferrous Systems
 
@@ -6030,7 +6060,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 43
+NOTICE 44
 
 License source: https://raw.githubusercontent.com/knurling-rs/defmt/4a8cdb44891ed57b8ff5a023b6bec7137c48708f/LICENSE-MIT
 
@@ -6061,7 +6091,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 44
+NOTICE 45
 
 Apache License
                            Version 2.0, January 2004
@@ -6266,7 +6296,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-NOTICE 45
+NOTICE 46
 
 Copyright (c) 2024 Jacob Pratt et al.
 
@@ -6289,7 +6319,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 46
+NOTICE 47
 
 The MIT License (MIT)
 
@@ -6314,7 +6344,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 47
+NOTICE 48
 
 Copyright (c) 2017 Artyom Pavlov
 
@@ -6343,7 +6373,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 48
+NOTICE 49
 
 Apache License
                         Version 2.0, January 2004
@@ -6521,7 +6551,7 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    of your accepting any such warranty or additional liability.
 
 ==============================================================================
-NOTICE 49
+NOTICE 50
 
 Copyright (c) 2018-2019 dirs-rs contributors
 
@@ -6544,7 +6574,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 50
+NOTICE 51
 
 License source: https://raw.githubusercontent.com/OpenByteDev/dlopen2/cc80e4a0a90d499b677fdf7743699b4b3a43a989/LICENSE
 
@@ -6573,7 +6603,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 51
+NOTICE 52
 
 MIT License
 
@@ -6604,7 +6634,7 @@ derived from the "nipper" project (https://github.com/importcjj/nipper),
 developed by Chen Jiaju, licensed under the MIT License and the Apache License 2.0 (dual licensed).
 
 ==============================================================================
-NOTICE 52
+NOTICE 53
 
 rust-lang/libm as a whole is available for use under the MIT license:
 
@@ -6659,7 +6689,7 @@ have been licensed under extremely permissive terms.
 ------------------------------------------------------------------------------
 
 ==============================================================================
-NOTICE 53
+NOTICE 54
 
 Creative Commons Legal Code
 
@@ -6784,7 +6814,7 @@ express Statement of Purpose.
     this CC0 or use of the Work.
 
 ==============================================================================
-NOTICE 54
+NOTICE 55
 
 The MIT License (MIT)
 
@@ -6809,7 +6839,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 55
+NOTICE 56
 
 Apache License
 
@@ -6881,7 +6911,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 56
+NOTICE 57
 
 Copyright (c) 2017 Maik Klein
 
@@ -6910,7 +6940,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 57
+NOTICE 58
 
 Apache License
 
@@ -6982,7 +7012,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 58
+NOTICE 59
 
 Copyright (c) 2017-2023 Maik Klein, Maja Kądziołka
 
@@ -7011,7 +7041,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 59
+NOTICE 60
 
 Copyright (c) 2016--2023
 
@@ -7040,7 +7070,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 60
+NOTICE 61
 
 Copyright (c) 2014 Chris Wong
 
@@ -7069,7 +7099,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 61
+NOTICE 62
 
 Apache License
                            Version 2.0, January 2004
@@ -7249,7 +7279,7 @@ Apache License
    END OF TERMS AND CONDITIONS
 
 ==============================================================================
-NOTICE 62
+NOTICE 63
 
 MIT License
 
@@ -7278,7 +7308,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 63
+NOTICE 64
 
 MIT License
 
@@ -7303,7 +7333,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 64
+NOTICE 65
 
 Copyright (c) 2014-2026 Alex Crichton
 
@@ -7332,7 +7362,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 65
+NOTICE 66
 
 Copyright (c) 2017 Contributors
 
@@ -7361,7 +7391,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 66
+NOTICE 67
 
 Copyright (c) 2024 Orson Peters
 
@@ -7384,7 +7414,7 @@ the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 
 ==============================================================================
-NOTICE 67
+NOTICE 68
 
 Copyright (c) 2013-2016 The rust-url developers
 
@@ -7413,7 +7443,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 68
+NOTICE 69
 
 Apache License
                         Version 2.0, January 2004
@@ -7619,7 +7649,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 69
+NOTICE 70
 
 Copyright (c) 2016 Alex Crichton
 Copyright (c) 2017 The Tokio Authors
@@ -7649,7 +7679,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 70
+NOTICE 71
 
 The MIT License (MIT)
 
@@ -7674,7 +7704,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 71
+NOTICE 72
 
 Apache License
                         Version 2.0, January 2004
@@ -7879,7 +7909,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 72
+NOTICE 73
 
 Copyright (c) 2018-2025 The rust-random Project Developers
 Copyright (c) 2014 The Rust Project Developers
@@ -7909,7 +7939,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 73
+NOTICE 74
 
 Copyright (c) 2018-2026 The rust-random Project Developers
 Copyright (c) 2014 The Rust Project Developers
@@ -7939,7 +7969,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 74
+NOTICE 75
 
 Copyright (c) 2016 Amanieu d'Antras
 
@@ -7968,7 +7998,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 75
+NOTICE 76
 
 Copyright (c) 2015 The Rust Project Developers
 
@@ -7997,7 +8027,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 76
+NOTICE 77
 
 Copyright (c) 2013-2014 The Rust Project Developers.
 Copyright (c) 2015-2020 The rust-hex Developers
@@ -8021,7 +8051,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 77
+NOTICE 78
 
 Copyright (c) 2014 The html5ever Project Developers
 
@@ -8050,7 +8080,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 78
+NOTICE 79
 
 Apache License
                         Version 2.0, January 2004
@@ -8255,7 +8285,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 79
+NOTICE 80
 
 Copyright (c) 2017 http-rs authors
 
@@ -8284,7 +8314,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 80
+NOTICE 81
 
 Apache License
                         Version 2.0, January 2004
@@ -8489,7 +8519,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 81
+NOTICE 82
 
 Copyright (c) 2020 Andrew D. Straw
 
@@ -8518,7 +8548,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 82
+NOTICE 83
 
 MIT License
 
@@ -8543,7 +8573,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 83
+NOTICE 84
 
 UNICODE LICENSE V3
 
@@ -8593,7 +8623,7 @@ Portions of ICU4X may have been adapted from ICU4C and/or ICU4J.
 ICU 1.8.1 to ICU 57.1 © 1995-2016 International Business Machines Corporation and others.
 
 ==============================================================================
-NOTICE 84
+NOTICE 85
 
 MIT License
 
@@ -8616,7 +8646,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 85
+NOTICE 86
 
 Copyright (c) The rust-url developers
 
@@ -8645,7 +8675,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 86
+NOTICE 87
 
 Copyright (c) 2013-2025 The rust-url developers
 
@@ -8674,7 +8704,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 87
+NOTICE 88
 
 Copyright (c) 2016--2017
 
@@ -8703,7 +8733,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 88
+NOTICE 89
 
 MIT License
 
@@ -8728,7 +8758,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 89
+NOTICE 90
 
 MIT License
 
@@ -8753,7 +8783,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 90
+NOTICE 91
 
 The MIT License (MIT)
 
@@ -8778,7 +8808,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 91
+NOTICE 92
 
 The MIT License (MIT)
 
@@ -8804,7 +8834,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 92
+NOTICE 93
 
 MIT License
 
@@ -8829,7 +8859,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 93
+NOTICE 94
 
 Apache License
                            Version 2.0, January 2004
@@ -9034,7 +9064,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 94
+NOTICE 95
 
 MIT License
 
@@ -9059,7 +9089,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 95
+NOTICE 96
 
 Copyright (c) 2017 Pyfisch
 
@@ -9082,7 +9112,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 96
+NOTICE 97
 
 License source: https://raw.githubusercontent.com/tauri-apps/libappindicator-rs/eafd1e3682a1247f595410266091e9684021cb6f/LICENSE-MIT
 
@@ -9110,7 +9140,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 97
+NOTICE 98
 
 MIT License
 
@@ -9136,7 +9166,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 98
+NOTICE 99
 
 Copyright (c) The Rust Project Developers
 
@@ -9165,7 +9195,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 99
+NOTICE 100
 
 Copyright © 2015, Simonas Kazlauskas
 
@@ -9181,7 +9211,7 @@ NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE US
 THIS SOFTWARE.
 
 ==============================================================================
-NOTICE 100
+NOTICE 101
 
 Apache License
                            Version 2.0, January 2004
@@ -9403,7 +9433,7 @@ the License, but only in their entirety and only with respect to the Combined
 Software.
 
 ==============================================================================
-NOTICE 101
+NOTICE 102
 
 Copyright (c) 2016 The Rust Project Developers
 
@@ -9432,7 +9462,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 102
+NOTICE 103
 
 Copyright (c) 2017 Gilad Naaman
 
@@ -9455,7 +9485,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 103
+NOTICE 104
 
 Copyright (c) 2014 Sean McArthur
 
@@ -9478,35 +9508,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 104
-
-MIT License
-
-Copyright 2013-2014 RAD Game Tools and Valve Software
-Copyright 2010-2014 Rich Geldreich and Tenacious Software LLC
-Copyright (c) 2017 Frommi
-Copyright (c) 2017-2024 oyvindln
-
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-==============================================================================
 NOTICE 105
 
 MIT License
@@ -9515,6 +9516,7 @@ Copyright 2013-2014 RAD Game Tools and Valve Software
 Copyright 2010-2014 Rich Geldreich and Tenacious Software LLC
 Copyright (c) 2017 Frommi
 Copyright (c) 2017-2024 oyvindln
+
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9537,6 +9539,34 @@ SOFTWARE.
 ==============================================================================
 NOTICE 106
 
+MIT License
+
+Copyright 2013-2014 RAD Game Tools and Valve Software
+Copyright 2010-2014 Rich Geldreich and Tenacious Software LLC
+Copyright (c) 2017 Frommi
+Copyright (c) 2017-2024 oyvindln
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+NOTICE 107
+
 Copyright 2013-2014 RAD Game Tools and Valve Software
 Copyright 2010-2014 Rich Geldreich and Tenacious Software LLC
 Copyright (c) 2020 Frommi
@@ -9553,7 +9583,7 @@ Permission is granted to anyone to use this software for any purpose, including 
 3. This notice may not be removed or altered from any source distribution.
 
 ==============================================================================
-NOTICE 107
+NOTICE 108
 
 Copyright (c) 2014 Carl Lerche and other MIO contributors
 
@@ -9576,7 +9606,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 108
+NOTICE 109
 
 MIT License
 
@@ -9601,7 +9631,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 109
+NOTICE 110
 
 SPDXVersion: SPDX-2.1
 DataLicense: CC0-1.0
@@ -9624,7 +9654,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/muda.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-NOTICE 110
+NOTICE 111
 
 Copyright (c) 2015 Jonathan Reem
 
@@ -9653,7 +9683,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 111
+NOTICE 112
 
 Copyright (c) Jacob Pratt
 
@@ -9676,7 +9706,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 112
+NOTICE 113
 
 The MIT License (MIT)
 =====================
@@ -9705,7 +9735,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 113
+NOTICE 114
 
 Mozilla Public License Version 2.0
 ==================================
@@ -10082,7 +10112,7 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
   defined by the Mozilla Public License, v. 2.0.
 
 ==============================================================================
-NOTICE 114
+NOTICE 115
 
 ===============================================================================
 
@@ -10095,7 +10125,7 @@ option. All files in the project carrying such notice may not be
 copied, modified, or distributed except according to those terms.
 
 ==============================================================================
-NOTICE 115
+NOTICE 116
 
 The MIT License (MIT)
 
@@ -10119,7 +10149,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 116
+NOTICE 117
 
 Copyright (c) 2015 Edward Barnard
 
@@ -10142,7 +10172,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 117
+NOTICE 118
 
 License source: https://raw.githubusercontent.com/ebarnard/rust-plist/10ba3e3b44adb6246f3f5cc8e66134e03498f634/LICENCE
 
@@ -10167,7 +10197,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 118
+NOTICE 119
 
 Copyright (c) 2015 nwin
 
@@ -10196,7 +10226,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 119
+NOTICE 120
 
 Apache License
                            Version 2.0, January 2004
@@ -10401,7 +10431,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-NOTICE 120
+NOTICE 121
 
 Copyright (c) 2023 Jacob Pratt et al.
 
@@ -10424,7 +10454,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 121
+NOTICE 122
 
 MIT License
 
@@ -10449,7 +10479,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 122
+NOTICE 123
 
 Apache License
                         Version 2.0, January 2004
@@ -10654,7 +10684,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 123
+NOTICE 124
 
 MIT License
 
@@ -10679,7 +10709,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 124
+NOTICE 125
 
 The MIT License (MIT)
 
@@ -10706,7 +10736,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 125
+NOTICE 126
 
 MIT License
 
@@ -10731,7 +10761,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 126
+NOTICE 127
 
 Copyright (c) 2020 Osspial
 
@@ -10746,7 +10776,7 @@ Permission is granted to anyone to use this software for any purpose, including 
 3. This notice may not be removed or altered from any source distribution.
 
 ==============================================================================
-NOTICE 127
+NOTICE 128
 
 MIT License
 
@@ -10771,7 +10801,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 128
+NOTICE 129
 
 The MIT License (MIT)
 
@@ -10796,7 +10826,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 129
+NOTICE 130
 
 MIT License
 
@@ -10821,7 +10851,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 130
+NOTICE 131
 
 Copyright (c) 2016-2019 Ulrik Sverdrup "bluss" and scopeguard developers
 
@@ -10850,7 +10880,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 131
+NOTICE 132
 
 License source: https://www.mozilla.org/media/MPL/2.0/index.815ca599c9df.txt
 
@@ -11229,7 +11259,7 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
   defined by the Mozilla Public License, v. 2.0.
 
 ==============================================================================
-NOTICE 132
+NOTICE 133
 
 Copyright (c) Individual contributors
 
@@ -11252,7 +11282,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 133
+NOTICE 134
 
 Apache License
                            Version 2.0, January 2004
@@ -11457,7 +11487,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-NOTICE 134
+NOTICE 135
 
 Copyright (c) 2015
 
@@ -11486,7 +11516,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 135
+NOTICE 136
 
 Apache License
                            Version 2.0, January 2004
@@ -11691,7 +11721,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-NOTICE 136
+NOTICE 137
 
 MIT License
 
@@ -11716,7 +11746,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 137
+NOTICE 138
 
 Copyright (c) 2006-2009 Graydon Hoare
 Copyright (c) 2009-2013 Mozilla Foundation
@@ -11747,7 +11777,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 138
+NOTICE 139
 
 Copyright 2015 Nicholas Allegra (comex).
 
@@ -11764,7 +11794,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 139
+NOTICE 140
 
 The MIT License (MIT)
 
@@ -11789,7 +11819,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 140
+NOTICE 141
 
 Copyright (c) 2017 tokio-jsonrpc developers
 
@@ -11818,7 +11848,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 141
+NOTICE 142
 
 MIT License
 
@@ -11843,7 +11873,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 142
+NOTICE 143
 
 Copyright 2012-2016 The Rust Project Developers.
 Copyright 2016-2026 Frank Denis.
@@ -11854,7 +11884,7 @@ http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
 option.
 
 ==============================================================================
-NOTICE 143
+NOTICE 144
 
 Copyright (c) 2019 Carl Lerche
 
@@ -11883,7 +11913,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 144
+NOTICE 145
 
 Copyright (c) 2018 The Servo Project Developers
 
@@ -11912,7 +11942,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 145
+NOTICE 146
 
 Apache License
                            Version 2.0, January 2004
@@ -12117,7 +12147,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-NOTICE 146
+NOTICE 147
 
 Copyright 2022 Kirill Chibisov
 
@@ -12140,7 +12170,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 147
+NOTICE 148
 
 Copyright (c) 2017 Robert Grosse
 
@@ -12169,7 +12199,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 148
+NOTICE 149
 
 Copyright (c) 2012-2013 Mozilla Foundation
 
@@ -12198,7 +12228,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 149
+NOTICE 150
 
 The MIT License (MIT)
 
@@ -12225,7 +12255,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 150
+NOTICE 151
 
 Copyright 2016 Nika Layzell
 
@@ -12236,7 +12266,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 151
+NOTICE 152
 
 SPDXVersion: SPDX-2.1
 DataLicense: CC0-1.0
@@ -12258,7 +12288,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tao.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-NOTICE 152
+NOTICE 153
 
 MIT License
 
@@ -12283,7 +12313,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 153
+NOTICE 154
 
 SPDXVersion: SPDX-2.1
 DataLicense: CC0-1.0
@@ -12307,7 +12337,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tauri.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-NOTICE 154
+NOTICE 155
 
 License source: https://raw.githubusercontent.com/tauri-apps/tauri/30da1fd6e17de6107ecc850c95dfb16b5729f2dd/LICENSE-MIT
 
@@ -12334,7 +12364,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 155
+NOTICE 156
 
 The MIT License (MIT)
 
@@ -12366,7 +12396,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 156
+NOTICE 157
 
 Copyright (c) 2015 Steven Allen
 
@@ -12395,7 +12425,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 157
+NOTICE 158
 
 Copyright (c) 2015 Keegan McAllister
 
@@ -12424,7 +12454,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 158
+NOTICE 159
 
 Copyright (c) Jacob Pratt et al.
 
@@ -12447,7 +12477,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 159
+NOTICE 160
 
 Copyright (c) 2019 Daniel "Lokathor" Gee.
 
@@ -12462,7 +12492,7 @@ Permission is granted to anyone to use this software for any purpose, including 
 3. This notice may not be removed or altered from any source distribution.
 
 ==============================================================================
-NOTICE 160
+NOTICE 161
 
 MIT License
 
@@ -12487,7 +12517,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 161
+NOTICE 162
 
 Copyright (c) 2019 Tokio Contributors
 
@@ -12516,7 +12546,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 162
+NOTICE 163
 
 SPDXVersion: SPDX-2.1
 DataLicense: CC0-1.0
@@ -12539,12 +12569,12 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tray-icon.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-NOTICE 163
+NOTICE 164
 
 MIT OR Apache-2.0
 
 ==============================================================================
-NOTICE 164
+NOTICE 165
 
 Apache License
                         Version 2.0, January 2004
@@ -12749,7 +12779,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-NOTICE 165
+NOTICE 166
 
 The MIT License (MIT)
 
@@ -12774,7 +12804,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 166
+NOTICE 167
 
 UNICODE LICENSE V3
 
@@ -12817,7 +12847,7 @@ dealings in these Data Files or Software without prior written
 authorization of the copyright holder.
 
 ==============================================================================
-NOTICE 167
+NOTICE 168
 
 MIT License
 
@@ -12842,7 +12872,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 168
+NOTICE 169
 
 Copyright Mozilla Foundation
 
@@ -12871,7 +12901,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 169
+NOTICE 170
 
 Copyright (c) 2014 The Rust Project Developers
 Copyright (c) 2018 Ashley Mannix, Christopher Armstrong, Dylan DPC, Hunar Roop Kahlon
@@ -12901,7 +12931,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 170
+NOTICE 171
 
 The MIT License (MIT)
 Copyright (c) 2017-2018 Sergio Benitez
@@ -12924,7 +12954,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 171
+NOTICE 172
 
 Copyright (c) 2017 Tim Visée
 
@@ -12947,7 +12977,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 172
+NOTICE 173
 
 The MIT License (MIT)
 
@@ -12972,7 +13002,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 173
+NOTICE 174
 
 Apache License
                            Version 2.0, January 2004
@@ -13177,7 +13207,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-NOTICE 174
+NOTICE 175
 
 MIT License
 
@@ -13202,7 +13232,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 175
+NOTICE 176
 
 Copyright (c) 2016 Boucher, Antoni <bouanto@zoho.com>
 
@@ -13224,7 +13254,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 176
+NOTICE 177
 
 Copyright (c) 2016 Boucher, Antoni <bouanto@zoho.com>
 Copyright (c) 2017-2021, The Gtk-rs Project Developers.
@@ -13248,7 +13278,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 177
+NOTICE 178
 
 License source: https://raw.githubusercontent.com/wravery/webview2-rs/dffa41a8a46d3f5565eefbff2de57d38d399f158/LICENSE
 
@@ -13275,7 +13305,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 178
+NOTICE 179
 
 License source: https://raw.githubusercontent.com/wravery/webview2-rs/edc2caf886175ccaebe86078c9cfe1ae2a187328/LICENSE
 
@@ -13302,7 +13332,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 179
+NOTICE 180
 
 MIT License
 
@@ -13327,7 +13357,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 180
+NOTICE 181
 
 SPDXVersion: SPDX-2.1
 DataLicense: CC0-1.0
@@ -13350,7 +13380,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/window-vibrancy.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-NOTICE 181
+NOTICE 182
 
 Apache License
                            Version 2.0, January 2004
@@ -13555,7 +13585,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-NOTICE 182
+NOTICE 183
 
 MIT License
 
@@ -13580,7 +13610,7 @@ MIT License
     SOFTWARE
 
 ==============================================================================
-NOTICE 183
+NOTICE 184
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -13602,7 +13632,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 184
+NOTICE 185
 
 Copyright (c) 2015 Igor Shaula
 
@@ -13625,7 +13655,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 185
+NOTICE 186
 
 MIT License
 
@@ -13650,7 +13680,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 186
+NOTICE 187
 
 SPDXVersion: SPDX-2.1
 DataLicense: CC0-1.0
@@ -13674,7 +13704,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/wry.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-NOTICE 187
+NOTICE 188
 
 Copyright (c) 2024 Zeeshan Ali Khan & zbus contributors
 
@@ -13703,7 +13733,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 188
+NOTICE 189
 
 Copyright (c) 2026 Zeeshan Ali Khan & zcheapstr contributors
 
@@ -13732,7 +13762,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 189
+NOTICE 190
 
 (C) 2024 Trifecta Tech Foundation
 
@@ -13755,7 +13785,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 
 ==============================================================================
-NOTICE 190
+NOTICE 191
 
 MIT License
 
@@ -13780,7 +13810,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 191
+NOTICE 192
 
 License source: https://raw.githubusercontent.com/aurelia-ui-toolkits/aurelia-headless/f91d2312359e6563fe60332e6025d744995ccd16/LICENSE
 
@@ -13807,7 +13837,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 192
+NOTICE 193
 
 The MIT License (MIT)
 
@@ -13832,7 +13862,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 193
+NOTICE 194
 
 MIT License
 
@@ -13857,7 +13887,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 194
+NOTICE 195
 
 MIT License
 
@@ -13882,7 +13912,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 195
+NOTICE 196
 
 MIT License
 
@@ -13907,7 +13937,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 196
+NOTICE 197
 
 MIT License
 
@@ -13932,7 +13962,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 197
+NOTICE 198
 
 SPDXVersion: SPDX-2.1
 DataLicense: CC0-1.0
@@ -13956,7 +13986,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tauri.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-NOTICE 198
+NOTICE 199
 
 Copyright (C) 2020 by Marijn Haverbeke <marijn@haverbeke.berlin>
 
@@ -13979,7 +14009,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 199
+NOTICE 200
 
 MIT License
 
@@ -14004,7 +14034,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-NOTICE 200
+NOTICE 201
 
 The MIT License (MIT)
 
@@ -14029,7 +14059,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 201
+NOTICE 202
 
 (The MIT License)
 
@@ -14055,7 +14085,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 202
+NOTICE 203
 
 BSD 3-Clause License
 
@@ -14088,7 +14118,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ==============================================================================
-NOTICE 203
+NOTICE 204
 
 BSD 3-Clause License
 
@@ -14121,7 +14151,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ==============================================================================
-NOTICE 204
+NOTICE 205
 
 Copyright (c) 2010 - 2018 Robin Herbots
 
@@ -14132,7 +14162,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 205
+NOTICE 206
 
 (The MIT License)
 
@@ -14158,7 +14188,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-NOTICE 206
+NOTICE 207
 
 Apache License
                          Version 2.0, January 2004
@@ -14363,7 +14393,7 @@ Apache License
  limitations under the License.
 
 ==============================================================================
-NOTICE 207
+NOTICE 208
 
 Copyright (C) 2018 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
 
@@ -14386,7 +14416,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 208
+NOTICE 209
 
 Copyright (c) Microsoft Corporation.
 
@@ -14402,7 +14432,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 
 ==============================================================================
-NOTICE 209
+NOTICE 210
 
 Copyright (C) 2016 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
 
@@ -14425,7 +14455,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-NOTICE 210
+NOTICE 211
 
 Copyright (c) 2019, Alexander Makarov
 All rights reserved.

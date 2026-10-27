@@ -226,7 +226,7 @@ impl GitService {
     })
   }
 
-  fn parents(&self, repo: &Path, hash: &str) -> Result<Vec<String>, String> {
+  pub(super) fn parents(&self, repo: &Path, hash: &str) -> Result<Vec<String>, String> {
     validation::hash(hash)?;
     Ok(
       self

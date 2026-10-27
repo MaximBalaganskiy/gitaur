@@ -7,6 +7,8 @@ import { RebaseEditDialog } from './rebase-edit-dialog/rebase-edit-dialog';
 import { ActionDialog } from '../history/action-dialog/action-dialog';
 import { WorkspaceService } from '../../services/workspace-service';
 import type { ChangedFile } from '../../interfaces/changed-file';
+import type { ImageDiff } from '../../interfaces/image-diff';
+import { isImagePath } from '../../services/image-path';
 import './commit.css';
 
 export class Commit extends ValidatedForm {
@@ -26,6 +28,7 @@ export class Commit extends ValidatedForm {
   workingFile: ChangedFile | null = null;
   workingStaged = false;
   diff = '';
+  images: ImageDiff | null = null;
   diffLoading = false;
   fullFile = false;
   amendHead = '';
@@ -174,6 +177,7 @@ export class Commit extends ValidatedForm {
     } else {
       ++this.diffGeneration;
       this.workingFile = null;
+      this.images = null;
       this.diff = '';
       this.diffLoading = false;
     }
@@ -194,18 +198,22 @@ export class Commit extends ValidatedForm {
     this.workingStaged = staged;
     if (changed || !this.diff) {
       this.diff = '';
+      this.images = null;
       this.diffLoading = true;
     }
 
     try {
-      const text = await this.workspace.client.diff({
+      const request = {
         path: file.path,
         originalPath: (staged ? file.index : file.worktree) === 'R' ? file.originalPath : undefined,
         staged,
         untracked: file.index === '?',
         fullFile: this.fullFile
-      });
+      };
+      const images = isImagePath(file.path) ? await this.workspace.client.imageDiff(request) : null;
+      const text = images ? '' : await this.workspace.client.diff(request);
       if (generation === this.diffGeneration) {
+        this.images = images;
         this.diff = text || 'No text changes. This may be a rename, mode change or submodule.';
       }
     } catch (error) {
