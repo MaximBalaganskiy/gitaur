@@ -36,8 +36,8 @@
     "format:check": "prettier --check src scripts test *.json *.ts *.html src-tauri/*.json src-tauri/capabilities/*.json && node scripts/native.cjs cargo fmt --manifest-path src-tauri/Cargo.toml -- --check"
   },
   "devDependencies": {
-    "@aurelia-ui-toolkits/headless": "1.3.8",
-    "@aurelia-ui-toolkits/headless-tailwind": "^1.3.8",
+    "@aurelia-ui-toolkits/headless": "1.3.11",
+    "@aurelia-ui-toolkits/headless-tailwind": "^1.3.11",
     "@aurelia/dialog": "2.0.0-rc.2",
     "@aurelia/runtime-html": "2.0.0-rc.2",
     "@aurelia/validation": "2.0.0-rc.2",
