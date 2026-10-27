@@ -1,6 +1,6 @@
 {
   "name": "gitaur",
-  "version": "0.4.0-beta.8",
+  "version": "0.4.0-beta.9",
   "license": "MIT",
   "private": true,
   "description": "A local Git client with a graph workspace and dedicated commit window.",
@@ -26,7 +26,9 @@
     "test:renderer": "tsx --test test/*.test.ts",
     "test:native": "node scripts/native.cjs cargo test --manifest-path src-tauri/Cargo.toml",
     "test:history-checkout": "node test/history-checkout-ui.cjs",
-    "test:e2e": "node test/tauri-smoke.cjs && node test/form-validation-ui.cjs && node test/repository-browsing.cjs && node test/git-workflows-ui.cjs && node test/conflict-resolver-ui.cjs && node test/merge-drafts-ui.cjs && node test/structural-conflicts-ui.cjs && node test/repository-tools-ui.cjs && node test/daily-workflows-ui.cjs && node test/history-workflows-ui.cjs && node test/reference-actions-ui.cjs && node test/commit-window-ui.cjs && node test/reset-changes-ui.cjs && node test/dialog-overflow-ui.cjs && node test/app-overflow-ui.cjs && node test/window-state-ui.cjs && node test/activity-ui.cjs && node test/diff-copy-ui.cjs && node test/update-notification-ui.cjs",
+    "test:commit-details": "node test/commit-details-ui.cjs",
+    "test:images": "node test/image-preview-ui.cjs",
+    "test:e2e": "node test/tauri-smoke.cjs && node test/form-validation-ui.cjs && node test/repository-browsing.cjs && node test/git-workflows-ui.cjs && node test/conflict-resolver-ui.cjs && node test/merge-drafts-ui.cjs && node test/structural-conflicts-ui.cjs && node test/repository-tools-ui.cjs && node test/daily-workflows-ui.cjs && node test/history-workflows-ui.cjs && node test/commit-details-ui.cjs && node test/reference-actions-ui.cjs && node test/commit-window-ui.cjs && node test/commit-files-ui.cjs && node test/reset-changes-ui.cjs && node test/dialog-overflow-ui.cjs && node test/app-overflow-ui.cjs && node test/window-state-ui.cjs && node test/activity-ui.cjs && node test/diff-copy-ui.cjs && node test/image-preview-ui.cjs && node test/update-notification-ui.cjs",
     "test:packaged": "node test/tauri-smoke.cjs",
     "check:conventions": "node scripts/check-conventions.cjs",
     "check:native": "node scripts/native.cjs cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings",

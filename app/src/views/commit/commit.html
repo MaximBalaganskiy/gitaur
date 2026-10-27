@@ -73,13 +73,13 @@
       <div class="diff-heading flex min-h-8 shrink-0 items-center justify-between gap-2.5 border-b border-card-border px-3.5 text-[11px]">
         <span title.bind="workingFile ? workingFile.path : ''">${workingFile ? workingFile.path : 'Review your changes'}</span>
         <span class="diff-mode ml-auto text-[9px] tracking-widest ${workingStaged ? 'text-accent' : ''}">${workingFile ? workingStaged ? 'STAGED' : 'UNSTAGED' : ''}</span>
-        <button ui-button click.trigger="toggleFullFile()" disabled.bind="!workingFile || diffLoading || workspace.busy" aria-pressed.bind="fullFile">${fullFile ? 'Show changes only' : 'Show full file'}</button>
+        <button ui-button if.bind="!images" click.trigger="toggleFullFile()" disabled.bind="!workingFile || diffLoading || workspace.busy" aria-pressed.bind="fullFile">${fullFile ? 'Show changes only' : 'Show full file'}</button>
         <button ui-button class="text-[11px]!" if.bind="workingFile && !workingFile.conflict" disabled.bind="workspace.busy" click.trigger="stage(workingFile, workingStaged)">${workingStaged ? '↑ Unstage file' : '↓ Stage file'}</button>
         <button ui-button danger if.bind="canResetFile(workingFile)" disabled.bind="workspace.busy || diffLoading" click.trigger="resetFile(workingFile)">Reset file changes…</button>
         <button ui-button if.bind="workingFile.index === '?'" click.trigger="ignore(workingFile)" disabled.bind="workspace.busy">Add to .gitignore</button>
         <button ui-button primary if.bind="workingFile.conflict" click.trigger="resolveConflict(workingFile)" disabled.bind="workspace.busy">Resolve conflict…</button>
       </div>
-      <diff-view file-path.bind="workingFile ? workingFile.path : ''" text.bind="diff" is-loading.bind="diffLoading" selectable.bind="canStageSelection" staged.bind="workingStaged" disabled.bind="workspace.busy" resettable.bind="canResetFile(workingFile)" stage-selection.trigger="stageSelection($event.detail)" reset-selection.trigger="resetSelection($event.detail)"></diff-view>
+      <diff-view file-path.bind="workingFile ? workingFile.path : ''" text.bind="diff" images.bind="images" is-loading.bind="diffLoading" selectable.bind="canStageSelection" staged.bind="workingStaged" disabled.bind="workspace.busy" resettable.bind="canResetFile(workingFile)" stage-selection.trigger="stageSelection($event.detail)" reset-selection.trigger="resetSelection($event.detail)"></diff-view>
     </div>
     <ui-splitter splitter-bounds show.bind="!replaying" direction="vertical" target="next" size="300" min.bind="0" max.bind="Number.MAX_SAFE_INTEGER" storage-key="${workspace.splitterStoragePrefix}:commit-message" aria-label="Resize diff and commit message"></ui-splitter>
     <section show.bind="!replaying" class="message-composer flex min-h-0 shrink-0 flex-col overflow-auto bg-card p-3">

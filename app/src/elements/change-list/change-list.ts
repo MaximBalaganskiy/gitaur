@@ -41,7 +41,19 @@ export class ChangeList {
       }
       children.push({ path: file.path, name: parts.at(-1)!, expanded: false, file, children: [] });
     }
+    const sort = (nodes: WorkingFileNode[]) => {
+      nodes.sort((a, b) => Number(!!a.file) - Number(!!b.file) || a.name.localeCompare(b.name));
+      for (const node of nodes) {
+        sort(node.children);
+      }
+    };
+    sort(roots);
     return roots;
+  }
+
+  label(file: ChangedFile, name = file.path) {
+    const status = this.staged ? file.index : file.worktree;
+    return file.originalPath && (status === 'R' || status === 'C') ? `${file.originalPath} → ${name}` : name;
   }
 
   selectNode(node: WorkingFileNode) {

@@ -1,5 +1,6 @@
 import { bindable, INode, resolve } from 'aurelia';
 import type { DiffLine } from '../../interfaces/diff-line';
+import type { ImageDiff } from '../../interfaces/image-diff';
 import './diff-view.css';
 import './syntax.css';
 
@@ -9,6 +10,9 @@ export class DiffView {
   lines: DiffLine[] = [];
   truncated = false;
   selected: number[] = [];
+
+  @bindable
+  images: ImageDiff | null = null;
 
   @bindable
   text = '';

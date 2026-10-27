@@ -1,14 +1,27 @@
 <template>
   <import from="../../attributes/code-selection"></import>
-  <div if.bind="selectable && !isLoading && !truncated" class="sticky top-0 z-10 flex items-center gap-3 border-b border-card-border bg-card px-3 py-2">
+  <import from="../image-preview/image-preview"></import>
+  <div if.bind="selectable && !images && !isLoading && !truncated" class="sticky top-0 z-10 flex items-center gap-3 border-b border-card-border bg-card px-3 py-2">
     <span class="text-xs text-ink-500">${selected.length} changed lines selected</span>
     <button ui-button click.trigger="apply()" disabled.bind="disabled || !selected.length">${staged ? 'Unstage selected lines' : 'Stage selected lines'}</button>
     <button ui-button danger if.bind="resettable" click.trigger="apply(selected, true)" disabled.bind="disabled || !selected.length">Reset selected lines…</button>
     <button ui-button click.trigger="selected = []" disabled.bind="!selected.length">Clear selection</button>
   </div>
   <div class="diff-empty grid h-full min-h-40 place-items-center text-xs text-ink-500" if.bind="isLoading">Loading diff…</div>
-  <div class="diff-empty grid h-full min-h-40 place-items-center text-xs text-ink-500" if.bind="!isLoading && !text">Select a file to inspect its changes.</div>
-  <div class="diff-code min-w-max pt-2 pb-5 text-xs leading-[21px]" if.bind="!isLoading && text" tabindex="0" aria-label="File diff" code-selection=".diff-line.added .diff-content, .diff-line.removed .diff-content, .diff-line.context .diff-content">
+  <div class="diff-empty grid h-full min-h-40 place-items-center text-xs text-ink-500" if.bind="!isLoading && !text && !images">Select a file to inspect its changes.</div>
+  <div if.bind="!isLoading && images" class="image-diff grid grid-cols-1 gap-4 p-4 @[600px]:grid-cols-2">
+    <section class="min-w-0" aria-label="Before image">
+      <h3 class="text-sm font-semibold">Before</h3>
+      <image-preview if.bind="images.before.image" source.bind="images.before.image" label="Before: ${filePath}"></image-preview>
+      <p else class="py-6 text-sm text-ink-500" role="status">${images.before ? images.before.message : 'File does not exist in this version.'}</p>
+    </section>
+    <section class="min-w-0" aria-label="After image">
+      <h3 class="text-sm font-semibold">After</h3>
+      <image-preview if.bind="images.after.image" source.bind="images.after.image" label="After: ${filePath}"></image-preview>
+      <p else class="py-6 text-sm text-ink-500" role="status">${images.after ? images.after.message : 'File does not exist in this version.'}</p>
+    </section>
+  </div>
+  <div class="diff-code min-w-max pt-2 pb-5 text-xs leading-[21px]" if.bind="!isLoading && text && !images" tabindex="0" aria-label="File diff" code-selection=".diff-line.added .diff-content, .diff-line.removed .diff-content, .diff-line.context .diff-content">
     <div repeat.for="line of lines" class="diff-line flex min-h-[21px] whitespace-pre ${line.kind}">
       <div if.bind="selectable && !truncated" class="flex w-8 shrink-0 items-center justify-center">
         <button ui-icon-button size="small" if.bind="line.kind === 'added' || line.kind === 'removed'" aria-label="Select change at diff line ${$index + 1}" aria-pressed.bind="selected.includes($index)" disabled.bind="disabled" click.trigger="toggle($index)">${selected.includes($index) ? '✓' : '+'}</button>

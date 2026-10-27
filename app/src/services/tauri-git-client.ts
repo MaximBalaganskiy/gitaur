@@ -11,6 +11,7 @@ import type { BootstrapState } from '../interfaces/bootstrap-state';
 import type { Snapshot } from '../interfaces/snapshot';
 import type { Detail } from '../interfaces/detail';
 import type { DiffRequest } from '../interfaces/diff-request';
+import type { ImageDiff } from '../interfaces/image-diff';
 import type { CommandEntry } from '../interfaces/command-entry';
 import type { Remote } from '../interfaces/remote';
 import type { TreeEntry } from '../interfaces/tree-entry';
@@ -102,6 +103,10 @@ export class TauriGitClient implements GitClient {
 
   diff(request: DiffRequest) {
     return this.request<string>('diff', { request });
+  }
+
+  imageDiff(request: DiffRequest) {
+    return this.request<ImageDiff>('image_diff', { request });
   }
 
   mutate(action: string, payload: Record<string, unknown> = {}) {

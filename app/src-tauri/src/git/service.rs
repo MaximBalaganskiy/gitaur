@@ -226,7 +226,7 @@ impl GitService {
     })
   }
 
-  fn parents(&self, repo: &Path, hash: &str) -> Result<Vec<String>, String> {
+  pub(super) fn parents(&self, repo: &Path, hash: &str) -> Result<Vec<String>, String> {
     validation::hash(hash)?;
     Ok(
       self
@@ -266,14 +266,46 @@ impl GitService {
         path: fields[1].into(),
       })
       .collect();
+    let refs = self.text(
+      repo,
+      &[
+        "for-each-ref",
+        "--contains",
+        hash,
+        "--sort=refname",
+        "--format=%(refname)%00%(symref)",
+        "refs/heads",
+        "refs/remotes",
+      ],
+    )?;
+    let mut local_branches = Vec::new();
+    let mut remote_branches = Vec::new();
+    for line in refs.lines() {
+      let Some((reference, symbolic)) = line.trim_end_matches('\r').split_once('\0') else {
+        continue;
+      };
+      if !symbolic.is_empty() {
+        continue;
+      }
+      if let Some(name) = reference.strip_prefix("refs/heads/") {
+        local_branches.push(name.to_owned());
+      } else if let Some(name) = reference.strip_prefix("refs/remotes/") {
+        remote_branches.push(name.to_owned());
+      }
+    }
     Ok(Detail {
       message: self.text(repo, &["show", "-s", "--format=%B", hash])?.trim_end().into(),
       files,
+      local_branches,
+      remote_branches,
     })
   }
 
   pub fn diff(&self, repo: &Path, request: &DiffRequest) -> Result<String, String> {
     validation::path(&request.path)?;
+    if let Some(original_path) = &request.original_path {
+      validation::path(original_path)?;
+    }
     if let Some(hash) = &request.hash {
       let parents = self.parents(repo, hash)?;
       let mut args = if let Some(parent) = parents.first() {
@@ -339,6 +371,9 @@ impl GitService {
       args.push("--unified=2147483647");
     }
     args.extend(["--", &request.path]);
+    if let Some(original_path) = &request.original_path {
+      args.push(original_path);
+    }
     self.text(repo, &args)
   }
 

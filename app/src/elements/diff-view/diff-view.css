@@ -4,6 +4,7 @@ diff-view {
   min-height: 0;
   overflow: auto;
   background: var(--color-canvas);
+  container-type: inline-size;
 
   & .diff-line {
     & button,

@@ -1,6 +1,6 @@
 [package]
 name = "gitaur"
-version = "0.4.0-beta.8"
+version = "0.4.0-beta.9"
 license = "MIT"
 description = "A local Git workspace"
 edition = "2021"
@@ -14,6 +14,7 @@ path = "src/lib.rs"
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
+base64 = "0.22"
 tauri = { version = "2", features = [] }
 tauri-plugin-dialog = "2"
 tauri-plugin-opener = "2"

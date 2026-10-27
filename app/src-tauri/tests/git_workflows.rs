@@ -466,6 +466,36 @@ fn literal_paths_renames_and_invalid_requests() {
   let snapshot = service.snapshot(repo, 300).unwrap();
   let renamed = snapshot.files.iter().find(|file| file.index == "R").unwrap();
   assert_eq!(renamed.original_path.as_deref(), Some("[abc].txt"));
+  for full_file in [false, true] {
+    let diff = service
+      .diff(
+        repo,
+        &DiffRequest {
+          path: renamed.path.clone(),
+          original_path: renamed.original_path.clone(),
+          staged: true,
+          full_file,
+          ..Default::default()
+        },
+      )
+      .unwrap();
+    assert!(diff.contains("--- a/[abc].txt\n"));
+    assert!(diff.contains("+++ b/renamed.txt\n"));
+    assert!(diff.contains("-literal\n"));
+    assert!(diff.contains("+literal\n"));
+    assert!(!diff.contains("other"));
+  }
+  assert!(service
+    .diff(
+      repo,
+      &DiffRequest {
+        path: renamed.path.clone(),
+        original_path: Some("../outside".into()),
+        staged: true,
+        ..Default::default()
+      },
+    )
+    .is_err());
   mutate(
     &service,
     repo,

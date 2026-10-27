@@ -29,6 +29,14 @@
   <section class="repository-content flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-card">
     <section class="history-panel flex h-[410px] min-h-0 flex-col overflow-hidden">
       <div class="panel-toolbar flex min-h-12 shrink-0 py-1 items-center gap-4 px-3">
+        <div class="flex shrink-0 gap-1" role="group" aria-label="Commit selection navigation">
+          <button ui-icon-button click.trigger="navigateSelection(-1)" disabled.bind="!canGoBack" aria-label="Back to previous selected commit" title="Back · Alt+Left">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m 12 5 -7 7 7 7 M 5 12 h 14"></path></svg>
+          </button>
+          <button ui-icon-button click.trigger="navigateSelection(1)" disabled.bind="!canGoForward" aria-label="Forward to next selected commit" title="Forward · Alt+Right">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m 12 5 7 7 -7 7 M 5 12 h 14"></path></svg>
+          </button>
+        </div>
         <h2>
           History
           <span class="muted text-ink-500">/ All branches</span>
@@ -115,10 +123,10 @@
         <div class="diff-panel flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
           <div class="diff-heading flex min-h-8 shrink-0 items-center justify-between gap-2.5 border-b border-card-border px-3.5 text-[11px]">
             <span title.bind="selectedFile">${selectedFile || 'File preview'}</span>
-            <span class="muted text-ink-500">Unified diff</span>
-            <button ui-button click.trigger="toggleFullFile()" disabled.bind="!selectedFile || diffLoading" aria-pressed.bind="fullFile">${fullFile ? 'Show changes only' : 'Show full file'}</button>
+            <span class="muted text-ink-500">${images ? 'Image comparison' : 'Unified diff'}</span>
+            <button ui-button if.bind="!images" click.trigger="toggleFullFile()" disabled.bind="!selectedFile || diffLoading" aria-pressed.bind="fullFile">${fullFile ? 'Show changes only' : 'Show full file'}</button>
           </div>
-          <diff-view file-path.bind="selectedFile" text.bind="diff" is-loading.bind="diffLoading"></diff-view>
+          <diff-view file-path.bind="selectedFile" text.bind="diff" images.bind="images" is-loading.bind="diffLoading"></diff-view>
         </div>
       </div>
       <commit-files if.bind="tab === 'files' && selected" hash.bind="selected.hash" repository.bind="workspace.repo"></commit-files>
@@ -127,11 +135,23 @@
         <h2>${selected.subject}</h2>
         <p>${selected.author} · ${fullDate(selected.date)}</p>
         <pre>${detail.message}</pre>
-        <div class="metadata grid grid-cols-[80px_1fr] gap-2.5 text-[11px] text-ink-500">
+        <div class="metadata grid grid-cols-[100px_minmax(0,1fr)] gap-2.5 text-[11px] text-ink-500">
           <span>Commit</span>
           <code>${selected.hash}</code>
           <span>Parents</span>
           <code>${selected.parents.join(' · ') || 'Root commit'}</code>
+          <span>Local branches</span>
+          <div class="local-containing-branches" aria-live="polite">
+            <button ui-button class="block! max-w-full min-h-0! px-1! py-0! text-left text-[11px]! text-accent! whitespace-normal!" repeat.for="branch of detail.localBranches" click.trigger="focusContainingBranch(branch, 'local')" title="Jump to local branch tip: ${branch}"><code>${branch}</code></button>
+            <span if.bind="!detail">${detailError || 'Loading…'}</span>
+            <span if.bind="detail && !detail.localBranches.length">None</span>
+          </div>
+          <span>Remote branches</span>
+          <div class="remote-containing-branches" aria-live="polite">
+            <button ui-button class="block! max-w-full min-h-0! px-1! py-0! text-left text-[11px]! text-accent! whitespace-normal!" repeat.for="branch of detail.remoteBranches" click.trigger="focusContainingBranch(branch, 'remote')" title="Jump to remote branch tip: ${branch}"><code>${branch}</code></button>
+            <span if.bind="!detail">${detailError || 'Loading…'}</span>
+            <span if.bind="detail && !detail.remoteBranches.length">None</span>
+          </div>
         </div>
       </div>
       <div class="command-log overflow-auto px-4 py-2.5" if.bind="tab === 'log'">
