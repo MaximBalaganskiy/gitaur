@@ -117,11 +117,11 @@ export class Commit extends ValidatedForm {
   }
 
   get unstaged() {
-    return this.workspace.snapshot?.files.filter(file => file.unstaged) ?? [];
+    return this.workspace.snapshot?.files.filter(file => file.unstaged).sort((a, b) => a.path.localeCompare(b.path)) ?? [];
   }
 
   get staged() {
-    return this.workspace.snapshot?.files.filter(file => file.staged) ?? [];
+    return this.workspace.snapshot?.files.filter(file => file.staged).sort((a, b) => a.path.localeCompare(b.path)) ?? [];
   }
 
   get canStageAll() {
@@ -198,7 +198,13 @@ export class Commit extends ValidatedForm {
     }
 
     try {
-      const text = await this.workspace.client.diff({ path: file.path, staged, untracked: file.index === '?', fullFile: this.fullFile });
+      const text = await this.workspace.client.diff({
+        path: file.path,
+        originalPath: (staged ? file.index : file.worktree) === 'R' ? file.originalPath : undefined,
+        staged,
+        untracked: file.index === '?',
+        fullFile: this.fullFile
+      });
       if (generation === this.diffGeneration) {
         this.diff = text || 'No text changes. This may be a rename, mode change or submodule.';
       }

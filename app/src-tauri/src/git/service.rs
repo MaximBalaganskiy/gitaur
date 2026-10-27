@@ -303,6 +303,9 @@ impl GitService {
 
   pub fn diff(&self, repo: &Path, request: &DiffRequest) -> Result<String, String> {
     validation::path(&request.path)?;
+    if let Some(original_path) = &request.original_path {
+      validation::path(original_path)?;
+    }
     if let Some(hash) = &request.hash {
       let parents = self.parents(repo, hash)?;
       let mut args = if let Some(parent) = parents.first() {
@@ -368,6 +371,9 @@ impl GitService {
       args.push("--unified=2147483647");
     }
     args.extend(["--", &request.path]);
+    if let Some(original_path) = &request.original_path {
+      args.push(original_path);
+    }
     self.text(repo, &args)
   }
 
