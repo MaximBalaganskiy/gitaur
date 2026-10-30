@@ -1283,7 +1283,7 @@ dependencies = [
 name = "gitaur"
 version = "0.4.0-beta.9"
 dependencies = [
- "base64 0.22.1",
+ "base64 0.23.1",
  "chrono",
  "dunce",
  "serde",
