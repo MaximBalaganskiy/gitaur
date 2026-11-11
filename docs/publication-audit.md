@@ -38,6 +38,10 @@ For 0.4.0-beta.8, Gitleaks 8.30.1 scanned all reachable Git history without find
 
 For 0.4.0-beta.9, Gitleaks 8.30.1 scanned all reachable Git history without findings, and npm audit reported zero vulnerabilities. Cargo audit passed with the same five informational warnings reviewed above. The image preview implementation adds a direct dependency on the already locked `base64` 0.22.1 crate; its MIT/Apache-2.0 notices are included in the regenerated inventory. No advisory ignores were added.
 
+### 12 November 2026 beta.10 release review
+
+For 0.4.0-beta.10, Gitleaks 8.30.1 scanned all reachable Git history without findings, and the Node 26 locked npm installation reported zero vulnerabilities. The Rust audit identified the new `rustix` RUSTSEC-2026-0486 soundness warning and a yanked `async-executor` 1.14.0 release. Compatible patch updates to `rustix` 1.1.6 and `async-executor` 1.14.1 remove both findings. Cargo audit then passed with the same five informational warnings reviewed above. Regenerated dependency notices retain the existing license texts and update the two exact-version source links. No advisory ignores were added.
+
 ## Remaining external checks
 
 Actual GNOME/KDE, GPU/scaling, cross-application clipboard, and native chooser validation remain pending; see [platform testing](platform-testing.md). Windows signing requires publisher credentials.
