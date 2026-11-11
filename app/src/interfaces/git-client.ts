@@ -39,6 +39,7 @@ export interface GitClient {
   commitTree(hash: string): Promise<TreeEntry[]>;
   commitFile(hash: string, path: string): Promise<FilePreview>;
   diff(request: DiffRequest): Promise<string>;
+  newFileState(path: string): Promise<string>;
   imageDiff(request: DiffRequest): Promise<ImageDiff>;
   mutate(action: string, payload?: Record<string, unknown>): Promise<boolean>;
   log(): Promise<CommandEntry[]>;

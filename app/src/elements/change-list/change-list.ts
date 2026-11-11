@@ -4,6 +4,7 @@ import type { ChangedFile } from '../../interfaces/changed-file';
 import type { WorkingFileNode } from '../../interfaces/working-file-node';
 import { WorkspaceService } from '../../services/workspace-service';
 import { canResetFile } from '../../services/can-reset-file';
+import { canDeleteFile } from '../../services/can-delete-file';
 
 export class ChangeList {
   readonly workspace = resolve(WorkspaceService);
@@ -13,6 +14,10 @@ export class ChangeList {
 
   get canReset() {
     return canResetFile(this.contextFile, this.staged);
+  }
+
+  get canDelete() {
+    return canDeleteFile(this.contextFile);
   }
 
   @bindable

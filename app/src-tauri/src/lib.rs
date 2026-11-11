@@ -56,6 +56,7 @@ pub fn run() {
       commands::stashes,
       commands::stash_diff,
       commands::diff,
+      commands::new_file_state,
       commands::image_diff,
       commands::mutate,
       commands::remotes,

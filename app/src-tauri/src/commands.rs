@@ -15,6 +15,14 @@ use tauri::{AppHandle, Emitter, Manager, WebviewWindow};
 use tauri_plugin_dialog::DialogExt;
 
 #[tauri::command]
+pub async fn new_file_state(app: AppHandle, window: WebviewWindow, path: String) -> Result<String, String> {
+  let repo = app.state::<AppState>().repo(window.label())?;
+  tauri::async_runtime::spawn_blocking(move || app.state::<AppState>().git.new_file_state(&repo, &path))
+    .await
+    .map_err(|error| error.to_string())?
+}
+
+#[tauri::command]
 pub async fn open_release(version: String) -> Result<(), String> {
   if version.is_empty()
     || !version

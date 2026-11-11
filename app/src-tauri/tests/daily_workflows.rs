@@ -68,6 +68,123 @@ fn partial(git: &GitService, repo: &Path, staged: bool, texts: &[&str]) {
 }
 
 #[test]
+fn delete_new_file_handles_untracked_staged_and_intent_to_add_files_without_head() {
+  for unborn in [false, true] {
+    for stage in ["untracked", "staged", "intent", "missing"] {
+      let (temp, git) = repo();
+      let repo = temp.path();
+      if !unborn {
+        commit(&git, repo, "base\n", "Base");
+      }
+      fs::create_dir(repo.join("folder")).unwrap();
+      let path = "folder/[new].bin";
+      fs::write(repo.join(path), [0, 255, 1, 2]).unwrap();
+      match stage {
+        "staged" | "missing" => action(&git, repo, "stage", json!({"paths":[path]})),
+        "intent" => {
+          git.run(repo, &["add", "-N", "--", path], false).unwrap();
+        }
+        _ => {}
+      }
+      if stage == "staged" {
+        fs::write(repo.join(path), [0, 254, 1, 2]).unwrap();
+      } else if stage == "missing" {
+        fs::remove_file(repo.join(path)).unwrap();
+      }
+      fs::write(repo.join("other.txt"), "keep staged\n").unwrap();
+      action(&git, repo, "stage", json!({"paths":["other.txt"]}));
+      fs::write(repo.join("other.txt"), "keep working\n").unwrap();
+      fs::write(repo.join("folder/keep.txt"), "keep untracked\n").unwrap();
+      let original = git.new_file_state(repo, path).unwrap();
+      action(&git, repo, "delete-file", json!({"paths":[path],"original":original}));
+      assert!(!repo.join(path).exists());
+      assert!(git
+        .run(repo, &["ls-files", "--", path], false)
+        .unwrap()
+        .stdout
+        .is_empty());
+      assert_eq!(content(&git, repo, ":other.txt"), "keep staged\n");
+      assert_eq!(fs::read_to_string(repo.join("other.txt")).unwrap(), "keep working\n");
+      assert_eq!(
+        fs::read_to_string(repo.join("folder/keep.txt")).unwrap(),
+        "keep untracked\n"
+      );
+      assert!(repo.join("folder").is_dir());
+    }
+  }
+}
+
+#[test]
+fn delete_new_file_rejects_changed_content_index_and_committed_files() {
+  let (temp, git) = repo();
+  let repo = temp.path();
+  commit(&git, repo, "base\n", "Base");
+  fs::write(repo.join("new.bin"), [0, 255]).unwrap();
+  let original = git.new_file_state(repo, "new.bin").unwrap();
+  let request = json!({"paths":["new.bin"],"original":original});
+  fs::write(repo.join("new.bin"), [0, 254]).unwrap();
+  let error = git
+    .mutate(repo, "delete-file", &serde_json::from_value(request.clone()).unwrap())
+    .unwrap_err();
+  assert!(error.contains("changed"));
+  assert_eq!(fs::read(repo.join("new.bin")).unwrap(), [0, 254]);
+  fs::write(repo.join("new.bin"), [0, 255]).unwrap();
+  action(&git, repo, "stage", json!({"paths":["new.bin"]}));
+  let error = git
+    .mutate(repo, "delete-file", &serde_json::from_value(request).unwrap())
+    .unwrap_err();
+  assert!(error.contains("changed"));
+  assert_eq!(git.run(repo, &["show", ":new.bin"], false).unwrap().stdout, [0, 255]);
+  let original = git.new_file_state(repo, "new.bin").unwrap();
+  action(&git, repo, "commit", json!({"message":"Commit new file"}));
+  let request = json!({"paths":["new.bin"],"original":original});
+  assert!(git
+    .mutate(repo, "delete-file", &serde_json::from_value(request).unwrap())
+    .is_err());
+  assert!(repo.join("new.bin").exists());
+}
+
+#[test]
+fn delete_new_file_rejects_tracked_files_renames_folders_and_invalid_paths() {
+  let (temp, git) = repo();
+  let repo = temp.path();
+  commit(&git, repo, "base\n", "Base");
+  fs::write(repo.join("file.txt"), "working edit\n").unwrap();
+  assert!(git.new_file_state(repo, "file.txt").is_err());
+  fs::create_dir(repo.join("folder")).unwrap();
+  fs::write(repo.join("folder/new.txt"), "keep\n").unwrap();
+  for path in [
+    "folder",
+    "../outside",
+    ".git/config",
+    "folder/../../outside",
+    "/outside",
+  ] {
+    assert!(git.new_file_state(repo, path).is_err());
+  }
+  git.run(repo, &["mv", "--", "file.txt", "renamed.txt"], false).unwrap();
+  assert!(git.new_file_state(repo, "renamed.txt").is_err());
+  assert_eq!(fs::read_to_string(repo.join("renamed.txt")).unwrap(), "working edit\n");
+  assert_eq!(fs::read_to_string(repo.join("folder/new.txt")).unwrap(), "keep\n");
+  // A new file at the path of a staged deletion is still part of a tracked-file reset.
+  fs::write(repo.join("file.txt"), "replacement\n").unwrap();
+  assert!(git.new_file_state(repo, "file.txt").is_err());
+}
+
+#[cfg(unix)]
+#[test]
+fn delete_new_file_rejects_links_and_paths_through_links() {
+  use std::os::unix::fs::symlink;
+  let (temp, git) = repo();
+  let outside = tempfile::tempdir().unwrap();
+  fs::write(outside.path().join("keep.txt"), "keep\n").unwrap();
+  symlink(outside.path(), temp.path().join("linked")).unwrap();
+  assert!(git.new_file_state(temp.path(), "linked/keep.txt").is_err());
+  assert!(git.new_file_state(temp.path(), "linked").is_err());
+  assert_eq!(fs::read_to_string(outside.path().join("keep.txt")).unwrap(), "keep\n");
+}
+
+#[test]
 fn reset_hunks_and_lines_preserves_index_and_other_working_changes() {
   let (temp, git) = repo();
   let repo = temp.path();

@@ -105,6 +105,10 @@ export class TauriGitClient implements GitClient {
     return this.request<string>('diff', { request });
   }
 
+  newFileState(path: string) {
+    return this.request<string>('new_file_state', { path });
+  }
+
   imageDiff(request: DiffRequest) {
     return this.request<ImageDiff>('image_diff', { request });
   }

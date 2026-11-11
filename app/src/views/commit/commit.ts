@@ -10,6 +10,7 @@ import type { ChangedFile } from '../../interfaces/changed-file';
 import type { ImageDiff } from '../../interfaces/image-diff';
 import { isImagePath } from '../../services/image-path';
 import { canResetFile } from '../../services/can-reset-file';
+import { canDeleteFile } from '../../services/can-delete-file';
 import './commit.css';
 
 export class Commit extends ValidatedForm {
@@ -312,6 +313,32 @@ export class Commit extends ValidatedForm {
 
   canResetFile(file: ChangedFile | null, staged = this.workingStaged) {
     return canResetFile(file, staged);
+  }
+
+  canDeleteFile(file: ChangedFile | null) {
+    return canDeleteFile(file);
+  }
+
+  async deleteFile(file: ChangedFile) {
+    if (!this.canDeleteFile(file) || this.workspace.busy) {
+      return;
+    }
+    try {
+      const original = await this.workspace.client.newFileState(file.path);
+      return this.dialogs.open({
+        component: ActionDialog,
+        model: {
+          title: 'Delete new file',
+          description: `Permanently delete ${file.path}? Any staged addition for this file will also be removed. Other files will be kept. This cannot be undone.`,
+          action: 'delete-file',
+          payload: { paths: [file.path], original },
+          confirm: 'Delete file',
+          danger: true
+        }
+      });
+    } catch (error) {
+      this.workspace.fail(error);
+    }
   }
 
   async resetFile(file: ChangedFile, staged = this.workingStaged) {

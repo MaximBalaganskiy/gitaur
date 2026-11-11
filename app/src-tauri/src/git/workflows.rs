@@ -440,7 +440,7 @@ fn read_text(path: &Path) -> Result<String, String> {
   Ok(text)
 }
 
-fn safe_working_path(repo: &Path, path: &str) -> Result<PathBuf, String> {
+pub(super) fn safe_working_path(repo: &Path, path: &str) -> Result<PathBuf, String> {
   validation::path(path)?;
   if path
     .split(['/', '\\'])
