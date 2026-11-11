@@ -73,28 +73,79 @@ impl GitService {
       .and_then(|paths| paths.first())
       .ok_or("Select one file.")?;
     validation::path(path)?;
-    if payload.staged.unwrap_or(false) {
-      return Err("Unstage changes before resetting them.".into());
-    }
+    let staged = payload.staged.unwrap_or(false);
     let snapshot = self.snapshot(repo, 1)?;
     let file = snapshot
       .files
       .iter()
       .find(|file| file.path == *path)
       .ok_or("The file changed. Refresh the diff.")?;
-    if file.conflict || file.index == "?" || file.original_path.is_some() || !file.unstaged {
-      return Err("Select an unstaged tracked file without conflicts or renames.".into());
+    if file.conflict
+      || file.index == "?"
+      || file.original_path.is_some()
+      || if staged {
+        !file.staged || !["M", "D", "T"].contains(&file.index.as_str())
+      } else {
+        !file.unstaged
+      }
+    {
+      return Err("Select an existing tracked file without conflicts or renames.".into());
     }
+    let head = if staged {
+      let head = self.resolve_reference(repo, "HEAD")?;
+      if payload.expected_head.as_deref() != Some(&head) {
+        return Err("HEAD changed. Refresh and review the file again.".into());
+      }
+      // A staged deletion can have a new untracked file at the same path.
+      if snapshot
+        .files
+        .iter()
+        .any(|item| item.path == *path && item.index == "?")
+      {
+        return Err("An untracked file now exists at this path. Move it before resetting the deletion.".into());
+      }
+      Some(head)
+    } else {
+      None
+    };
     let current = self.diff(
       repo,
       &crate::models::diff_request::DiffRequest {
         path: path.clone(),
+        staged,
         full_file: payload.full_file.unwrap_or(false),
         ..Default::default()
       },
     )?;
     if payload.original.as_deref() != Some(&current) {
       return Err("The diff changed since it was displayed. Review the refreshed diff and try again.".into());
+    }
+    if let Some(head) = head {
+      let working = self.diff(
+        repo,
+        &crate::models::diff_request::DiffRequest {
+          path: path.clone(),
+          full_file: payload.full_file.unwrap_or(false),
+          ..Default::default()
+        },
+      )?;
+      if payload.original_worktree.as_deref() != Some(&working) {
+        return Err("The working diff changed since it was displayed. Review the refreshed diff and try again.".into());
+      }
+      self.run(
+        repo,
+        &[
+          "--literal-pathspecs",
+          "restore",
+          &format!("--source={head}"),
+          "--staged",
+          "--worktree",
+          "--",
+          path,
+        ],
+        false,
+      )?;
+      return Ok(());
     }
     self.run(
       repo,

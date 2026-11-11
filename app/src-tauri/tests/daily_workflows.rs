@@ -130,7 +130,7 @@ fn reset_hunks_and_lines_preserves_index_and_other_working_changes() {
 }
 
 #[test]
-fn reset_rejects_stale_diffs_staged_changes_and_untracked_files() {
+fn reset_rejects_stale_diffs_and_untracked_files() {
   let (temp, git) = repo();
   let repo = temp.path();
   commit(&git, repo, "base\n", "Base");
@@ -141,13 +141,99 @@ fn reset_rejects_stale_diffs_staged_changes_and_untracked_files() {
     let payload = serde_json::from_value(json!({"paths":["file.txt"],"original":original,"lines":[4,5]})).unwrap();
     assert!(git.mutate(repo, name, &payload).unwrap_err().contains("diff changed"));
     assert_eq!(fs::read_to_string(repo.join("file.txt")).unwrap(), "external edit\n");
-    let payload = serde_json::from_value(json!({"paths":["file.txt"],"staged":true})).unwrap();
-    assert!(git.mutate(repo, name, &payload).unwrap_err().contains("Unstage"));
   }
+  let payload = serde_json::from_value(json!({"paths":["file.txt"],"staged":true})).unwrap();
+  assert!(git
+    .mutate(repo, "partial-reset", &payload)
+    .unwrap_err()
+    .contains("Unstage"));
   fs::write(repo.join("untracked.txt"), "keep\n").unwrap();
   let payload = serde_json::from_value(json!({"paths":["untracked.txt"]})).unwrap();
   assert!(git.mutate(repo, "reset-file", &payload).is_err());
   assert_eq!(fs::read_to_string(repo.join("untracked.txt")).unwrap(), "keep\n");
+}
+
+#[test]
+fn reset_staged_file_restores_head_and_preserves_other_files() {
+  let (temp, git) = repo();
+  let repo = temp.path();
+  commit(&git, repo, "base\n", "Base");
+  let head = git.resolve_reference(repo, "HEAD").unwrap();
+  fs::write(repo.join("other.txt"), "keep staged\n").unwrap();
+  action(&git, repo, "stage", json!({"paths":["other.txt"]}));
+  fs::write(repo.join("other.txt"), "keep working\n").unwrap();
+  for deleted in [false, true] {
+    if deleted {
+      fs::remove_file(repo.join("file.txt")).unwrap();
+    } else {
+      fs::write(repo.join("file.txt"), "staged\n").unwrap();
+    }
+    action(&git, repo, "stage", json!({"paths":["file.txt"]}));
+    if !deleted {
+      fs::write(repo.join("file.txt"), "working\n").unwrap();
+    }
+    action(
+      &git,
+      repo,
+      "reset-file",
+      json!({
+        "paths":["file.txt"], "staged":true, "expected_head":head,
+        "original":diff(&git, repo, true), "original_worktree":diff(&git, repo, false)
+      }),
+    );
+    assert_eq!(content(&git, repo, ":file.txt"), "base\n");
+    assert_eq!(fs::read_to_string(repo.join("file.txt")).unwrap(), "base\n");
+    assert_eq!(content(&git, repo, ":other.txt"), "keep staged\n");
+    assert_eq!(fs::read_to_string(repo.join("other.txt")).unwrap(), "keep working\n");
+    assert_eq!(git.resolve_reference(repo, "HEAD").unwrap(), head);
+  }
+}
+
+#[test]
+fn reset_staged_file_rejects_changed_head_index_worktree_and_untracked_replacement() {
+  let (temp, git) = repo();
+  let repo = temp.path();
+  commit(&git, repo, "base\n", "Base");
+  let head = git.resolve_reference(repo, "HEAD").unwrap();
+  fs::write(repo.join("file.txt"), "staged\n").unwrap();
+  action(&git, repo, "stage", json!({"paths":["file.txt"]}));
+  let mut payload = json!({
+    "paths":["file.txt"], "staged":true, "expected_head":head,
+    "original":diff(&git, repo, true), "original_worktree":diff(&git, repo, false)
+  });
+  fs::write(repo.join("file.txt"), "external edit\n").unwrap();
+  let error = git
+    .mutate(repo, "reset-file", &serde_json::from_value(payload.clone()).unwrap())
+    .unwrap_err();
+  assert!(error.contains("working diff changed"));
+  assert_eq!(content(&git, repo, ":file.txt"), "staged\n");
+  assert_eq!(fs::read_to_string(repo.join("file.txt")).unwrap(), "external edit\n");
+  action(&git, repo, "stage", json!({"paths":["file.txt"]}));
+  let error = git
+    .mutate(repo, "reset-file", &serde_json::from_value(payload.clone()).unwrap())
+    .unwrap_err();
+  assert!(error.contains("diff changed"));
+  action(&git, repo, "commit", json!({"message":"New HEAD"}));
+  fs::write(repo.join("file.txt"), "another staged edit\n").unwrap();
+  action(&git, repo, "stage", json!({"paths":["file.txt"]}));
+  let error = git
+    .mutate(repo, "reset-file", &serde_json::from_value(payload.clone()).unwrap())
+    .unwrap_err();
+  assert!(error.contains("HEAD changed"));
+  fs::remove_file(repo.join("file.txt")).unwrap();
+  action(&git, repo, "stage", json!({"paths":["file.txt"]}));
+  payload["expected_head"] = json!(git.resolve_reference(repo, "HEAD").unwrap());
+  payload["original"] = json!(diff(&git, repo, true));
+  payload["original_worktree"] = json!(diff(&git, repo, false));
+  fs::write(repo.join("file.txt"), "untracked replacement\n").unwrap();
+  let error = git
+    .mutate(repo, "reset-file", &serde_json::from_value(payload).unwrap())
+    .unwrap_err();
+  assert!(error.contains("untracked file"));
+  assert_eq!(
+    fs::read_to_string(repo.join("file.txt")).unwrap(),
+    "untracked replacement\n"
+  );
 }
 
 #[test]
