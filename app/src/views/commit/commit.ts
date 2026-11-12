@@ -9,6 +9,8 @@ import { WorkspaceService } from '../../services/workspace-service';
 import type { ChangedFile } from '../../interfaces/changed-file';
 import type { ImageDiff } from '../../interfaces/image-diff';
 import { isImagePath } from '../../services/image-path';
+import { canResetFile } from '../../services/can-reset-file';
+import { canDeleteFile } from '../../services/can-delete-file';
 import './commit.css';
 
 export class Commit extends ValidatedForm {
@@ -310,22 +312,53 @@ export class Commit extends ValidatedForm {
   }
 
   canResetFile(file: ChangedFile | null, staged = this.workingStaged) {
-    return !!file && !staged && !file.conflict && file.index !== '?' && !file.originalPath && file.unstaged;
+    return canResetFile(file, staged);
   }
 
-  async resetFile(file: ChangedFile) {
-    if (!this.canResetFile(file, false) || this.workspace.busy) {
+  canDeleteFile(file: ChangedFile | null) {
+    return canDeleteFile(file);
+  }
+
+  async deleteFile(file: ChangedFile) {
+    if (!this.canDeleteFile(file) || this.workspace.busy) {
       return;
     }
     try {
-      const original = await this.workspace.client.diff({ path: file.path, fullFile: this.fullFile });
+      const original = await this.workspace.client.newFileState(file.path);
+      return this.dialogs.open({
+        component: ActionDialog,
+        model: {
+          title: 'Delete new file',
+          description: `Permanently delete ${file.path}? Any staged addition for this file will also be removed. Other files will be kept. This cannot be undone.`,
+          action: 'delete-file',
+          payload: { paths: [file.path], original },
+          confirm: 'Delete file',
+          danger: true
+        }
+      });
+    } catch (error) {
+      this.workspace.fail(error);
+    }
+  }
+
+  async resetFile(file: ChangedFile, staged = this.workingStaged) {
+    if (!this.canResetFile(file, staged) || this.workspace.busy) {
+      return;
+    }
+    try {
+      const fullFile = this.fullFile;
+      const head = this.workspace.snapshot?.head;
+      const original = await this.workspace.client.diff({ path: file.path, staged, fullFile });
+      const originalWorktree = staged ? await this.workspace.client.diff({ path: file.path, fullFile }) : undefined;
       return this.dialogs.open({
         component: ActionDialog,
         model: {
           title: 'Reset file changes',
-          description: `Discard all unstaged changes in ${file.path}? The file will be restored from the index. Staged changes will be kept. This cannot be undone.`,
+          description: staged
+            ? `Discard all staged and unstaged changes in ${file.path}? The file and its index entry will be restored to HEAD. Other files will be kept. This cannot be undone.`
+            : `Discard all unstaged changes in ${file.path}? The file will be restored from the index. Staged changes will be kept. This cannot be undone.`,
           action: 'reset-file',
-          payload: { paths: [file.path], original, full_file: this.fullFile },
+          payload: { paths: [file.path], original, original_worktree: originalWorktree, staged, expected_head: head, full_file: fullFile },
           confirm: 'Reset file',
           danger: true
         }
@@ -336,7 +369,14 @@ export class Commit extends ValidatedForm {
   }
 
   resetSelection(lines: number[]) {
-    if (!this.canResetFile(this.workingFile) || !this.canStageSelection || !lines.length || this.diffLoading || this.workspace.busy) {
+    if (
+      this.workingStaged ||
+      !this.canResetFile(this.workingFile) ||
+      !this.canStageSelection ||
+      !lines.length ||
+      this.diffLoading ||
+      this.workspace.busy
+    ) {
       return;
     }
     return this.dialogs.open({

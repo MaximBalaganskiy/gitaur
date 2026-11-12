@@ -100,11 +100,49 @@ const path = require('node:path');
     assert.equal((await git(repo, ['show', `:${relative}`])).stdout, indexed);
     assert.equal((await git(repo, ['show', `HEAD:${relative}`])).stdout, base);
     assert.equal(await fs.readFile(path.join(repo, 'untracked.txt'), 'utf8'), 'keep\n');
-    assert.equal(await button('Reset file changes…').count(), 0);
+    // The remaining staged edit can be reset directly, without first unstaging it.
+    await commit.locator('change-list').nth(1).locator(`[title="${relative}"]`).click();
+    await commit.locator('.diff-mode').filter({ hasText: 'STAGED' }).waitFor();
+    assert.equal(await button('Reset hunk…').count(), 0);
+    for (const tree of [true, false]) {
+      if (!tree) {
+        await button('Show flat file list').click();
+      }
+      const row = tree
+        ? commit.locator('change-list').nth(1).locator(`[title="${relative}"]`)
+        : commit.locator('change-list').nth(1).locator('.stage-file').filter({ hasText: relative });
+      await row.click({ button: 'right' });
+      await commit.getByRole('option', { name: 'Reset file changes…', exact: true }).click();
+      await dialog.waitFor();
+      assert.match(await dialog.innerText(), /all staged and unstaged changes/);
+      await dialog.getByRole('button', { name: 'Cancel', exact: true }).press('Enter');
+      await dialog.waitFor({ state: 'hidden' });
+    }
+    await button('Reset file changes…').press('Enter');
+    await dialog.waitFor();
+    const unexpected = indexed.replace('line 28\n', 'unexpected edit\n');
+    await fs.writeFile(file, unexpected);
+    await dialog.getByRole('button', { name: 'Reset file', exact: true }).press('Enter');
+    await dialog.getByRole('alert').filter({ hasText: 'working diff changed' }).waitFor();
+    assert.equal(await fs.readFile(file, 'utf8'), unexpected);
+    assert.equal((await git(repo, ['show', `:${relative}`])).stdout, indexed);
+    await dialog.getByRole('button', { name: 'Cancel', exact: true }).click();
+    await dialog.waitFor({ state: 'hidden' });
+    await button('Reset file changes…').press('Enter');
+    await dialog.getByRole('button', { name: 'Reset file', exact: true }).press('Enter');
+    await dialog.waitFor({ state: 'hidden' });
+    assert.equal(await fs.readFile(file, 'utf8'), base);
+    assert.equal((await git(repo, ['show', `:${relative}`])).stdout, base);
+    await commit.locator('.file-item[title="untracked.txt"]').click();
+    await button('Delete file…').waitFor();
+    await commit.locator('.unstaged-section .stage-file').filter({ hasText: 'untracked.txt' }).click({ button: 'right' });
+    await commit.getByRole('option', { name: 'Delete file…', exact: true }).waitFor();
+    await commit.keyboard.press('Escape');
+    assert.equal(await fs.readFile(path.join(repo, 'untracked.txt'), 'utf8'), 'keep\n');
     assert.deepEqual(errors, []);
     await commit.screenshot({ path: path.resolve('test-results/reset-changes.png') });
     console.log(
-      'PASS: file, hunk and line reset; keyboard confirmation and cancellation; stale diff errors; flat/tree menus; index and untracked files preserved.'
+      'PASS: unstaged and staged file reset; hunk and line reset; keyboard confirmation and cancellation; stale diff errors; flat/tree menus; untracked files preserved.'
     );
   } catch (error) {
     if (commit && !commit.isClosed()) {

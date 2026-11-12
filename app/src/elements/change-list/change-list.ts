@@ -3,12 +3,22 @@ import type { UiMenu } from '@aurelia-ui-toolkits/headless';
 import type { ChangedFile } from '../../interfaces/changed-file';
 import type { WorkingFileNode } from '../../interfaces/working-file-node';
 import { WorkspaceService } from '../../services/workspace-service';
+import { canResetFile } from '../../services/can-reset-file';
+import { canDeleteFile } from '../../services/can-delete-file';
 
 export class ChangeList {
   readonly workspace = resolve(WorkspaceService);
   private element = resolve(INode) as HTMLElement;
   menu!: UiMenu;
   contextFile: ChangedFile | null = null;
+
+  get canReset() {
+    return canResetFile(this.contextFile, this.staged);
+  }
+
+  get canDelete() {
+    return canDeleteFile(this.contextFile);
+  }
 
   @bindable
   files: ChangedFile[] = [];

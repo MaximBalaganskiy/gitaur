@@ -1,5 +1,6 @@
 mod conflict_preview;
 mod daily;
+mod delete_file;
 mod history;
 mod images;
 pub mod parsers;

@@ -410,7 +410,7 @@ impl GitService {
         self.history_action(repo, action, payload)?;
       }
       "publish" | "stash-save" | "stash-apply" | "stash-pop" | "stash-drop" | "amend" | "undo-commit"
-      | "partial-stage" | "partial-reset" | "reset-file" => {
+      | "partial-stage" | "partial-reset" | "reset-file" | "delete-file" => {
         self.daily_action(repo, action, payload)?;
       }
       "remote-remove" => {

@@ -155,6 +155,7 @@ impl GitService {
       "partial-stage" => self.apply_partial(repo, payload, false)?,
       "partial-reset" => self.apply_partial(repo, payload, true)?,
       "reset-file" => self.reset_file(repo, payload)?,
+      "delete-file" => self.delete_new_file(repo, payload)?,
       _ => return Err("Unsupported daily operation.".into()),
     }
     Ok(())
